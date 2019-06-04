@@ -26,18 +26,18 @@ class RegistrationForm extends React.Component {
                 username.value = ''
                 password.value = ''
                 image.value = ''
-                user_description = ''
+                user_description.value = ''
                 if (this.state.error === null) {
                     this.props.onRegistrationSuccess()
                 }
             })
-            // .catch(res => {
-            //     this.setState({ error: res.error })
-            // })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
 
     render() {
-        const { error } = this.state;
+        let { error } = this.state;
         return (
             <React.Fragment>
                 <div>

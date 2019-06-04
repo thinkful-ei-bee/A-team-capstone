@@ -23,16 +23,16 @@ export default class LoginForm extends Component {
         this.setState({ error: null });
 
         //deconstruct form values into variables
-        const { user_name, password } = ev.target;
+        const { username, password } = ev.target;
         // A fetch call is made to the server from this method @ line 4/AuthApiService.js to /auth/login endpoint in the server
         AuthApiService.postLogin({
-            user_name: user_name.value,
+            username: username.value,
             password: password.value
         })
 
             // form values are cleared, token is saved 
             .then(res => {
-                user_name.value = '';
+                username.value = '';
                 password.value = '';
                 TokenService.saveAuthToken(res.authToken);
                 this.props.onLoginSuccess();
@@ -69,7 +69,7 @@ export default class LoginForm extends Component {
                             <div className='user_name'>
                                 <label htmlFor='login-user-name'>Username</label>
                                 <input
-                                    name='user_name'
+                                    name='username'
                                     id='login-user-name'
                                     required
                                     placeholder="Username(Required)"
