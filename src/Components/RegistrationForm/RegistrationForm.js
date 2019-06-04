@@ -26,7 +26,7 @@ class RegistrationForm extends React.Component {
                 username.value = ''
                 password.value = ''
                 image.value = ''
-                user_description = ''
+                user_description.value = ''
                 if (this.state.error === null) {
                     this.props.onRegistrationSuccess()
                 }
