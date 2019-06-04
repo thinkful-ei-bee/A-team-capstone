@@ -11,7 +11,7 @@ function App() {
       <TopNav></TopNav>
       <main>
         <Switch>
-          <Route path={"/"} component={MainPage} />
+          <Route exact path={"/"} component={MainPage} />
           <Route path={"/login"} component={Login} />
           <Route path={"/register"} component={Registration} />
         </Switch>
