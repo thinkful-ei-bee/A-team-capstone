@@ -16,6 +16,32 @@ const ProjectApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       );
+  },
+  getAllProjects() {
+    return fetch(`${config.API_ENDPOINT}/projects`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    );
+  },
+  getProjectsForUser(id) {
+    return fetch(`${config.API_ENDPOINT}/projects/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    );
   }
 };
 
