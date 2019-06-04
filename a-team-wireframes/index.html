@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- oogle Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>A Team Capstone</title>
+  </head>
+  <body>
+    <header>
+      <nav class="grid">
+        <div>
+          <h1>Logo</h1>
+        </div>
+        <div class="nav-grid-menu">
+          <ul class="nav-menu float-right">
+            <li>Link1</li>
+            <li>Link 2</li>
+            <li>Link 3</li>
+          </ul>
+          <ul class="bars float-right">
+            <li class="bar"></li>
+            <li class="bar"></li>
+            <li class="bar"></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+      <aside id="mbl-nav" class="invisible"></aside>
+      <main class="main-grid">
+        
+        <aside class="sidebar">
+            <article class="account-panel">
+                USERNAME
+                <h4>Projects:</h4>
+                React Project....
+                <h4>Bids:</h4>
+                3 Bids Pending....
+            </article>
+          <article class="tip">
+              <h4>How To Use It!</h4>
+                <hr class="sidebar-separator">
+                <small>1. Click On A project</small>
+                <small>2. Login and bid on it</small>
+                <small>3. Wait for approval</small>
+        </article>
+        </aside>
+        <section>
+          <section id="landing-filter">
+            <form action="/subscribe" method="post">
+              <input type="email" name="email" placeholder="Search" />
+              <button>Submit</button>
+            </form>
+
+            <select>
+              <option value="HTML">HTML</option>
+              <option value="CSS">CSS</option>
+              <option value="Javascript">Javascript</option>
+            </select>
+          </section>
+
+          <div class="mbl-separator">
+            <h5>Available Projects</h5>
+            <hr />
+          </div>
+          <section class="main-project-grid">
+            <div class="main-project-square">Project</div>
+            <div class="main-project-square">Project</div>
+            <div class="main-project-square">Project</div>
+            <div class="main-project-square">Project</div>
+            <div class="main-project-square">Project</div>
+            <div class="main-project-square">Project</div>
+            <div class="main-project-square">Project</div>
+          </section>
+        </section>
+      </main>
+      <footer>
+        
+      </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $(".bars").click(function() {
+        $("#mbl-nav").toggleClass("invisible");
+        //alert("c")
+        });
+      });
+    </script>
+  </body>
+</html>

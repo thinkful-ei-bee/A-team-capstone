@@ -5,14 +5,22 @@ import "./LoginForm.css"
 
 
 export default class LoginForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            username: '',
+            password: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmitJwtAuth = this.handleSubmitJwtAuth.bind(this);
+    }
 
     // invoked by handleSubmitBasicAuth
     static defaultProps = {
         onLoginSuccess: () => { }
     }
-
-    //   manages form state
-    state = { error: null }
 
     // invoked after form inputs are validated
     handleSubmitJwtAuth = ev => {
@@ -23,16 +31,16 @@ export default class LoginForm extends Component {
         this.setState({ error: null });
 
         //deconstruct form values into variables
-        const { user_name, password } = ev.target;
+        const { username, password } = ev.target;
         // A fetch call is made to the server from this method @ line 4/AuthApiService.js to /auth/login endpoint in the server
         AuthApiService.postLogin({
-            user_name: user_name.value,
+            username: username.value,
             password: password.value
         })
 
             // form values are cleared, token is saved 
             .then(res => {
-                user_name.value = '';
+                username.value = '';
                 password.value = '';
                 TokenService.saveAuthToken(res.authToken);
                 this.props.onLoginSuccess();
@@ -44,6 +52,11 @@ export default class LoginForm extends Component {
                 this.setState({ error: res.error });
             });
     }
+
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
+
 
     // render LoginForm component
     render() {
@@ -67,26 +80,30 @@ export default class LoginForm extends Component {
                                 {error && <p className='red'>{error}</p>}
                             </div>
                             <div className='user_name'>
-                                <label htmlFor='login-user-name'>Username</label>
+                                <label htmlFor='login_user_name'>Username</label>
                                 <input
-                                    name='user_name'
-                                    id='login-user-name'
+                                    name='username'
+                                    id='login_user_name'
                                     required
                                     placeholder="Username(Required)"
                                     className="text"
-                                    >
+                                    value={this.state.username}
+                                    onChange={(ev) => this.handleChange(ev)}
+                                >
                                 </input>
                             </div>
                             <div className='password'>
-                            <label htmlFor='login-password'>Password</label>
+                                <label htmlFor='login_password'>Password</label>
                                 <input
                                     name='password'
                                     type='password'
-                                    id="login-password"
+                                    id="login_password"
                                     required
                                     placeholder="Password(Required)"
                                     className="text"
-                                    >
+                                    value={this.state.password}
+                                    onChange={(ev) => this.handleChange(ev)}
+                                >
                                 </input>
                             </div>
                             <button className="btn submit_btn" type='submit'>

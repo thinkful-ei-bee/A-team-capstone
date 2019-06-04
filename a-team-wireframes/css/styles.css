@@ -1,0 +1,201 @@
+/* General */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  min-width: 320px;
+}
+/* End General */
+
+/* Nav Styles */
+nav {
+  background: black;
+  color: white;
+  padding: 0 30px;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.nav-menu {
+  display: none;
+}
+
+ul.bars {
+  padding-right: 0;
+  margin-right: 0;
+}
+.bar {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+/* End of Nav Styles */
+
+/* Mbl nav */
+#mbl-nav {
+  height: 100vh;
+  width: 300px;
+  position: absolute;
+  left: 0;
+  background: black;
+}
+/* End of mbl styles */
+
+/* Landing Page Search */
+#landing-filter {
+  color: white;
+  padding: 30px;
+}
+#landing-filter > form {
+  width: 100%;
+  margin-right: 0;
+  max-width: 450px;
+  min-width: 200px;
+}
+#landing-filter > form > input {
+  width: 73%;
+  margin-right: 0;
+  max-width: 500px;
+  min-width: 190px;
+  margin-bottom: 10px;
+}
+/* End Landing Page Banner */
+
+/* Main */
+.main-grid {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.sidebar {
+  background: red;
+  padding: 30px 15px;
+  display: none;
+}
+
+.tip{
+    color: white;
+    border: 1px solid white;
+    border-radius: 7px;
+    padding: 0 10px 15px 15px;
+}
+
+.tip > h4{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.tip > small{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.account-panel{
+    color: white;
+    background: black;
+    border-radius: 5px;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+}
+
+.account-panel > h4{
+  margin-bottom: 3px;
+}
+
+.main-project-grid {
+  padding: 5px 30px 15px;
+  display: grid;
+  grid-template-columns: 100%;
+  /* This will result on two rows, each one of 300px */
+  /* grid-template-rows: 300px 300px; */
+}
+
+.main-project-square {
+  border: 1px solid red;
+  margin: 15px 15px 15px 0;
+  padding: 40px;
+  border-radius: 8px;
+}
+/* End Main */
+
+/* Footer */
+footer{
+  height: 40px;
+  background: black;
+}
+/* End Footer */
+ul {
+  list-style: none;
+}
+
+/* classes */
+.grid {
+  display: grid;
+}
+
+.float-right {
+  float: right;
+}
+
+.mbl-separator {
+  padding: 0 30px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.mbl-separator > hr {
+  border: 0.25px solid #999;
+}
+
+.mbl-separator > h5 {
+  margin: 0;
+}
+
+.sidebar-separator{
+    border: 0.5px solid #fff;
+    width: 95%;
+    margin-left: -2px;
+}
+.invisible {
+  display: none!important;
+}
+/* End of classes */
+
+/* media queries */
+@media (min-width: 678px) {
+  ul.bars {
+    display: none;
+  }
+
+  .nav-menu {
+    display: block;
+  }
+
+  .nav-menu > li {
+    display: inline-block;
+  }
+
+  .main-project-grid {
+    grid-template-columns: 50% 50%;
+    /* This will result on two rows, each one of 300px */
+    /* grid-template-rows: 300px 300px; */
+  }
+  .main-grid {
+    grid-template-columns: 25% auto;
+  }
+  .sidebar {
+    background: red;
+    padding: 30px 15px;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-project-grid {
+    grid-template-columns: 33% 33% 33%;
+    /* This will result on two rows, each one of 300px */
+    /* grid-template-rows: 300px 300px; */
+  }
+}
+/* End media queries */
