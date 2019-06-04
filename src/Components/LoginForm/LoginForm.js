@@ -24,7 +24,6 @@ export default class LoginForm extends Component {
 
         //deconstruct form values into variables
         const { user_name, password } = ev.target;
-
         // A fetch call is made to the server from this method @ line 4/AuthApiService.js to /auth/login endpoint in the server
         AuthApiService.postLogin({
             user_name: user_name.value,
@@ -62,26 +61,32 @@ export default class LoginForm extends Component {
                         <h2>Login</h2>
                         <p>Username:"demo1234"</p>
                         <p>Pass:"Demo1234!"</p>
-                        <form id="contact-form"
+                        <form id="login-form"
                             onSubmit={this.handleSubmitJwtAuth}>
                             <div role='alert'>
                                 {error && <p className='red'>{error}</p>}
                             </div>
                             <div className='user_name'>
+                                <label htmlFor='login-user-name'>Username</label>
                                 <input
                                     name='user_name'
-                                    id='LoginForm__user_name'
+                                    id='login-user-name'
                                     required
-                                    placeholder="Username(Required)">
+                                    placeholder="Username(Required)"
+                                    className="text"
+                                    >
                                 </input>
                             </div>
                             <div className='password'>
+                            <label htmlFor='login-password'>Password</label>
                                 <input
                                     name='password'
                                     type='password'
+                                    id="login-password"
                                     required
-                                    id='LoginForm__password'
-                                    placeholder="Password(Required)">
+                                    placeholder="Password(Required)"
+                                    className="text"
+                                    >
                                 </input>
                             </div>
                             <button className="btn submit_btn" type='submit'>
@@ -91,7 +96,6 @@ export default class LoginForm extends Component {
                     </div>
                 </section>
             </React.Fragment >
-
         )
     }
 }
