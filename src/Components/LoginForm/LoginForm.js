@@ -5,14 +5,22 @@ import "./LoginForm.css"
 
 
 export default class LoginForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: null,
+            username: '',
+            password: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmitJwtAuth = this.handleSubmitJwtAuth.bind(this);
+    }
 
     // invoked by handleSubmitBasicAuth
     static defaultProps = {
         onLoginSuccess: () => { }
     }
-
-    //   manages form state
-    state = { error: null }
 
     // invoked after form inputs are validated
     handleSubmitJwtAuth = ev => {
@@ -45,6 +53,11 @@ export default class LoginForm extends Component {
             });
     }
 
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
+
+
     // render LoginForm component
     render() {
 
@@ -67,26 +80,30 @@ export default class LoginForm extends Component {
                                 {error && <p className='red'>{error}</p>}
                             </div>
                             <div className='user_name'>
-                                <label htmlFor='login-user-name'>Username</label>
+                                <label htmlFor='login_user_name'>Username</label>
                                 <input
                                     name='username'
-                                    id='login-user-name'
+                                    id='login_user_name'
                                     required
                                     placeholder="Username(Required)"
                                     className="text"
-                                    >
+                                    value={this.state.username}
+                                    onChange={(ev) => this.handleChange(ev)}
+                                >
                                 </input>
                             </div>
                             <div className='password'>
-                            <label htmlFor='login-password'>Password</label>
+                                <label htmlFor='login_password'>Password</label>
                                 <input
                                     name='password'
                                     type='password'
-                                    id="login-password"
+                                    id="login_password"
                                     required
                                     placeholder="Password(Required)"
                                     className="text"
-                                    >
+                                    value={this.state.password}
+                                    onChange={(ev) => this.handleChange(ev)}
+                                >
                                 </input>
                             </div>
                             <button className="btn submit_btn" type='submit'>
