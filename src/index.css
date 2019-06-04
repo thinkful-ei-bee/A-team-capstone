@@ -7,48 +7,100 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Main/Landing Style */
+.sidebar {
+  background: red;
+  padding: 30px 15px;
+  display: none;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.main-project-grid {
+  padding: 5px 30px 15px;
+  display: grid;
+  grid-template-columns: 100%;
+  /* This will result on two rows, each one of 300px */
+  grid-template-rows: 300px 300px;
+}
+
+.main-single-project-square {
+  border: 1px solid red;
+  margin: 15px 15px 15px 0;
+  padding: 40px;
+  border-radius: 8px;
+}
+/* End Main/Landing Styles */
+
+/* Single Project Styles */
+
+/* End Single Project */
+
 /* Form Styles */
-form{
+form {
   margin: auto;
-  border: 1px solid rgb(0,0,0,.1);
+  border: 1px solid rgb(0, 0, 0, 0.1);
   padding: 30px;
   border-radius: 5px;
   max-width: 300px;
   box-shadow: 1px 1px 1px #999;
 }
 
-.text{
-  border: .5px solid #333;
+.text {
+  border: 0.5px solid #333;
   width: 100%;
   height: 30px;
   border-radius: 2px;
   padding: 5px 5px 0 5px;
   margin-bottom: 10px;
-  }
+}
 
-  label{
-    display: block;
-    text-align: left;
-  }
+label {
+  display: block;
+  text-align: left;
+}
 
-  form > button.btn{
-    width: 100%;
-  }
+form > button.btn {
+  width: 100%;
+}
 
-  form > textarea{
-    height: 300px;
-  }
+form > textarea {
+  height: 300px;
+}
 /* End Form Styles */
 
-
 /* Classes */
-.btn{
+.btn {
   background: black;
   padding: 7px 7px 5px;
   color: white;
-  border:none;
+  border: none;
   border-radius: 3px;
 }
 /* End Classes */
 
+/* Media Queries */
+@media(min-width: 678px){
+  .main-grid {
+    grid-template-columns: 25% auto;
+  }
 
+  .sidebar {
+    background: red;
+    padding: 30px 15px;
+    display: inline-block;
+    height: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-project-grid {
+    grid-template-columns: 33% 33% 33%;
+    /* This will result on two rows, each one of 300px */
+    /* grid-template-rows: 300px 300px; */
+  }
+}
+/* Media Queries */
