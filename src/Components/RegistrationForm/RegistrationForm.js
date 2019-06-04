@@ -31,13 +31,13 @@ class RegistrationForm extends React.Component {
                     this.props.onRegistrationSuccess()
                 }
             })
-            // .catch(res => {
-            //     this.setState({ error: res.error })
-            // })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
 
     render() {
-        const { error } = this.state;
+        let { error } = this.state;
         return (
             <React.Fragment>
                 <div>
