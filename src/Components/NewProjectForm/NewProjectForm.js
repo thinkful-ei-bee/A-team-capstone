@@ -9,12 +9,19 @@ export default class NewProjectForm extends React.Component {
         error: null
       }
     
-      cancel = () => {
+      cancel = (event) => {
+        event.preventDefault();
         this.props.history.goBack();
       }
     
       save = (event) => {
         event.preventDefault();
+        if (!this.state.name || !this.state.description) {
+            return;
+        }
+
+        this.props.history.push('/');        
+
         return ProjectApiService.submitProject({
           project_name: this.state.name,
           project_description: this.state.description
@@ -28,7 +35,7 @@ export default class NewProjectForm extends React.Component {
       }
 
   render() {
-    let error = this.state.error
+    let error = this.state.error;
     return (
         <section className="section ">
             <div className="section-grid-item">
@@ -38,11 +45,12 @@ export default class NewProjectForm extends React.Component {
                         {error && <p className='red'>{error}</p>}
                     </div>
                     <div className='project-name'>
-                        <label htmlFor='new-project-name'>Username</label>
+                        <label htmlFor='new-project-name'>Project Name</label>
                             <input
+                                value={this.state.name}
+                                onChange={e => this.changeFields(e)}
                                 name='name'
                                 type='text'
-                                required
                                 id='new-project-name'
                                 placeholder="Project Name (Required)"
                                 className="text">
@@ -51,17 +59,20 @@ export default class NewProjectForm extends React.Component {
                     <div className='project-description'>
                         <label htmlFor='new-project-description'>Project Description</label>
                             <textarea
+                                valeu={this.state.description}
+                                onChange={e => this.changeFields(e)}
                                 name='description'
                                 id='new-project-description'
                                 type='text'
-                                required
+                                placeholder="Project Description (Required)"
                                 className="text">
                             </textarea>
                     </div>
                             
-                    <button className="btn submit_btn" type='submit'>
+                    <button className="btn submit_btn" type='submit' onClick={this.save}>
                         Submit Project
                      </button>
+                     <button className="btn-cancel" onClick={this.cancel}>Cancel</button>
                  </form>
             </div>
         </section>
