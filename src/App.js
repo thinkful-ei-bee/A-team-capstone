@@ -5,6 +5,7 @@ import MainPage from './Components/MainPage/MainPage'
 import Login from './routes/Login/Login'
 import Registration from './routes/Registration/Registration'
 import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
+import Profile from './Components/Profile/Profile';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path={"/login"} component={Login} />
           <Route path={"/register"} component={Registration} />
           <Route path={"/new"} component={NewProjectForm} />
+          <Route path={"/profile"} component={Profile} />
         </Switch>
       </main>
     </div>
