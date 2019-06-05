@@ -22,7 +22,6 @@ class MainPage extends React.Component {
     }
 
     searchChecksOut(project, term, language) {
-        console.log('tried to search');
         let langToSearch = '';
         if (project.languages) {
             langToSearch = project.languages.toLowerCase();
