@@ -16,7 +16,7 @@ function App() {
           <Route exact path={"/"} component={MainPage} />
           <Route path={"/login"} component={Login} />
           <Route path={"/register"} component={Registration} />
-          <Route path={"/new"} component={NewProjectForm} />
+          <Route path={"/new-project"} component={NewProjectForm} />
           <Route path={"/profile"} component={Profile} />
         </Switch>
       </main>
