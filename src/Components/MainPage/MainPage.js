@@ -9,14 +9,38 @@ class MainPage extends React.Component {
     state = {
         projects: [],
         searchTerm: '',
-        language: ''
+        language: '',
+        searching: false
     }
 
-    setSearch(term, language) {
+    setSearch = (term, language) => {
         this.setState({
             searchTerm: term,
-            language: language
+            language: language,
+            searching: true
         });
+    }
+
+    searchChecksOut(project, term, language) {
+        console.log('tried to search');
+        let langToSearch = '';
+        if (project.languages) {
+            langToSearch = project.languages.toLowerCase();
+        }
+        
+        const descToSearch = project.project_description.toLowerCase();
+        const nameToSearch = project.project_name.toLowerCase();
+        const lowerTerm = term.toLowerCase();
+        const lowerLang = language.toLowerCase();
+
+        if (langToSearch.indexOf(lowerLang) === -1) {
+            return false;
+        }
+
+        if (descToSearch.indexOf(lowerTerm) === -1 && nameToSearch.indexOf(lowerTerm) === -1) {
+            return false;
+        }
+        return true;
     }
 
     alternateOpen = (i) => {
@@ -27,13 +51,30 @@ class MainPage extends React.Component {
         })
     }
 
+    componentDidUpdate() {
+        if (this.state.searching) {
+            this.setState({
+                searching: false
+            })
+
+            ProjectApiService.getAllProjects()
+            .then(projects => {
+                projects.forEach(project => { project.open = false });
+                const filteredProjects = projects.filter(project => this.searchChecksOut(project, this.state.searchTerm, this.state.language));
+                this.setState({
+                    projects: filteredProjects
+                });
+            })
+        }
+    }
+
     componentDidMount() {
         ProjectApiService.getAllProjects()
             .then(projects => {
                 projects.forEach(project => { project.open = false });
-                const filteredProjects = projects.filter(project => (project.project_description.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) !== -1 || project.project_name.toLowerCase().indexOf(this.state.searchTerm) !== -1) && )
+                const filteredProjects = projects.filter(project => this.searchChecksOut(project, this.state.searchTerm, this.state.language));
                 this.setState({
-                    projects: projects
+                    projects: filteredProjects
                 });
             })
     }

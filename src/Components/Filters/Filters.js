@@ -27,7 +27,7 @@ export default class Filters extends React.Component{
     render(){
         return (
             <section className="filter-box">
-                        <form id="filter_search" onSubmit={(e) => this.handleSubmit(e)}>
+                        <form id="filter_search" onSubmit={this.handleSubmit}>
                             <input className="search_input" type="text" name="searchTerm" placeholder="Search" value={this.state.searchTerm} onChange={(e) => this.changeFields(e)}/>
                             <button>Submit</button>
                         </form>
