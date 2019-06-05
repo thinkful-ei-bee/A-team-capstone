@@ -57,7 +57,7 @@ class TopNav extends React.Component {
                     <Link
                         className="nav-btn"
                         to='/new-project'>
-                        CREATE NEW PROJECT
+                        NEW PROJECT
                     </Link>
                 </li>
             </ul>
