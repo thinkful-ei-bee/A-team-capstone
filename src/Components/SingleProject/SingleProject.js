@@ -12,12 +12,12 @@ class SingleProject extends React.Component{
         return(
             <article className="main-single-project-square">
                 <h3>Project Title:</h3>
-                {/* <p>Project Description:</p>
+                <p>Project Description:</p>
                 <p>Languages:</p>
                 <p>Minimum Reqs:</p>
-                <p>Personnel Count:</p>
+                <p># Developers Needed:</p>
                 <p>Deadline:</p>
-                <p>Personnel Count:</p> */}
+                <p>Personnel Count:</p>
                 {
                     TokenService.hasAuthToken()
                     ? this.renderBidButton()
