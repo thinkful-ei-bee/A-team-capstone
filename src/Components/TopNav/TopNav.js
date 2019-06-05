@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import HamburgerBtn from "../HamburgerBtn/HamburgerBtn";
+import HamburgerButton from "../HamburgerButton/HamburgerButton";
 import TokenService from '../../services/token-service';
+
 import "./TopNav.css";
 
 class TopNav extends React.Component {
 
-    // TopNav constructor
     constructor(props) {
         super(props);
         this.state = {
         };
     }
-    // End of TopNav constructo
+
 
     // logout
     handleLogoutClick = () => {
@@ -65,37 +65,22 @@ class TopNav extends React.Component {
     }
 
     render() {
-         //
-        // returns TopNav html(JSX)
         return (
             <nav className="top-nav">
-
-                {/* nav-grid */}
                 <div className="nav-grid">
-
-                    {/* nav-grid item */}
                     <div className="nav-grid-item">
                         <Link to={'/'} id="logo">
                             <h1>BidHub</h1>
                         </Link>
                     </div>
-
-                    {/* nav-grid item */}
                     <div className="nav-grid-item-2">
                         {/* Hamburger menu button renders when screen < 678px */}
-                        {/* <HamburgerBtn click={this.props.hamburgerClick} /> */}
-
-                        {/* Post Categories drop down */}
-
-                        {/*renders login and register links to <TopNav/> if user is  logged out*/}
-
+                        <HamburgerButton />
                         {
                             TokenService.hasAuthToken()
                             ? this.renderLogOutLink()
                             : this.renderLoginLink()
                         }
-
-                        {/* End of Post Dropdown */}
 
                     </div>
                 </div>
