@@ -24,14 +24,33 @@ body {
   display: grid;
   grid-template-columns: 100%;
   /* This will result on two rows, each one of 300px */
-  grid-template-rows: 300px 300px;
+  /* grid-template-rows: 300px 300px; */
 }
 
 .main-single-project-square {
   border: 1px solid red;
   margin: 15px 15px 15px 0;
-  padding: 40px;
+  padding: 15px;
   border-radius: 8px;
+}
+
+#filter_search {
+  width: 100%;
+  padding: 30px 0 15px 30px;
+  max-width: 450px;
+  min-width: 200px;
+  box-shadow: none;
+  border: none;
+  margin-left: 0;
+}
+
+.search_input {
+  max-width: 90%;
+  min-width: 200px;
+}
+
+.spec_filter{
+  margin: 0 0 0 30px;
 }
 /* End Main/Landing Styles */
 
@@ -80,10 +99,17 @@ form > textarea {
   border: none;
   border-radius: 3px;
 }
+
+.nav-btn{
+  border: 1px solid white;
+  border-radius: 3px;
+  background: red;
+  padding: 5px;
+}
 /* End Classes */
 
 /* Media Queries */
-@media(min-width: 678px){
+@media (min-width: 678px) {
   .main-grid {
     grid-template-columns: 25% auto;
   }

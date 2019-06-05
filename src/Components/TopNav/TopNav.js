@@ -18,7 +18,7 @@ class TopNav extends React.Component {
     handleLogoutClick = () => {
         alert("Logged Out Successfully!!!")
         TokenService.clearAuthToken();
-        localStorage.clear();
+        // localStorage.clear();
     }
 
     // renders if user is  logged out
@@ -41,7 +41,31 @@ class TopNav extends React.Component {
         )
     }
 
+    //renders if user is  logged in
+    renderLogOutLink() {
+        return (
+            <ul className='nav-menu'>
+                <li>
+                    <Link
+                        className="login-logout"
+                        onClick={this.handleLogoutClick}
+                        to='/login'>
+                        Logout
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        className="nav-btn"
+                        to='/new-project'>
+                        NEW PROJECT
+                    </Link>
+                </li>
+            </ul>
+        )
+    }
+
     render() {
+         //
         // returns TopNav html(JSX)
         return (
             <nav className="top-nav">
@@ -62,11 +86,15 @@ class TopNav extends React.Component {
                         {/* <HamburgerBtn click={this.props.hamburgerClick} /> */}
 
                         {/* Post Categories drop down */}
-                    
-                            {/*renders login and register links to <TopNav/> if user is  logged out*/}
-                            
-                                {this.renderLoginLink()}
-                           
+
+                        {/*renders login and register links to <TopNav/> if user is  logged out*/}
+
+                        {
+                            TokenService.hasAuthToken()
+                            ? this.renderLogOutLink()
+                            : this.renderLoginLink()
+                        }
+
                         {/* End of Post Dropdown */}
 
                     </div>
