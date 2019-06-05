@@ -7,6 +7,46 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Nav Styles */
+.nav-menu {
+  display: none;
+}
+
+ul.bars {
+  padding-right: 0;
+  margin-right: 0;
+  list-style: none;
+}
+
+.bar {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+/* Nav Styles */
+
+/* Mbl nav */
+#mbl-nav {
+  height: 100vh;
+  width: 300px;
+  position: absolute;
+  left: 0;
+  background: black;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.8;
+}
+/* End of mbl styles */
+
 /* Main/Landing Style */
 .sidebar {
   background: red;
@@ -35,7 +75,6 @@ body {
 }
 
 #filter_search {
-  width: 100%;
   padding: 30px 0 15px 30px;
   max-width: 450px;
   min-width: 200px;
@@ -49,7 +88,7 @@ body {
   min-width: 200px;
 }
 
-.spec_filter{
+.spec_filter {
   margin: 0 0 0 30px;
 }
 /* End Main/Landing Styles */
@@ -100,16 +139,32 @@ form > textarea {
   border-radius: 3px;
 }
 
-.nav-btn{
+.nav-btn {
   border: 1px solid white;
   border-radius: 3px;
   background: red;
   padding: 5px;
 }
+
+.float-right {
+  float: right;
+}
+
+.invisible {
+  display: none !important;
+}
 /* End Classes */
 
 /* Media Queries */
 @media (min-width: 678px) {
+  .nav-menu {
+    display: block;
+  }
+
+  ul.bars {
+    display: none;
+  }
+
   .main-grid {
     grid-template-columns: 25% auto;
   }
