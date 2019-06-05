@@ -1,11 +1,16 @@
 import React from 'react';
 import ProjectApiService from '../../services/project-api-service';
+import { networkInterfaces } from 'os';
 
 export default class NewProjectForm extends React.Component {
   
     state = {
         name: '',
         description: '',
+        languages: '',
+        requirements: '',
+        deadline: '',
+        openPositions: 1,
         error: null
       }
     
@@ -24,7 +29,11 @@ export default class NewProjectForm extends React.Component {
 
         return ProjectApiService.submitProject({
           project_name: this.state.name,
-          project_description: this.state.description
+          project_description: this.state.description,
+          languages: this.state.languages,
+          requirements: this.state.requirements,
+          deadline: this.state.deadline,
+          openPositions: this.state.openPositions,
         });
       }
     
@@ -46,29 +55,74 @@ export default class NewProjectForm extends React.Component {
                     </div>
                     <div className='project-name'>
                         <label htmlFor='new-project-name'>Project Name</label>
-                            <input
-                                value={this.state.name}
-                                onChange={e => this.changeFields(e)}
-                                name='name'
-                                type='text'
-                                id='new-project-name'
-                                placeholder="Project Name (Required)"
-                                className="text">
-                            </input>
-                        </div>
+                        <input
+                            value={this.state.name}
+                            onChange={e => this.changeFields(e)}
+                            name='name'
+                            type='text'
+                            id='new-project-name'
+                            placeholder='Project Name (Required)'
+                            className="text">
+                        </input>
+                    </div>
                     <div className='project-description'>
                         <label htmlFor='new-project-description'>Project Description</label>
-                            <textarea
-                                valeu={this.state.description}
-                                onChange={e => this.changeFields(e)}
-                                name='description'
-                                id='new-project-description'
-                                type='text'
-                                placeholder="Project Description (Required)"
-                                className="text">
-                            </textarea>
+                        <textarea
+                            value={this.state.description}
+                            onChange={e => this.changeFields(e)}
+                            name='description'
+                            id='new-project-description'
+                            type='text'
+                            placeholder='Project Description (Required)'
+                            className="text">
+                        </textarea>
                     </div>
-                            
+                    <div className='project-languages'>
+                        <label htmlFor='new-project-languages'>Project Languages</label>
+                        <input
+                            value={this.state.languages}
+                            onChange={e => this.changeFields(e)}
+                            name='languages'
+                            id='new-project-languages'
+                            type='text'
+                            placeholder='e.g. Ruby, Python'
+                            className="text">
+                        </input>
+                    </div>
+                    <div className='project-requirements'>
+                        <label htmlFor='new-project-requirements'>Minimum Requirements</label>
+                        <input
+                          value={this.state.requirements}
+                          onChange={e => this.changeFields(e)}
+                          name='requirements'
+                          id='new-project-requirements'
+                          type='text'
+                          placeholder='e.g. experience in full stack development'
+                          className="text">
+                        </input>
+                    </div>
+                    <div className='project-deadline'>
+                        <label htmlFor='new-project-deadline'>Deadline</label>
+                        <input
+                          value={this.state.deadline}
+                          onChange={e => this.changeFields(e)}
+                          name='deadline'
+                          id='new-project-deadline'
+                          type='date'
+                          className="text">
+                        </input>
+                    </div>
+                    <div className='open-positions'>
+                        <label htmlFor='new-project-positions'>Number of Open Positions</label>
+                        <input
+                          value={this.state.openPositions}
+                          onChange={e => this.changeFields(e)}
+                          name='openPositions'
+                          id='new-project-positions'
+                          type='number'
+                          className="text">
+                        </input>
+                    </div>
                     <button className="btn submit_btn" type='submit' onClick={this.save}>
                         Submit Project
                      </button>
