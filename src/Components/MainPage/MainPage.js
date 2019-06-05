@@ -10,9 +10,18 @@ class MainPage extends React.Component {
         projects: []
     }
 
+    alternateOpen = (i) => {
+        const replacement = [...this.state.projects];
+        replacement[i].open = !replacement[i].open;
+        this.setState({
+            projects: replacement
+        })
+    }
+
     componentDidMount() {
         return ProjectApiService.getAllProjects()
             .then(projects => {
+                projects.forEach(project => { project.open = false });
                 this.setState({
                     projects: projects
                 });
@@ -27,7 +36,7 @@ class MainPage extends React.Component {
                 <main>
                     <Filters></Filters>
                     <section className="main-project-grid">
-                        {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project}></SingleProject>)}
+                        {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project} onClick={() => this.alternateOpen(i)}></SingleProject>)}
                     </section>
                 </main>
             </section>
