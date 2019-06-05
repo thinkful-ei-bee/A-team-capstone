@@ -13,7 +13,7 @@ class SingleProject extends React.Component {
     render() {
         const project = this.props.project;
         return (
-            <article className="main-single-project-square">
+            <article className="main-single-project-square" onClick={this.props.onClick}>
                 <header>
                     <h3>Project Title: {project.project_name}</h3>
                 </header>

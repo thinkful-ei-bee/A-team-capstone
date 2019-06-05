@@ -36,7 +36,7 @@ class MainPage extends React.Component {
                 <main>
                     <Filters></Filters>
                     <section className="main-project-grid">
-                        {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project}></SingleProject>)}
+                        {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project} onClick={() => this.alternateOpen(i)}></SingleProject>)}
                     </section>
                 </main>
             </section>
