@@ -10,6 +10,14 @@ class MainPage extends React.Component {
         projects: []
     }
 
+    alternateOpen = (i) => {
+        const replacement = [...this.state.projects];
+        replacement[i].open = !replacement[i].open;
+        this.setState({
+            projects: replacement
+        })
+    }
+
     componentDidMount() {
         return ProjectApiService.getAllProjects()
             .then(projects => {
