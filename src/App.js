@@ -5,11 +5,15 @@ import MainPage from './Components/MainPage/MainPage'
 import Login from './routes/Login/Login'
 import Registration from './routes/Registration/Registration'
 import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
+import MblNav from './Components/MblNav/MblNav';
+
 
 function App() {
+
   return (
     <div className="App">
       <TopNav></TopNav>
+      <MblNav />
       <main>
         <Switch>
           <Route exact path={"/"} component={MainPage} />
