@@ -5,12 +5,9 @@ import MainPage from './Components/MainPage/MainPage'
 import Login from './routes/Login/Login'
 import Registration from './routes/Registration/Registration'
 import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
-<<<<<<< HEAD
 import Profile from './Components/Profile/Profile';
-=======
 import MblNav from './Components/MblNav/MblNav';
 
->>>>>>> ea9ab2d451e3e5da6b7113bc59d90da9ad0203a4
 
 function App() {
 
