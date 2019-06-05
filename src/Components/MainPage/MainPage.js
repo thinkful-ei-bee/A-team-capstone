@@ -1,22 +1,33 @@
 import React from 'react';
 import SingleProject from "../SingleProject/SingleProject";
+import Filters from "../Filters/Filters";
+import SideBar from "../SideBar/SideBar";
+import ProjectApiService from '../../services/project-api-service';
 
 class MainPage extends React.Component {
 
+    state = {
+        projects: []
+    }
+
+    componentDidMount() {
+        return ProjectApiService.getAllProjects()
+            .then(projects => {
+                this.setState({
+                    projects: projects
+                });
+            })
+    }
+
     render() {
+        const projects = this.state.projects;
         return (
             <section className="main-grid">
-                <aside className="sidebar"></aside>
+                <SideBar></SideBar>
                 <main>
-                    <section class="main-project-grid">
-                        <SingleProject classname="btn"></SingleProject>
-                        <SingleProject classname="btn"></SingleProject>
-                        <SingleProject classname="btn"></SingleProject>
-                        <SingleProject classname="btn"></SingleProject>
-                        <SingleProject classname="btn"></SingleProject>
-                        <SingleProject classname="btn"></SingleProject>
-                        <SingleProject classname="btn"></SingleProject>
-                        <SingleProject classname="btn"></SingleProject>
+                    <Filters></Filters>
+                    <section className="main-project-grid">
+                        {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project}></SingleProject>)}
                     </section>
                 </main>
             </section>
