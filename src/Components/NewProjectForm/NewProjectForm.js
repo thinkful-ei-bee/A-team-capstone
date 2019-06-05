@@ -1,6 +1,5 @@
 import React from 'react';
 import ProjectApiService from '../../services/project-api-service';
-import { networkInterfaces } from 'os';
 
 export default class NewProjectForm extends React.Component {
   
