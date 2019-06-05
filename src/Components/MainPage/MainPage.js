@@ -19,7 +19,7 @@ class MainPage extends React.Component {
     }
 
     componentDidMount() {
-        return ProjectApiService.getAllProjects()
+        ProjectApiService.getAllProjects()
             .then(projects => {
                 projects.forEach(project => { project.open = false });
                 this.setState({

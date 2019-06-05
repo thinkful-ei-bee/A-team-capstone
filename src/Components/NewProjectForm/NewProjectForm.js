@@ -24,15 +24,15 @@ export default class NewProjectForm extends React.Component {
             return;
         }
 
-        this.props.history.push('/');        
-
-        return ProjectApiService.submitProject({
+        ProjectApiService.submitProject({
           project_name: this.state.name,
           project_description: this.state.description,
           languages: this.state.languages,
           requirements: this.state.requirements,
           deadline: this.state.deadline,
           openPositions: this.state.openPositions,
+        }).then(() => {
+          this.props.history.push('/');       
         });
       }
     

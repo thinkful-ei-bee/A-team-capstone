@@ -70,7 +70,7 @@ class TopNav extends React.Component {
                 <div className="nav-grid">
                     <div className="nav-grid-item">
                         <Link to={'/'} id="logo">
-                            <h1>Bidhub</h1>
+                            <h1>BidHub</h1>
                         </Link>
                     </div>
                     <div className="nav-grid-item-2">
