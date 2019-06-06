@@ -1,5 +1,5 @@
 export default {
-    // will need to add server endpoint here
-    API_ENDPOINT : 'http://localhost:8000/api',
+    // http://localhost:8000/api
+    API_ENDPOINT : 'https://thinkful-final-capstone.herokuapp.com/',
     TOKEN_KEY: 'capstone-auth-token',
   }
