@@ -17,7 +17,7 @@ class SingleProject extends React.Component {
 
         if (!project.open) {
             openClass = "main-single-project-square closed";
-            title = title.slice(0, 40);
+            title = title.slice(0, 40) + '...';
         }
         
         return (
