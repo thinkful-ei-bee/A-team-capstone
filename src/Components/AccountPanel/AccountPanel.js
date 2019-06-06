@@ -38,6 +38,10 @@ export default class AccountPanel extends React.Component {
 
     render() {
       const projects = [];
+      const bids = [];
+      
+      this.state.bids.forEach(bid => bids.push(bid));
+      
       this.state.projects.forEach(project=>projects.push(project.project_name))
         return (
             <article className="account-panel">
@@ -45,7 +49,7 @@ export default class AccountPanel extends React.Component {
                 <h4>Projects:</h4>
                 {projects}
                 <h4>Bids:</h4>
-                3 Bids Pending....
+                {bids.length} Bids Pending....
             </article>
         )
     }
