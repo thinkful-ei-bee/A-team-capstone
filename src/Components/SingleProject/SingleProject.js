@@ -21,7 +21,8 @@ class SingleProject extends React.Component {
         }
         
         return (
-            <article className={openClass} onClick={this.props.onClick}>
+            <article className={openClass} >
+              <div onClick={this.props.onClick}>
                 <header>
                     <h3>Project Title: {title}</h3>
                 </header>
@@ -33,6 +34,7 @@ class SingleProject extends React.Component {
                         <p>Developers Needed: {project.openPositions}</p>
                         <p>Deadline: {project.deadline}</p>
                     </article>}
+              </div>
                     {TokenService.hasAuthToken()
                         ? this.renderBidButton()
                         : null}
