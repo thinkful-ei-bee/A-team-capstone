@@ -10,9 +10,9 @@ class TopNav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        };
-    }
 
+        }
+    }
 
     // logout
     handleLogoutClick = () => {
@@ -75,7 +75,7 @@ class TopNav extends React.Component {
                     </div>
                     <div className="nav-grid-item-2">
                         {/* Hamburger menu button renders when screen < 678px */}
-                        <HamburgerButton />
+                        <HamburgerButton swapOpen={this.props.swapOpen}/>
                         {
                             TokenService.hasAuthToken()
                             ? this.renderLogOutLink()

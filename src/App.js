@@ -9,23 +9,34 @@ import Profile from './Components/Profile/Profile';
 import MblNav from './Components/MblNav/MblNav';
 
 
-function App() {
+export default class App extends React.Component {
 
-  return (
-    <div className="App">
-      <TopNav></TopNav>
-      <MblNav />
-      <main>
-        <Switch>
-          <Route exact path={"/"} component={MainPage} />
-          <Route path={"/login"} component={Login} />
-          <Route path={"/register"} component={Registration} />
-          <Route path={"/new-project"} component={NewProjectForm} />
-          <Route path={"/profile"} component={Profile} />
-        </Switch>
-      </main>
-    </div>
-  );
+  state = {
+    hamburgerOpen: false
+  }
+
+  swapOpen = () => {
+    this.setState({
+        hamburgerOpen: !this.state.hamburgerOpen
+    });
+  } 
+
+  render() {
+    return (
+      <div className="App">
+        <TopNav swapOpen={this.swapOpen}></TopNav>
+        <MblNav open={this.state.hamburgerOpen}/>
+        <main>
+          <Switch>
+            <Route exact path={"/"} component={MainPage} />
+            <Route path={"/login"} component={Login} />
+            <Route path={"/register"} component={Registration} />
+            <Route path={"/new-project"} component={NewProjectForm} />
+            <Route path={"/profile"} component={Profile} />
+          </Switch>
+        </main>
+      </div>
+    );
+  }    
 }
 
-export default App;
