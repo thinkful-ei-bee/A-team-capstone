@@ -10,14 +10,31 @@ class TopNav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            hasToken: TokenService.hasAuthToken()
         }
+    }
+
+    componentDidMount() {
+        console.log('running the component did mount');
+        this.setState({
+            hasToken: TokenService.hasAuthToken()
+        });
+    }
+
+    componentWillReceiveProps() {
+        console.log('running component will receive props');
+        this.setState({
+            hasToken: TokenService.hasAuthToken()
+        });
     }
 
     // logout
     handleLogoutClick = () => {
         alert("Logged Out Successfully!!!")
         TokenService.clearAuthToken();
+        this.setState({
+            hasToken: false
+        })
         // localStorage.clear();
     }
 
@@ -77,7 +94,7 @@ class TopNav extends React.Component {
                         {/* Hamburger menu button renders when screen < 678px */}
                         <HamburgerButton swapOpen={this.props.swapOpen}/>
                         {
-                            TokenService.hasAuthToken()
+                            this.state.hasToken
                             ? this.renderLogOutLink()
                             : this.renderLoginLink()
                         }
