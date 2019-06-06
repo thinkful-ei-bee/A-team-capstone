@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileApiService from '../../services/profile-api-service';
 import ProjectApiService from '../../services/project-api-service';
-import BidsApiService from '../../services/project-api-service';
+import BidsApiService from '../../services/bids-api-service';
 
 export default class AccountPanel extends React.Component {
 
