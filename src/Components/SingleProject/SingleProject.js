@@ -12,8 +12,14 @@ class SingleProject extends React.Component {
 
     render() {
         const project = this.props.project;
+        let openClass = "main-single-project-square open";
+
+        if (!project.open) {
+            openClass = "main-single-project-square closed";
+        }
+
         return (
-            <article className="main-single-project-square" onClick={this.props.onClick}>
+            <article className={openClass} onClick={this.props.onClick}>
                 <header>
                     <h3>Project Title: {project.project_name}</h3>
                 </header>
