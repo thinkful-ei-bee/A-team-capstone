@@ -10,6 +10,7 @@ body {
 /* Nav Styles */
 .nav-menu {
   display: none;
+  padding-top: 9px;
 }
 
 ul.bars {
@@ -30,10 +31,12 @@ ul.bars {
 /* Mbl nav */
 #mbl-nav {
   height: 100vh;
-  width: 300px;
+  width: 190px;
   position: absolute;
   left: 0;
-  background: black;
+  background: red;
+  padding: 15px;
+  display: block;
 }
 
 .backdrop {
@@ -74,6 +77,14 @@ ul.bars {
   border-radius: 8px;
 }
 
+.closed {
+  max-height: 130px;
+}
+
+.open {
+  max-height: 100%;
+}
+
 #filter_search {
   padding: 30px 0 15px 30px;
   max-width: 450px;
@@ -94,7 +105,7 @@ ul.bars {
 /* End Main/Landing Styles */
 
 /* SideBar Styles */
-.account-panel{
+.account-panel {
   color: white;
   background: black;
   border-radius: 5px;
@@ -102,23 +113,23 @@ ul.bars {
   margin-bottom: 20px;
 }
 
-.account-panel > h4{
-margin-bottom: 3px;
+.account-panel > h4 {
+  margin-bottom: 3px;
 }
 
-.tip{
+.tip {
   color: white;
   border: 1px solid white;
   border-radius: 7px;
   padding: 0 10px 15px 15px;
 }
 
-.tip > h4{
+.tip > h4 {
   margin-top: 10px;
   margin-bottom: 0px;
 }
 
-.tip > small{
+.tip > small {
   display: block;
   margin-bottom: 10px;
 }
@@ -197,14 +208,18 @@ form > textarea {
   }
 
   .main-grid {
-    grid-template-columns: 25% auto;
+    grid-template-columns: 32.5% auto;
   }
 
   .sidebar {
     background: red;
-    padding: 30px 15px;
+    padding: 15px;
     display: inline-block;
     height: 100%;
+  }
+
+  #mbl-nav {
+    display: none;
   }
 }
 
@@ -213,6 +228,10 @@ form > textarea {
     grid-template-columns: 33% 33% 33%;
     /* This will result on two rows, each one of 300px */
     /* grid-template-rows: 300px 300px; */
+  }
+
+  .main-grid {
+    grid-template-columns: 25% auto;
   }
 }
 /* Media Queries */
