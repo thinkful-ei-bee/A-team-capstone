@@ -2,14 +2,15 @@ import React from 'react';
 import TipBox from "../TipBox/TipBox";
 import AccountPanel from "../AccountPanel/AccountPanel";
 
-export default class SideBar extends React.Component {
-
+export default class MblNav extends React.Component {
     render() {
+        const open = (!this.props.open && 'invisible') || '';
         return (
-            <aside className="sidebar">
+            <aside id="mbl-nav" className={open}>
                 <AccountPanel></AccountPanel>
                 <TipBox></TipBox>
             </aside>
         )
     }
+   
 }

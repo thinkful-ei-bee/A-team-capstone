@@ -8,27 +8,36 @@ class SingleProject extends React.Component {
         </>
     }
 
+    /* removed Personnel count for now */
+
     render() {
+        const project = this.props.project;
+        let openClass = "main-single-project-square open";
+        let title = project.project_name;
+
+        if (!project.open) {
+            openClass = "main-single-project-square closed";
+            title = title.slice(0, 40) + '...';
+        }
+        
         return (
-            <article className="main-single-project-square">
+            <article className={openClass} onClick={this.props.onClick}>
                 <header>
-                    <h3>Project Title:</h3>
+                    <h3>Project Title: {title}</h3>
                 </header>
-                <article>
-                    <p>Project Description:</p>
-                    <p>Languages:</p>
-                    <p>Minimum Reqs:</p>
-                    <p># Developers Needed:</p>
-                    <p>Deadline:</p>
-                    <p>Personnel Count:</p>
-                </article>
-                {
-                    TokenService.hasAuthToken()
+                {project.open && 
+                    <article>
+                        <p>Project Description: {project.project_description}</p>
+                        <p>Languages: {project.languages}</p>
+                        <p>Minimum Reqs: {project.requirements}</p>
+                        <p>Developers Needed: {project.openPositions}</p>
+                        <p>Deadline: {project.deadline}</p>
+                    </article>}
+                    {TokenService.hasAuthToken()
                         ? this.renderBidButton()
-                        : null
-                }
+                        : null}
             </article>
-        )
+        );
     }
 }
 
