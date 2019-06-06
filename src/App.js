@@ -7,9 +7,9 @@ import Registration from './routes/Registration/Registration'
 import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
 import Profile from './Components/Profile/Profile';
 import MblNav from './Components/MblNav/MblNav';
+import { withRouter } from 'react-router-dom';
 
-
-export default class App extends React.Component {
+class App extends React.Component {
 
   state = {
     hamburgerOpen: false
@@ -24,7 +24,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <TopNav swapOpen={this.swapOpen}></TopNav>
+        <TopNav swapOpen={this.swapOpen} history={this.props.history}></TopNav>
         <MblNav open={this.state.hamburgerOpen}/>
         <main>
           <Switch>
@@ -40,3 +40,4 @@ export default class App extends React.Component {
   }    
 }
 
+export default withRouter(App);
