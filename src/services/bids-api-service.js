@@ -3,7 +3,7 @@ import TokenService from './token-service';
 
 const BidsApiService = {
   getUsersBids(){
-    return fetch(`${config.API_ENDPOINT}/users/bids`,{
+    return fetch(`${config.API_ENDPOINT}/bids`,{
       method: 'GET',
       headers:{
         'Content-Type':'application/json',
