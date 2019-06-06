@@ -1,13 +1,14 @@
 import React from 'react';
 import ProfileApiService from '../../services/profile-api-service';
 import ProjectApiService from '../../services/project-api-service';
+import BidsApiService from '../../services/project-api-service';
 
 export default class AccountPanel extends React.Component {
 
   state = {
     profile: {},
     projects:[],
-    bids: {},
+    bids: [],
   }
 
   // get the profile to update the state when component mounts
@@ -17,12 +18,18 @@ export default class AccountPanel extends React.Component {
         console.log(profile)
         this.setState({
           profile,
-      }, 
-      ()=>{
+      }, ()=>{
         ProjectApiService.getProjectsForUser(this.state.profile.id)
           .then(projects=>{
             this.setState({
               projects,
+            },()=>{
+              BidsApiService.getUsersBids()
+                .then(bids=>{
+                  this.setState({
+                    bids,
+                  })
+                })
             })
           })
       })
