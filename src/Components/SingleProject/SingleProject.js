@@ -17,7 +17,8 @@ class SingleProject extends React.Component {
       .then(()=>{
         this.setState({
           userBidOnThis: true
-        });
+        },
+        this.props.updateBids());
       })
   }
 
