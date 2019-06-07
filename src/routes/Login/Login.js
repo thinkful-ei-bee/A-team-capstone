@@ -12,7 +12,6 @@ class Login extends Component {
 
   // Fires success messages and re-routes user
   handleLoginSuccess = () => {
-    alert("Logged in successfully")
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
     history.push(destination)
