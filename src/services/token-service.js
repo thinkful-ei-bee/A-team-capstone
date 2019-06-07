@@ -16,6 +16,9 @@ const TokenService = {
   makeBasicAuthToken(userName, password) {
     return window.btoa(`${userName}:${password}`)
   },
+  getPayload() {
+    return JSON.parse(window.atob(this.getAuthToken().split('.')[1]));
+  }
 }
 
 export default TokenService
