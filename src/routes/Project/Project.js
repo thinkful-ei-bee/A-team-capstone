@@ -16,26 +16,29 @@ class Project extends Component{
     bidders: []
   }
 
+  setProject(){
+    // fetch call to get project
+    const projectId = this.props.match.params.id;
+    ProjectApiService.getProject(projectId)
+      .then(project=>{
+        this.setState({
+          project: {...project[0],open:true}
+        })
+      })
+  }
+
   componentDidMount(){
     // get Profile Info
     if(TokenService.hasAuthToken()) {
       ProfileApiService.getProfile()
       .then(profile => {
-        console.log('prooooo',profile);
         this.setState({
           profile,
         });
       });
     }
-    // fetch call to get project
-    const projectId = this.props.match.params.id;
-    ProjectApiService.getProject(projectId)
-      .then(project=>{
-        console.log(project);
-        this.setState({
-          project: {...project[0],open:true}
-        })
-      })
+    this.setProject();
+    
     
     // fetch call to check collaborators/bidders on project
     // fetch call to get bidders for owner to see
@@ -49,6 +52,11 @@ class Project extends Component{
       this.setState({
         owner:true
       })
+    }
+  
+    if (this.state.project && parseInt(this.props.match.params.id) !== this.state.project.id){
+      this.setProject();
+      
     }
   }
 
