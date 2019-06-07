@@ -1,6 +1,11 @@
 import React from 'react';
 import TokenService from '../../services/token-service';
+import BidsApiService from '../../services/bids-api-service';
 class SingleProject extends React.Component {
+
+    state = {
+        userBidOnThis: false
+    }
 
     renderBidButton = () => {
         return <>
@@ -8,7 +13,23 @@ class SingleProject extends React.Component {
         </>
     }
 
-    /* removed Personnel count for now */
+    componentDidMount() {
+        const project = this.props.project;
+        let userBid = false;
+        if (TokenService.hasAuthToken()) {
+            BidsApiService.getUsersBids()
+                .then(bids => {
+                    bids.forEach(bid => {
+                        if (bid.project_id === project.id) {
+                            userBid = true;
+                        }
+                    })
+                    this.setState({
+                        userBidOnThis: userBid
+                    })
+                })
+        }
+    }
 
     render() {
         const project = this.props.project;
@@ -32,7 +53,7 @@ class SingleProject extends React.Component {
             userId = TokenService.getPayload().user_id;
         }
 
-        const renderButton = (userId && project.owner_id !== userId)
+        const renderButton = (userId && (project.owner_id !== userId) && !this.state.userBidOnThis)
         
         return (
             <article className={openClass} >
