@@ -15,7 +15,9 @@ class SingleProject extends React.Component {
       project_id: this.props.project.id
     })
       .then(()=>{
-        console.log('success!');
+        this.setState({
+          userBidOnThis: true
+        });
       })
   }
 
