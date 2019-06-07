@@ -19,9 +19,24 @@ export default class App extends React.Component {
     this.setState({
         hamburgerOpen: !this.state.hamburgerOpen
     });
-  } 
+  }
+  
+  checkHeight = () =>{
+    const htmlElem = document.getElementsByTagName('body');
+    console.log(htmlElem);
+    console.log(window);
+    if (htmlElem.clientHeight !== window.outerHeight){
+      console.log('not full screen')
+      // check to see if the html doc is full screen of the window
+
+      //set class here
+      htmlElem.classList.add('lessthanfullscreen');
+    }
+  }
+
 
   render() {
+    this.checkHeight()
     return (
       <div className="App">
         <TopNav swapOpen={this.swapOpen}></TopNav>
