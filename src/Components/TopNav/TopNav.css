@@ -1,16 +1,18 @@
+.nav-nav {
+  color: white;
+  padding: 0;
+}
 .top-nav {
   background: black;
   color: white;
   padding: 0 30px;
 }
-
-#logo > h1{
-    color: white;
-    
+#logo > h1 {
+  color: white;
 }
 
-a#logo{
-    text-decoration: none;
+a#logo {
+  text-decoration: none;
 }
 
 ul.nav-menu {
@@ -26,6 +28,10 @@ ul.nav-menu > li > a {
   text-decoration: none;
   margin: 0 10px;
   color: white;
+}
+
+ul.nav-menu > li > .nav-btn {
+  /* color: red; */
 }
 
 .nav-grid {

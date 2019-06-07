@@ -29,7 +29,7 @@ export default class Filters extends React.Component{
             <section className="filter-box">
                         <form id="filter_search" onSubmit={this.handleSubmit}>
                             <input className="search_input" type="text" name="searchTerm" placeholder="Search" value={this.state.searchTerm} onChange={(e) => this.changeFields(e)}/>
-                            <button>Submit</button>
+                            <button id="searchBtn">S</button>
                         </form>
                         <select className="spec_filter" value={this.state.language} onChange={(e) => this.changeSelection(e)}>
                             <option name="language" value="">No Filter</option>
