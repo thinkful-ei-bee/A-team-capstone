@@ -57,7 +57,7 @@ export default class AccountPanel extends React.Component {
     const bids = [];
     
     this.state.bids.forEach((bid, i) => bids.push(
-      <li key={i}>{bid.project_name}</li>
+      <li key={i}><Link to={`/projects/${bid.project_id}`}>{bid.project_name}</Link></li>
     ));
     
     this.state.projects.forEach(project=>projects.push(<Link to={`/projects/${project.id}`}>{project.project_name}</Link>))
