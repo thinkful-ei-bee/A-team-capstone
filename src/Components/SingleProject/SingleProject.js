@@ -71,20 +71,22 @@ class SingleProject extends React.Component {
         const renderButton = (userId && (project.owner_id !== userId) && !this.state.userBidOnThis)
         
         return (
-            <article className={openClass} >
-              <div onClick={this.props.onClick}>
+            <article className={openClass} onClick={this.props.onClick}>
                 <header>
                     <h2>{title}</h2>
                 </header>
                 {project.open && 
                     <article>
-                        <p>Project Description: {project.project_description}</p>
-                        <p>Languages: {project.languages}</p>
-                        <p>Minimum Reqs: {project.requirements}</p>
-                        <p>Developers Needed: {project.openPositions}</p>
-                        <p>Deadline: {project.deadline}</p>
+                        <p>{project.project_description}</p>
+                        <hr className="single-project-content-separator"></hr>
+                        <h3>Languages:</h3> <p>{project.languages}</p>
+                        <hr className="single-project-content-separator"></hr>
+                        <h3>Minimum Reqs:</h3> <p>{project.requirements}</p>
+                        <hr className="single-project-content-separator"></hr>
+                        <h3>Developers Needed:</h3> <p>{project.openPositions}</p>
+                        <hr className="single-project-content-separator"></hr>
+                        <h3>Deadline:</h3> <p>{project.deadline}</p>
                     </article>}
-              </div>
                     {renderButton
                         ? this.renderBidButton()
                         : null}
