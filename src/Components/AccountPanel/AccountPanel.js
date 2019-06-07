@@ -14,9 +14,9 @@ export default class AccountPanel extends React.Component {
 
   // get the profile to update the state when component mounts
   componentDidMount() {
-    ProfileApiService.getProfile()
+    if(TokenService.hasAuthToken()) {
+      ProfileApiService.getProfile()
       .then(profile => {
-        console.log(profile)
         this.setState({
           profile,
       }, ()=>{
@@ -35,14 +35,15 @@ export default class AccountPanel extends React.Component {
           })
       });
     });
+    }
   }
 
     render() {
       const projects = [];
       const bids = [];
       
-      this.state.bids.forEach(bid => bids.push(
-        <li>{bid.project_name}</li>
+      this.state.bids.forEach((bid, i) => bids.push(
+        <li key={i}>{bid.project_name}</li>
       ));
       
       this.state.projects.forEach(project=>projects.push(project.project_name))
