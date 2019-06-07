@@ -22,11 +22,10 @@ class App extends React.Component {
   }
   
   checkHeight = () =>{
-    const htmlElem = document.getElementsByTagName('html');
-
+    const htmlElem = document.getElementsByTagName('html')[0];
     // need to check if other browsers support html.clientHeight as well as window.outerHeight
     if (htmlElem.clientHeight < window.outerHeight){
-      
+      console.log('not full screen');
       // check to see if the html doc is full screen of the window
 
       //return class here
