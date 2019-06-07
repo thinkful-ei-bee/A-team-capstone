@@ -31,7 +31,40 @@ class Project extends Component{
   renderOwner(){
     // list of bidders or collaborators
     // and message system
+    let display = [];
+    if (this.state.bidsOpen){
+      display =<>
+        <h2>Bidders:</h2>
+        <ul>
+          <li>
+          User 1
+          <button className='btn'>Accept</button>
+          <button className='btn'>Decline</button>
+          </li>
+          <li>User 2
+            <button className='btn'>Accept</button>
+            <button className='btn'>Decline</button></li>
+          <li>User 3
+            <button className='btn'>Accept</button>
+            <button className='btn'>Decline</button></li>
+        </ul>
+      </>
+    }else{
+      display = <>
+        <h2>Collaborators:</h2>
+        <ul>
+          <li>User 2</li>
+          <li>User 3</li>
+        </ul>
+        <section>Comments Displayed Here...</section>
+        <form>
+          <input type="text"></input>
+          <buton className='btn'>Submit</buton>
+        </form>
+      </>
+    }
     return <>
+        {display}
     </>
   }
 
@@ -51,7 +84,7 @@ class Project extends Component{
  render(){
   let display = [];
 
-  if (this.state.ownwer){
+  if (this.state.owner){
     display = this.renderOwner();
   }else if (this.authorized){
     display = this.renderCollaborator();
