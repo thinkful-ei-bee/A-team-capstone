@@ -24,6 +24,15 @@ class SingleProject extends React.Component {
             }
             
         }
+
+        const hasToken = TokenService.hasAuthToken();
+        let userId = null;
+
+        if (hasToken) {
+            userId = TokenService.getPayload().user_id;
+        }
+
+        const renderButton = (userId && project.owner_id !== userId)
         
         return (
             <article className={openClass} >
@@ -40,7 +49,7 @@ class SingleProject extends React.Component {
                         <p>Deadline: {project.deadline}</p>
                     </article>}
               </div>
-                    {TokenService.hasAuthToken()
+                    {renderButton
                         ? this.renderBidButton()
                         : null}
             </article>
