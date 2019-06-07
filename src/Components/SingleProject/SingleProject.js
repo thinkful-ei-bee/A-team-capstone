@@ -4,7 +4,7 @@ class SingleProject extends React.Component {
 
     renderBidButton = () => {
         return <>
-            <button className="btn">Bid!</button>
+            <button className="bid-btn">Bid!</button>
         </>
     }
 
@@ -17,14 +17,19 @@ class SingleProject extends React.Component {
 
         if (!project.open) {
             openClass = "main-single-project-square closed";
-            title = title.slice(0, 40) + '...';
+            if(title.length > 40){
+                title = title.slice(0, 40) + '...';
+            }else{
+                title = title.slice(0, 40);
+            }
+            
         }
         
         return (
             <article className={openClass} >
               <div onClick={this.props.onClick}>
                 <header>
-                    <h3>Project Title: {title}</h3>
+                    <h2>{title}</h2>
                 </header>
                 {project.open && 
                     <article>
