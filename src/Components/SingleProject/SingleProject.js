@@ -1,14 +1,35 @@
 import React from 'react';
 import TokenService from '../../services/token-service';
+import BidsApiService from '../../services/bids-api-service';
 class SingleProject extends React.Component {
+
+    state = {
+        userBidOnThis: false
+    }
 
     renderBidButton = () => {
         return <>
-            <button className="btn">Bid!</button>
+            <button className="bid-btn">Bid!</button>
         </>
     }
 
-    /* removed Personnel count for now */
+    componentDidMount() {
+        const project = this.props.project;
+        let userBid = false;
+        if (TokenService.hasAuthToken()) {
+            BidsApiService.getUsersBids()
+                .then(bids => {
+                    bids.forEach(bid => {
+                        if (bid.project_id === project.id) {
+                            userBid = true;
+                        }
+                    })
+                    this.setState({
+                        userBidOnThis: userBid
+                    })
+                })
+        }
+    }
 
     render() {
         const project = this.props.project;
@@ -17,25 +38,41 @@ class SingleProject extends React.Component {
 
         if (!project.open) {
             openClass = "main-single-project-square closed";
-            title = title.slice(0, 40) + '...';
+            if(title.length > 40){
+                title = title.slice(0, 40) + '...';
+            }else{
+                title = title.slice(0, 40);
+            }
+            
         }
+
+        const hasToken = TokenService.hasAuthToken();
+        let userId = null;
+
+        if (hasToken) {
+            userId = TokenService.getPayload().user_id;
+        }
+
+        const renderButton = (userId && (project.owner_id !== userId) && !this.state.userBidOnThis)
         
         return (
-            <article className={openClass} >
-              <div onClick={this.props.onClick}>
+            <article className={openClass} onClick={this.props.onClick}>
                 <header>
-                    <h3>Project Title: {title}</h3>
+                    <h2>{title}</h2>
                 </header>
                 {project.open && 
                     <article>
-                        <p>Project Description: {project.project_description}</p>
-                        <p>Languages: {project.languages}</p>
-                        <p>Minimum Reqs: {project.requirements}</p>
-                        <p>Developers Needed: {project.openPositions}</p>
-                        <p>Deadline: {project.deadline}</p>
+                        <p>{project.project_description}</p>
+                        <hr className="single-project-content-separator"></hr>
+                        <h3>Languages:</h3> <p>{project.languages}</p>
+                        <hr className="single-project-content-separator"></hr>
+                        <h3>Minimum Reqs:</h3> <p>{project.requirements}</p>
+                        <hr className="single-project-content-separator"></hr>
+                        <h3>Developers Needed:</h3> <p>{project.openPositions}</p>
+                        <hr className="single-project-content-separator"></hr>
+                        <h3>Deadline:</h3> <p>{project.deadline}</p>
                     </article>}
-              </div>
-                    {TokenService.hasAuthToken()
+                    {renderButton
                         ? this.renderBidButton()
                         : null}
             </article>

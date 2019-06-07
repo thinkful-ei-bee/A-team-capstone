@@ -170,6 +170,7 @@ ul {
 
   .nav-menu {
     display: block;
+    padding-left:0;
   }
 
   .nav-menu > li {
