@@ -8,9 +8,13 @@ body {
 }
 
 /* Nav Styles */
-.nav-menu {
+.top-nav > .nav-grid > .nav-grid-item-2 > .nav-nav {
   display: none;
+}
+
+.nav-menu {
   padding-top: 9px;
+  padding-left: 0;
 }
 
 ul.bars {
@@ -35,8 +39,13 @@ ul.bars {
   position: absolute;
   left: 0;
   background: red;
-  padding: 15px;
+  padding: 25px;
   display: block;
+  z-index: 1;
+}
+
+#mbl-nav > .nav-nav > .nav-menu {
+  margin-bottom: 25px;
 }
 
 .backdrop {
@@ -53,7 +62,7 @@ ul.bars {
 /* Main/Landing Style */
 .sidebar {
   background: red;
-  padding: 30px 15px;
+  padding: 30px;
   display: none;
 }
 
@@ -71,14 +80,39 @@ ul.bars {
 }
 
 .main-single-project-square {
-  border: 1px solid red;
+  text-shadow: 0.25px 0.25px 0.25px #fff;
+  color: crimson;
+  background: #000;
+  border: 1px solid white;
   margin: 15px 15px 15px 0;
-  padding: 15px;
+  padding: 0 15px 15px;
   border-radius: 8px;
+  box-shadow: 1.5px 1.5px 1.5px #999;
+  position: relative;
 }
 
+.main-single-project-square > header > h4 {
+  margin-top: 10px;
+}
+
+.main-single-project-square > article > p {
+  color: white;
+}
+
+.bid-btn {
+  background: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 15%;
+  padding: 5px;
+  bottom: -20px;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+}
 .closed {
-  max-height: 130px;
+  max-height: 150px;
+  min-height: 140px;
 }
 
 .open {
@@ -86,12 +120,36 @@ ul.bars {
 }
 
 #filter_search {
-  padding: 30px 0 15px 30px;
-  max-width: 450px;
-  min-width: 200px;
+  padding: 20px 0 15px 0px;
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #999;
   box-shadow: none;
   border: none;
   margin-left: 0;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+}
+
+#filter_search > input {
+  width: 82%;
+  height: 20px;
+  border-right: none;
+  border: 0.5px solid black;
+  border-radius: 2px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#searchBtn {
+  height: 32px;
+  width: 13.5%;
+  max-width: 15%;
+  background: black;
+  border: none;
+  margin-left: -3px;
+  color: white;
 }
 
 .search_input {
@@ -100,7 +158,18 @@ ul.bars {
 }
 
 .spec_filter {
-  margin: 0 0 0 30px;
+  height: 32px;
+  width: 100%;
+  background: #000000f7;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #999;
+}
+
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0 46px 15px 30px;
 }
 /* End Main/Landing Styles */
 
@@ -109,12 +178,24 @@ ul.bars {
   color: white;
   background: black;
   border-radius: 5px;
-  padding: 20px 10px;
-  margin-bottom: 20px;
+  padding: 0px 15px 25px;
+  margin-bottom: 30px;
+  /* margin-top: 30px; */
+  border: 1px solid white;
 }
 
 .account-panel > h4 {
   margin-bottom: 3px;
+}
+
+.account-panel > h3 {
+  color: rgb(225, 0, 0, 0.75);
+  color: rgb(225, 0, 0, 0.75);
+  text-shadow: 0.5px 0.5px 0.5px white;
+}
+
+.account-panel > i > p {
+  margin: 0;
 }
 
 .tip {
@@ -122,6 +203,7 @@ ul.bars {
   border: 1px solid white;
   border-radius: 7px;
   padding: 0 10px 15px 15px;
+  background: black;
 }
 
 .tip > h4 {
@@ -183,9 +265,11 @@ form > textarea {
 
 .nav-btn {
   border: 1px solid white;
-  border-radius: 3px;
-  background: red;
-  padding: 5px;
+  border-radius: 5px;
+  background: black;
+  padding: 5px 8px 7px 7px;
+  color: white;
+  box-shadow: 0.1.5px 1.5px 1.5px #000;
 }
 
 .float-right {
@@ -199,7 +283,17 @@ form > textarea {
 
 /* Media Queries */
 @media (min-width: 678px) {
+  .filter-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    padding: 0 45px 15px 30px;
+  }
+
   .nav-menu {
+    display: block;
+  }
+
+  .top-nav > .nav-grid > .nav-grid-item-2 > .nav-nav {
     display: block;
   }
 
@@ -213,7 +307,7 @@ form > textarea {
 
   .sidebar {
     background: red;
-    padding: 15px;
+    padding: 30px;
     display: inline-block;
     height: 100%;
   }
@@ -224,6 +318,14 @@ form > textarea {
 }
 
 @media (min-width: 992px) {
+  .spec_filter {
+    height: 32px;
+    width: 32%;
+  }
+
+  #filter_search {
+    /* max-width: 89%; */
+  }
   .main-project-grid {
     grid-template-columns: 33% 33% 33%;
     /* This will result on two rows, each one of 300px */
