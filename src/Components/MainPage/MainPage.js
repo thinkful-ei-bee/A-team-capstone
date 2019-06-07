@@ -10,7 +10,8 @@ class MainPage extends React.Component {
         projects: [],
         searchTerm: '',
         language: '',
-        searching: false
+        searching: false,
+        updateBids: false,
     }
 
     setSearch = (term, language) => {
@@ -50,6 +51,12 @@ class MainPage extends React.Component {
         })
     }
 
+    updateBids = () =>{
+      this.setState({
+        updateBids: !this.state.updateBids
+      })
+    }
+
     componentDidUpdate() {
         if (this.state.searching) {
             this.setState({
@@ -65,6 +72,7 @@ class MainPage extends React.Component {
                 });
             })
         }
+
     }
 
     componentDidMount() {
@@ -82,11 +90,11 @@ class MainPage extends React.Component {
         const projects = this.state.projects;
         return (
             <section className="main-grid">
-                <SideBar></SideBar>
+                <SideBar updateBids={this.state.updateBids}></SideBar>
                 <main>
                     <Filters setSearch={this.setSearch}></Filters>
                     <section className="main-project-grid">
-                        {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project} onClick={() => this.alternateOpen(i)}></SingleProject>)}
+                        {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project} onClick={() => this.alternateOpen(i)} updateBids={this.updateBids}></SingleProject>)}
                     </section>
                 </main>
             </section>
