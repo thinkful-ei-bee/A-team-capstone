@@ -3,6 +3,7 @@ import ProfileApiService from '../../services/profile-api-service';
 import ProjectApiService from '../../services/project-api-service';
 import TokenService from '../../services/token-service';
 import BidsApiService from '../../services/bids-api-service';
+import { Link } from "react-router-dom";
 
 export default class AccountPanel extends React.Component {
 
@@ -59,7 +60,7 @@ export default class AccountPanel extends React.Component {
       <li key={i}>{bid.project_name}</li>
     ));
     
-    this.state.projects.forEach(project=>projects.push(project.project_name))
+    this.state.projects.forEach(project=>projects.push(<Link to={`/projects/${project.id}`}>{project.project_name}</Link>))
       return (
         TokenService.hasAuthToken()
           ? <article className="account-panel">
