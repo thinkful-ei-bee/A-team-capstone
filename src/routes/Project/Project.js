@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import ProfileApiService from '../../services/profile-api-service';
 import SingleProject from '../../Components/SingleProject/SingleProject';
 import SideBar from '../../Components/SideBar/SideBar';
 import ProjectApiService from '../../services/project-api-service';
+import TokenService from '../../services/token-service';
 
 class Project extends Component{
 
   state={
+    profile:{},
     bidsOpen:true,
     authorized:false,
     owner: false,
@@ -14,18 +17,39 @@ class Project extends Component{
   }
 
   componentDidMount(){
-    ProjectApiService.getAllProjects()
-      .then(projects=>{
+    // get Profile Info
+    if(TokenService.hasAuthToken()) {
+      ProfileApiService.getProfile()
+      .then(profile => {
+        console.log('prooooo',profile);
         this.setState({
-          project: {...projects[0],open:true}
+          profile,
+        });
+      });
+    }
+    // fetch call to get project
+    const projectId = this.props.match.params.id;
+    ProjectApiService.getProject(projectId)
+      .then(project=>{
+        console.log(project);
+        this.setState({
+          project: {...project[0],open:true}
         })
       })
-    // fetch call to get project
+    
     // fetch call to check collaborators/bidders on project
     // fetch call to get bidders for owner to see
     // if user matches one of the collaborators setstate authorized to true
     // if user matches owner setstate owner to true
 
+  }
+
+  componentDidUpdate(){
+    if (!this.state.owner && this.state.project.owner_id === this.state.profile.id){
+      this.setState({
+        owner:true
+      })
+    }
   }
 
   renderOwner(){
