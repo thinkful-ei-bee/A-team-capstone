@@ -89,6 +89,7 @@ export default class LoginForm extends Component {
                                     className="text"
                                     value={this.state.username}
                                     onChange={(ev) => this.handleChange(ev)}
+                                    autoComplete="username"
                                 >
                                 </input>
                             </div>
@@ -103,6 +104,7 @@ export default class LoginForm extends Component {
                                     className="text"
                                     value={this.state.password}
                                     onChange={(ev) => this.handleChange(ev)}
+                                    autoComplete="current-password"
                                 >
                                 </input>
                             </div>
