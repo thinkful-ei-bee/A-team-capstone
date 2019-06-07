@@ -1,10 +1,23 @@
 import React from 'react';
 import TokenService from '../../services/token-service';
+import BidsApiService from '../../services/bids-api-service';
+
 class SingleProject extends React.Component {
+
+  onClickBid = () =>{
+
+    BidsApiService.postBid({
+      bid: 'null',
+      project_id: this.props.project.id
+    })
+      .then(()=>{
+        console.log('success!');
+      })
+  }
 
     renderBidButton = () => {
         return <>
-            <button className="bid-btn">Bid!</button>
+            <button onClick={this.onClickBid} className="bid-btn">Bid!</button>
         </>
     }
 
