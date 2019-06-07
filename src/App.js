@@ -4,6 +4,7 @@ import TopNav from './Components/TopNav/TopNav';
 import MainPage from './Components/MainPage/MainPage'
 import Login from './routes/Login/Login'
 import Registration from './routes/Registration/Registration'
+import Project from './routes/Project/Project'
 import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
 import Profile from './Components/Profile/Profile';
 import MblNav from './Components/MblNav/MblNav';
@@ -48,6 +49,7 @@ class App extends React.Component {
             <Route path={"/register"} component={Registration} />
             <Route path={"/new-project"} component={NewProjectForm} />
             <Route path={"/profile"} component={Profile} />
+            <Route path={"/projects/:id"} component={Project} />
           </Switch>
         </main>
       </div>
