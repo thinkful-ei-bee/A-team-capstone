@@ -22,7 +22,6 @@ class NavMenu extends React.Component {
 
     // logout
     handleLogoutClick = () => {
-        alert("Logged Out Successfully!!!")
         TokenService.clearAuthToken();
         this.setState({
             hasToken: false
