@@ -10,6 +10,25 @@ export default class AccountPanel extends React.Component {
     profile: {},
     projects:[],
     bids: [],
+    updating: false,
+  }
+  
+  getUsersBids = () =>{
+    BidsApiService.getUsersBids()
+      .then(bids=>{
+        this.setState({
+          bids,
+        })
+      });
+  } 
+
+  getUsersProjects = () =>{
+    ProjectApiService.getProjectsForUser(this.state.profile.id)
+      .then(projects=>{
+        this.setState({
+          projects,
+        })
+      });
   }
 
   // get the profile to update the state when component mounts
@@ -19,46 +38,40 @@ export default class AccountPanel extends React.Component {
       .then(profile => {
         this.setState({
           profile,
-      }, ()=>{
-        ProjectApiService.getProjectsForUser(this.state.profile.id)
-          .then(projects=>{
-            this.setState({
-              projects,
-            },()=>{
-              BidsApiService.getUsersBids()
-                .then(bids=>{
-                  this.setState({
-                    bids,
-                  })
-                });
-            })
-          })
       });
+      this.getUsersProjects();
+      this.getUsersBids();
     });
     }
   }
 
-    render() {
-      const projects = [];
-      const bids = [];
-      
-      this.state.bids.forEach((bid, i) => bids.push(
-        <li key={i}>{bid.project_name}</li>
-      ));
-      
-      this.state.projects.forEach(project=>projects.push(project.project_name))
-        return (
-          TokenService.hasAuthToken()
-            ? <article className="account-panel">
-            <h3><i>{this.state.profile.username}</i></h3>
-            <h4>Projects:</h4>
-            {projects.length ? projects : <i><p>None yet....</p></i>}
-            <h4>Bids:</h4>
-                <ul>
-                  {bids}
-                </ul>
-            </article>
-            : null
-        )
+  componentDidUpdate(){
+    if(this.props.updateBids){
+      this.getUsersBids();
     }
+  }
+
+  render() {
+    const projects = [];
+    const bids = [];
+    
+    this.state.bids.forEach((bid, i) => bids.push(
+      <li key={i}>{bid.project_name}</li>
+    ));
+    
+    this.state.projects.forEach(project=>projects.push(project.project_name))
+      return (
+        TokenService.hasAuthToken()
+          ? <article className="account-panel">
+          <h3><i>{this.state.profile.username}</i></h3>
+          <h4>Projects:</h4>
+          {projects.length ? projects : <i><p>None yet....</p></i>}
+          <h4>Bids:</h4>
+              <ul>
+                {bids}
+              </ul>
+          </article>
+          : null
+      )
+  }
 }
