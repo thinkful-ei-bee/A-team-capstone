@@ -1,16 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HamburgerButton from "../HamburgerButton/HamburgerButton";
 import TokenService from '../../services/token-service';
 
 import "../TopNav/TopNav.css";
 
 class NavMenu extends React.Component {
+    
+    state = { hasToken: TokenService.hasAuthToken() };
+
+    componentDidMount() {
+        this.setState({
+            hasToken: TokenService.hasAuthToken()
+        });
+    }
+
+    componentWillReceiveProps() {
+        this.setState({
+            hasToken: TokenService.hasAuthToken()
+        });
+    }
 
     // logout
     handleLogoutClick = () => {
         alert("Logged Out Successfully!!!")
         TokenService.clearAuthToken();
+        this.setState({
+            hasToken: false
+        })
     }
 
     // renders if user is  logged out
