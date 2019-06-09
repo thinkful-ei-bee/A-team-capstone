@@ -49,6 +49,9 @@ export default class NewProjectForm extends React.Component {
             <div className="section-grid-item">
                 <h2>New Project</h2>
                 <form id="new-project-form" onSubmit={this.save}>
+                  <div className="form-top">
+                    <p>CREATE</p>
+                  </div>
                     <div role='alert'>
                         {error && <p className='red'>{error}</p>}
                     </div>
@@ -123,9 +126,9 @@ export default class NewProjectForm extends React.Component {
                         </input>
                     </div>
                     <button className="btn submit_btn" type='submit' onClick={this.save}>
-                        Submit Project
+                        SUBMIT
                      </button>
-                     <button className="btn-cancel" onClick={this.cancel}>Cancel</button>
+                     <button className="btn btn-cancel" onClick={this.cancel}>Cancel</button>
                  </form>
             </div>
         </section>
