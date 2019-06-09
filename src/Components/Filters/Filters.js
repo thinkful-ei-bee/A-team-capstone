@@ -31,12 +31,12 @@ export default class Filters extends React.Component{
                             <input className="search_input" type="text" name="searchTerm" placeholder="Search" value={this.state.searchTerm} onChange={(e) => this.changeFields(e)}/>
                             <button id="searchBtn">S</button>
                         </form>
-                        <select className="spec_filter" value={this.state.language} onChange={(e) => this.changeSelection(e)}>
+                        {/* <select className="spec_filter" value={this.state.language} onChange={(e) => this.changeSelection(e)}>
                             <option name="language" value="">No Filter</option>
                             <option name="language" value="HTML">HTML</option>
                             <option name="language" value="CSS">CSS</option>
                             <option name="language" value="JavaScript">JavaScript</option>
-                        </select>
+                        </select> */}
                         {/* not implementing this filter for now
                         
                             <select className="spec_filter">
