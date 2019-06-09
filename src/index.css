@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Rubik";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -34,13 +32,16 @@ ul.bars {
 
 /* Mbl nav */
 #mbl-nav {
-  height: 100vh;
+  height: 1700px;
+  top: 0;
+  bottom: 0;
+  /* overflow: auto; */
   width: 190px;
   position: absolute;
   left: 0;
   background: red;
   padding: 25px;
-  display: block;
+  /* display: block; */
   z-index: 1;
 }
 
@@ -61,8 +62,8 @@ ul.bars {
 
 /* Landing Page Styles */
 #landing_banner {
-  background: url("https://i.imgur.com/ebyutog.jpg");
-  height: 250px;
+  /* background: url("https://i.imgur.com/ebyutog.jpg"); */
+  height: 290px;
   background-position: middle;
   background-color: #cccccc;
   background-repeat: no-repeat;
@@ -71,9 +72,9 @@ ul.bars {
   padding: 30px;
 }
 
-.overlay { 
+.overlay {
   position: absolute;
-  justify-content: center;
+  /* justify-content: center; */
   /*vertical-align: middle; */
   text-align: center;
   /* display: none; */
@@ -84,30 +85,178 @@ ul.bars {
   right: 0;
   bottom: 0;
   /* background-color: rgba(253, 5, 5, 0.7); */
-  z-index: 2;
-  cursor: pointer;
+  /* z-index: 2; */
+  /* cursor: pointer; */
   background-image: linear-gradient(
     to bottom right,
     rgba(253, 5, 5, 0.9),
+    rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.9)
   );
 }
 
 .overlay > article > h1 {
   color: white;
-  
   margin: auto;
+  margin-bottom: 15px;
+  font-size: 50px;
+  text-shadow: 1px 1px 1px #000;
+  margin-top: 35px;
 }
 
 .overlay > article > p {
   max-width: 85%;
   margin: auto;
   max-width: 65%;
+  line-height: 1.5;
 }
 .overlay > article {
-  margin-top: 70px;
+  color: white;
 }
 
+.overlay > button {
+  padding: 10px;
+  margin-top: 20px;
+  width: 50%;
+  max-width: 300px;
+  font-size: 20px;
+  background: black;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
+#landing_content {
+  padding: 40px 35px 50px;
+}
+
+.landing-content-grid {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.landing-content-grid > div > p {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+.landing-content-header {
+  width: 100%;
+  left: 0px;
+  font-size: 26px;
+}
+
+#landing-content-header {
+  width: 100%;
+  padding: 45px;
+}
+
+.landing-content-grid-item > form {
+  padding-bottom: 30px;
+}
+
+.landing-content-grid-item > form > .form-top {
+  height: 80px;
+  width: 100%;
+  margin-bottom: 30px;
+  background: linear-gradient(
+    to right,
+    rgba(253, 5, 5, 0.25),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.25)
+  );
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#landing-form {
+  max-width: 500px;
+}
+
+.form-top > p {
+  align-self: center;
+  color: white;
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
+  letter-spacing: 10px;
+  text-shadow: 1px 1px 1px #000;
+}
+
+#ipad {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  position: relative;
+}
+#cellphone {
+  display: block;
+  margin: 0 auto 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+#stats {
+  border-top: 0.075px solid red;
+  padding: 20px 30px 5px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.25),
+    rgba(253, 5, 5, 0.25)
+  );
+}
+
+#stats > header > h2 {
+  margin-bottom: 30px;
+}
+
+#stats > article > p {
+  color: white;
+  text-shadow: 0.5px 0.5px 0.5px grey;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.item1 {
+  grid-area: header;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: white;
+  text-shadow: 1px 1px 1px #000;
+}
+.item2 {
+  grid-area: menu;
+  text-align: left;
+}
+.item3 {
+  grid-area: main;
+}
+.item4 {
+  grid-area: right;
+}
+
+.stats-grid {
+  text-align: center;
+  display: grid;
+  /* grid-template-columns: 33% 33% 33%; */
+  grid-template-areas: "menu main right";
+}
+
+.stats-grid-item {
+  align-self: center;
+  justify-content: start;
+}
+
+.stats-grid-item > h1 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
 /* End Landing Page Styles */
 
 /* Main/Landing Style */
@@ -293,7 +442,6 @@ ul.bars {
 form {
   margin: auto;
   border: 1px solid rgb(0, 0, 0, 0.1);
-  padding: 30px;
   border-radius: 5px;
   max-width: 300px;
   box-shadow: 1px 1px 1px #999;
@@ -301,20 +449,26 @@ form {
 
 .text {
   border: 0.5px solid #333;
-  width: 100%;
+  width: 70%;
   height: 30px;
   border-radius: 2px;
   padding: 5px 5px 0 5px;
   margin-bottom: 10px;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  margin-left: 30px;
 }
 
 label {
   display: block;
-  text-align: left;
+  padding-left: 30px;
 }
 
 form > button.btn {
-  width: 100%;
+  width: 75%;
+  margin-left: 30px;
+  margin-top: 30px;
 }
 
 form > textarea {
@@ -325,10 +479,12 @@ form > textarea {
 /* Classes */
 .btn {
   background: black;
-  padding: 7px 7px 5px;
+  padding: 12px 7px 10px;
   color: white;
   border: none;
   border-radius: 3px;
+  font-weight: 400;
+  letter-spacing: 10px;
 }
 
 .nav-btn {
@@ -350,10 +506,72 @@ form > textarea {
 /* End Classes */
 
 /* Media Queries */
-@media (min-width: 678px) {
+
+@media (min-width: 400px) {
   #landing_banner {
-    background: url("https://i.imgur.com/ebyutog.jpg");
-    padding: 30px 0;
+    height: 240px;
+  }
+}
+
+@media (min-width: 678px) {
+  .text {
+    width: 83%;
+  }
+
+  form > button.btn {
+    width: 86%;
+  }
+  #landing_content {
+    padding: 80px 35px 80px;
+  }
+
+  .landing-content-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .landing-content-grid > div > p {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 65px;
+  }
+
+  .landing-content-grid-item {
+    padding-right: 30px;
+    padding-left: 0px;
+  }
+
+  #landing-content-left {
+    padding-top: 0px;
+    text-align: left;
+  }
+
+  .landing-content-header {
+    width: 100%;
+    left: 0px;
+    font-size: 26px;
+  }
+  .overlay > article > h1 {
+    margin-top: 55px;
+  }
+  .overlay > article > p {
+    font-size: 20px;
+  }
+
+  .overlay > button {
+    padding: 13px 10px 10px;
+    margin-top: 20px;
+    width: 50%;
+    max-width: 300px;
+    font-size: 23px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  #landing_banner {
+    /* background: url("https://i.imgur.com/ebyutog.jpg"); */
+    height: 240px;
+    padding: 50px 0;
     background-position: bottom;
     background-color: #cccccc;
     background-repeat: no-repeat;
@@ -383,7 +601,11 @@ form > textarea {
   }
 
   .sidebar {
-    background: red;
+    background: linear-gradient(
+      to bottom right,
+      rgba(253, 5, 5, 0.9),
+      rgba(0, 0, 0, 0.9)
+    );
     padding: 30px;
     display: inline-block;
     height: 100%;
@@ -392,9 +614,29 @@ form > textarea {
   #mbl-nav {
     display: none;
   }
+
+  #cellphone {
+    display: block;
+    margin: 0px auto 30px;
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 @media (min-width: 992px) {
+  .overlay > article > h1 {
+    color: white;
+    margin: auto;
+    margin-bottom: 15px;
+    font-size: 50px;
+    text-shadow: 1px 1px 1px #000;
+    margin-top: 55px;
+  }
+  .overlay > article > p {
+    font-size: 24px;
+    margin-bottom: 50px;
+  }
+
   .spec_filter {
     height: 32px;
     width: 32%;
@@ -411,6 +653,21 @@ form > textarea {
 
   .main-grid {
     grid-template-columns: 25% auto;
+  }
+  #landing_banner {
+    /* background: url("https://i.imgur.com/ebyutog.jpg"); */
+    height: 290px;
+  }
+
+  form > button.btn {
+    width: 100%;
+    max-width: 88%;
+    margin-left: 30px;
+    margin-top: 30px;
+  }
+
+  .text {
+    width: 85%;
   }
 }
 /* Media Queries */
