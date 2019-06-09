@@ -57,11 +57,14 @@ class RegistrationForm extends React.Component {
         return (
             <React.Fragment>
                 <div>
-                    <section className="section ">
+                    <section className="section">
                         {/* <div className="section-grid-item"></div> */}
                         <div className="section-grid-item">
                             <h2>Sign Up To Use Our App</h2>
                             <form id="contact-form" onSubmit={this.handleSubmit}>
+                                <div className="form-top">
+                                    <p>REGISTER</p>
+                                </div>
                                 <div role='alert'>
                                     {error && <p className='red'>{error}</p>}
                                 </div>
@@ -135,7 +138,7 @@ class RegistrationForm extends React.Component {
                                     </input>
                                 </div>
                                 <button className="btn submit_btn" type='submit'>
-                                    Register
+                                    SUBMIT
                                 </button>
                             </form>
                         </div>
