@@ -8,6 +8,7 @@ import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
 import Profile from './Components/Profile/Profile';
 import MblNav from './Components/MblNav/MblNav';
 import LandingPage from './Components/LandingPage/LandingPage';
+import Project from './routes/Project/Project'
 import { withRouter } from 'react-router-dom';
 
 class App extends React.Component {
@@ -50,6 +51,7 @@ class App extends React.Component {
             <Route path={"/register"} component={Registration} />
             <Route path={"/new-project"} component={NewProjectForm} />
             <Route path={"/profile"} component={Profile} />
+            <Route path={"/projects/:id"} component={Project} />
           </Switch>
         </main>
       </div>
