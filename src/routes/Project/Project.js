@@ -68,15 +68,15 @@ class Project extends Component{
       display =<>
         <h2>Bidders:</h2>
         <ul>
-          <li>
+          <li key={1}>
           User 1
-          <button className='btn'>Accept</button>
-          <button className='btn'>Decline</button>
+            <button className='btn'>Accept</button>
+            <button className='btn'>Decline</button>
           </li>
-          <li>User 2
+          <li key={2}>User 2
             <button className='btn'>Accept</button>
             <button className='btn'>Decline</button></li>
-          <li>User 3
+          <li key={3}>User 3
             <button className='btn'>Accept</button>
             <button className='btn'>Decline</button></li>
         </ul>
@@ -85,8 +85,8 @@ class Project extends Component{
       display = <>
         <h2>Collaborators:</h2>
         <ul>
-          <li>User 2</li>
-          <li>User 3</li>
+          <li key={2}>User 2</li>
+          <li key={3}>User 3</li>
         </ul>
         <section>Comments Displayed Here...</section>
         <form>
@@ -103,7 +103,7 @@ class Project extends Component{
   renderCollaborator(){
     // status whether project is still pending, closed and have become a collaborator or not
     // if collaborator, have access to message system
-
+    return <div>'Collaborator'</div>
   }
 
   renderNonCollaborator(){
