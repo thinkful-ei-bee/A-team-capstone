@@ -118,7 +118,7 @@ class RegistrationForm extends React.Component {
                                         required
                                         placeholder="Your Experience/Credentials"
                                         className="text"
-                                        value={this.state.password}
+                                        value={this.state.user_description}
                                         onChange={(ev) => this.handleChange(ev)}
                                     >
                                     </textarea>
