@@ -472,9 +472,16 @@ ul.bars {
 
 .account-panel > h4 {
   margin-bottom: 3px;
+  -webkit-text-stroke-width: .0001px;
+  -webkit-text-stroke-color: red;
 }
 
-.account-panel > h3 {
+.account-panel > .bids-text{
+  -webkit-text-stroke-color: limegreen;
+  margin-bottom: -8px;
+}
+
+.account-panel > h2 {
   text-shadow: 1px 1px 1px red;
 }
 .account-panel > i > p {
@@ -757,7 +764,6 @@ form > textarea {
 
   .spec_filter {
     height: 32px;
-    width: 32%;
   }
 
   #filter_search {
