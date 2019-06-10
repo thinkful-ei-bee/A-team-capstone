@@ -472,6 +472,13 @@ ul.bars {
 
 .account-panel > h4 {
   margin-bottom: 3px;
+  -webkit-text-stroke-width: .0001px;
+  -webkit-text-stroke-color: red;
+}
+
+.account-panel > .bids-text{
+  -webkit-text-stroke-color: limegreen;
+  margin-bottom: -8px;
 }
 
 .account-panel > h3 {
