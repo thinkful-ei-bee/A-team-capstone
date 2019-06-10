@@ -27,7 +27,7 @@ class MainPage extends React.Component {
         if (project.languages) {
             langToSearch = project.languages.toLowerCase();
         }
-        
+
         const descToSearch = project.project_description.toLowerCase();
         const nameToSearch = project.project_name.toLowerCase();
         const lowerTerm = term.toLowerCase();
@@ -51,10 +51,10 @@ class MainPage extends React.Component {
         })
     }
 
-    updateBids = () =>{
-      this.setState({
-        updateBids: !this.state.updateBids
-      })
+    updateBids = () => {
+        this.setState({
+            updateBids: !this.state.updateBids
+        })
     }
 
     componentDidUpdate() {
@@ -64,13 +64,13 @@ class MainPage extends React.Component {
             })
 
             ProjectApiService.getAllProjects()
-            .then(projects => {
-                projects.forEach(project => { project.open = false });
-                const filteredProjects = projects.filter(project => this.searchChecksOut(project, this.state.searchTerm, this.state.language));
-                this.setState({
-                    projects: filteredProjects
-                });
-            })
+                .then(projects => {
+                    projects.forEach(project => { project.open = false });
+                    const filteredProjects = projects.filter(project => this.searchChecksOut(project, this.state.searchTerm, this.state.language));
+                    this.setState({
+                        projects: filteredProjects
+                    });
+                })
         }
 
     }
@@ -93,6 +93,10 @@ class MainPage extends React.Component {
                 <SideBar updateBids={this.state.updateBids}></SideBar>
                 <main>
                     <Filters setSearch={this.setSearch}></Filters>
+                    <div class="mbl-separator">
+                        <h5>PROJECTS</h5>
+                        <hr />
+                    </div>
                     <section className="main-project-grid">
                         {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project} onClick={() => this.alternateOpen(i)} updateBids={this.updateBids}></SingleProject>)}
                     </section>

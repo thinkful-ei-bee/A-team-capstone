@@ -47,6 +47,7 @@ class SingleProject extends React.Component {
     }
 
     render() {
+        
         const project = this.props.project;
         let openClass = "main-single-project-square open";
         let title = project.project_name;
@@ -75,7 +76,21 @@ class SingleProject extends React.Component {
                 <header>
                     <h2>{title}</h2>
                 </header>
-                {project.open && 
+                {(project.owner_id === userId)
+                        ?<small style={{background: "red", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        bottom: "16px", right: "15px", border: "1px solid white"}
+                    }
+                    
+                     ><i>COLLABORATOR</i></small>
+                        :null}
+                        {(this.state.userBidOnThis)
+                        ?<small style={{background: "limegreen", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        bottom: "16px", right: "15px", border: "1px solid white"}
+                    }
+                    
+                     ><i>BID PENDING</i></small>
+                        : null}
+                        {project.open && 
                     <article>
                         <p>{project.project_description}</p>
                         <hr className="single-project-content-separator"></hr>

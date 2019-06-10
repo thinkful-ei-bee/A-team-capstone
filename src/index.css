@@ -176,7 +176,7 @@ ul.bars {
   max-width: 500px;
 }
 
-.form-top{
+.form-top {
   background: linear-gradient(
     to bottom right,
     rgba(0, 0, 0, 0.45),
@@ -268,6 +268,20 @@ ul.bars {
 /* End Landing Page Styles */
 
 /* Main/Landing Style */
+
+.mbl-separator {
+  padding: 0 30px;
+  margin-right: 20px;
+}
+
+.mbl-separator > hr {
+  border: 0.75px solid red;
+}
+
+.mbl-separator > h5 {
+  margin: 0;
+}
+
 .sidebar {
   background: red;
   padding: 30px;
@@ -332,8 +346,12 @@ ul.bars {
   padding: 5px;
   bottom: -20px;
   position: absolute;
-  width: 35px;
+  width: auto;
   height: 35px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px red;
+  box-shadow: 1px 1px 1px #999;
 }
 .closed {
   max-height: 138px;
@@ -414,20 +432,31 @@ ul.bars {
 }
 
 .account-panel > h3 {
-  color: rgb(225, 0, 0, 0.75);
-  color: rgb(225, 0, 0, 0.75);
-  text-shadow: 0.5px 0.5px 0.5px white;
+  text-shadow: 1px 1px 1px red;
 }
-
 .account-panel > i > p {
   margin: 0;
+}
+
+.account-panel > ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.account-panel > ul > li > a {
+  color: limegreen;
+  font-size: 12px;
+}
+.account-panel > a {
+  color: red;
+  font-size: 12px;
 }
 
 .tip {
   color: white;
   border: 1px solid white;
   border-radius: 7px;
-  padding: 0 10px 15px 15px;
+  padding: 10px 10px 15px 15px;
   background: black;
 }
 
@@ -455,25 +484,32 @@ form {
   box-shadow: 1px 1px 1px #999;
 }
 
-#contact-form > div > .text , #login-form > div > .text, #new-project-form > div > .text{
+#contact-form > div > .text,
+#login-form > div > .text,
+#new-project-form > div > .text {
   margin-left: 0px;
 }
 
-#contact-form > .form-top, #login-form > .form-top, #new-project-form > .form-top{
+#contact-form > .form-top,
+#login-form > .form-top,
+#new-project-form > .form-top {
   margin-bottom: 30px;
 }
 
-#contact-form > button.btn, #login-form > button.btn, #new-project-form > button.btn{
+#contact-form > button.btn,
+#login-form > button.btn,
+#new-project-form > button.btn {
   margin-left: 0;
 }
 
-#contact-form, #login-form, #new-project-form {
+#contact-form,
+#login-form,
+#new-project-form {
   margin-bottom: 45px;
   padding-bottom: 30px;
 }
 
 #login-form {
-
 }
 .text {
   border: 0.5px solid #333;
@@ -652,6 +688,9 @@ form > textarea {
 }
 
 @media (min-width: 992px) {
+  .main-single-project-square > header > h2 {
+    font-size: 16px;
+  }
   .overlay > article > h1 {
     color: white;
     margin: auto;
