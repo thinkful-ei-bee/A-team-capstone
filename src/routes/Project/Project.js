@@ -1,45 +1,45 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ProfileApiService from '../../services/profile-api-service';
 import SingleProject from '../../Components/SingleProject/SingleProject';
 import SideBar from '../../Components/SideBar/SideBar';
 import ProjectApiService from '../../services/project-api-service';
 import TokenService from '../../services/token-service';
 
-class Project extends Component{
+class Project extends Component {
 
-  state={
-    profile:{},
-    bidsOpen:true,
-    authorized:false,
+  state = {
+    profile: {},
+    bidsOpen: true,
+    authorized: false,
     owner: false,
     project: false,
     bidders: []
   }
 
-  setProject(){
+  setProject() {
     // fetch call to get project
     const projectId = this.props.match.params.id;
     ProjectApiService.getProject(projectId)
-      .then(project=>{
+      .then(project => {
         this.setState({
-          project: {...project[0],open:true}
+          project: { ...project[0], open: true }
         })
       })
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // get Profile Info
-    if(TokenService.hasAuthToken()) {
+    if (TokenService.hasAuthToken()) {
       ProfileApiService.getProfile()
-      .then(profile => {
-        this.setState({
-          profile,
+        .then(profile => {
+          this.setState({
+            profile,
+          });
         });
-      });
     }
     this.setProject();
-    
-    
+
+
     // fetch call to check collaborators/bidders on project
     // fetch call to get bidders for owner to see
     // if user matches one of the collaborators setstate authorized to true
@@ -47,41 +47,45 @@ class Project extends Component{
 
   }
 
-  componentDidUpdate(){
-    if (!this.state.owner && this.state.project.owner_id === this.state.profile.id){
+  componentDidUpdate() {
+    if (!this.state.owner && this.state.project.owner_id === this.state.profile.id) {
       this.setState({
-        owner:true
+        owner: true
       })
     }
-  
-    if (this.state.project && parseInt(this.props.match.params.id) !== this.state.project.id){
+
+    if (this.state.project && parseInt(this.props.match.params.id) !== this.state.project.id) {
       this.setProject();
-      
+
     }
   }
 
-  renderOwner(){
+  renderOwner() {
     // list of bidders or collaborators
     // and message system
     let display = [];
-    if (this.state.bidsOpen){
-      display =<>
-        <h2>Bidders:</h2>
-        <ul>
+    if (this.state.bidsOpen) {
+      display = <>
+        <div class="mbl-separator">
+          <h2>ACTIVE BIDDERS:</h2>
+          <hr />
+        </div>
+        <ul style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
           <li key={1}>
-          User 1
-            <button className='btn'>Accept</button>
-            <button className='btn'>Decline</button>
+            <h3><i>User 1</i></h3>
+            <button className='btn green-text'>Accept</button>
+            <button className='btn red-text'>Decline</button>
           </li>
-          <li key={2}>User 2
-            <button className='btn'>Accept</button>
-            <button className='btn'>Decline</button></li>
-          <li key={3}>User 3
-            <button className='btn'>Accept</button>
-            <button className='btn'>Decline</button></li>
+          
+          <li key={2}><h3><i>User 2</i></h3>
+            <button className='btn green-text'>Accept</button>
+            <button className='btn red-text'>Decline</button></li>
+          <li key={3}><h3><i>User 3</i></h3>
+            <button className='btn green-text'>Accept</button>
+            <button className='btn red-text'>Decline</button></li>
         </ul>
       </>
-    }else{
+    } else {
       display = <>
         <h2>Collaborators:</h2>
         <ul>
@@ -96,49 +100,52 @@ class Project extends Component{
       </>
     }
     return <>
-        {display}
+      {display}
     </>
   }
 
-  renderCollaborator(){
+  renderCollaborator() {
     // status whether project is still pending, closed and have become a collaborator or not
     // if collaborator, have access to message system
     return <div>'Collaborator'</div>
   }
 
-  renderNonCollaborator(){
+  renderNonCollaborator() {
     // standard message that they do not have access
     return <>
       <h2>You do not have access to this project</h2>
     </>
   }
 
- render(){
-  let display = [];
+  render() {
+    let display = [];
 
-  if (this.state.owner){
-    display = this.renderOwner();
-  }else if (this.authorized){
-    display = this.renderCollaborator();
-  }else{
-    display = this.renderNonCollaborator();
+    if (this.state.owner) {
+      display = this.renderOwner();
+    } else if (this.authorized) {
+      display = this.renderCollaborator();
+    } else {
+      display = this.renderNonCollaborator();
+    }
+
+    return (
+      <section className="main-grid">
+        <SideBar />
+        <main style={{paddingTop: "30px"}}>
+          <div class="mbl-separator">
+            <h2>PROJECT SPECS:</h2>
+            <hr />
+          </div>
+          <section className="project-page-grid">
+            {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project}></SingleProject> : ''}
+          </section>
+          <section id="project-page-bidders">
+            {display}
+          </section>
+        </main>
+      </section>
+    )
   }
-
-   return(
-     <section className="main-grid">
-      <SideBar />
-      <main>
-        <section className="main-project-grid">
-          {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project}></SingleProject> : ''}
-          
-        </section>
-        <section>
-          {display}
-        </section>
-      </main>
-     </section>
-   )
- } 
 }
 
 export default Project
