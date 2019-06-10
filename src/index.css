@@ -434,6 +434,31 @@ ul.bars {
 }
 /* End Main/Landing Styles */
 
+/* Project Page Styles */
+.project-page-grid {
+  display: grid;
+  grid-template-columns: 100%;
+  padding: 30px;
+}
+
+#project-page-bidders > ul {
+  list-style: none;
+}
+
+#project-page-bidders > ul > li > button.btn{
+  margin: 0 5px 10px;
+  text-align: center;
+  border: 2px solid white;
+  box-shadow: 1px 1px 1px #999;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-left:17px;
+  font-size: 14px;
+  border-radius:5px;
+}
+
+/* End Project Page Styles */
+
 /* SideBar Styles */
 .account-panel {
   color: white;
@@ -584,6 +609,14 @@ form > textarea {
 
 .invisible {
   display: none !important;
+}
+
+.green-text{
+  color: limegreen
+}
+
+.red-text{
+  color: red;
 }
 /* End Classes */
 
