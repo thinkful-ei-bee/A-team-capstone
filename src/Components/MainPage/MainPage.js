@@ -4,6 +4,7 @@ import Filters from "../Filters/Filters";
 import SideBar from "../SideBar/SideBar";
 import ProjectApiService from '../../services/project-api-service';
 
+
 class MainPage extends React.Component {
 
     state = {
@@ -88,6 +89,7 @@ class MainPage extends React.Component {
 
     render() {
         const projects = this.state.projects;
+        
         return (
             <section className="main-grid">
                 <SideBar updateBids={this.state.updateBids}></SideBar>

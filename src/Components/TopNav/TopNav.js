@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 import HamburgerButton from "../HamburgerButton/HamburgerButton";
 import "./TopNav.css";
 import NavMenu from "../NavMenu/NavMenu";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMitten } from '@fortawesome/free-solid-svg-icons'
 
 class TopNav extends React.Component {
 
     render() {
+        const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp fa-4x" />
         return (
             <nav className="top-nav">
                 <div className="nav-grid">
                     <div className="nav-grid-item">
                         <Link to={'/'} id="logo">
-                            <h1><span style={{color: "red"}}>Bid</span>Hub</h1>
+                            <h1 style={{fontSize: "30px"}}><span style={{color: "red"}}>{mitten}Bid</span>Hub</h1>
                         </Link>
                     </div>
                     <div className="nav-grid-item-2">
