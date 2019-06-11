@@ -5,7 +5,7 @@ import SideBar from '../../Components/SideBar/SideBar';
 import BidderList from '../../Components/BidderList/BidderList';
 import ProjectApiService from '../../services/project-api-service';
 import BidsApiService from '../../services/bids-api-service';
-import CollaborationApiServices from '../../services/collaboration-api-service';
+import CollaborationApiService from '../../services/collaboration-api-service';
 import TokenService from '../../services/token-service';
 
 class Project extends Component {
@@ -86,8 +86,16 @@ class Project extends Component {
 
   handleSubmit=(e)=>{
     e.preventDefault();
-    console.log(e.currentTarget,e.target)
-
+    const project_id = this.state.project.id;
+    console.log(this.state.accepted)
+    Object.keys(this.state.accepted).forEach(collaborator_id=>{
+      console.log(collaborator_id,project_id);
+      CollaborationApiService.postCollaborator(parseInt(collaborator_id),project_id,'collaborator')
+        .then(res=>{
+          console.log(res);
+        })
+    })
+    
   }
 
   componentDidMount() {
