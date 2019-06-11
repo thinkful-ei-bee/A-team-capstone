@@ -132,7 +132,7 @@ class Project extends Component {
     let display = [];
     if (this.state.bidsOpen) {
       display = <>
-        <div class="mbl-separator">
+        <div className="mbl-separator">
           <h2>ACTIVE BIDDERS:</h2>
           <hr />
         </div>
@@ -193,7 +193,7 @@ class Project extends Component {
       <section className="main-grid">
         <SideBar />
         <main style={{paddingTop: "30px"}}>
-          <div class="mbl-separator">
+          <div className="mbl-separator">
             <h2>PROJECT SPECS:</h2>
             <hr />
           </div>
