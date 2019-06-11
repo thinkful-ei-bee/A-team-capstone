@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import ProfileApiService from '../../services/profile-api-service';
 import SingleProject from '../../Components/SingleProject/SingleProject';
 import SideBar from '../../Components/SideBar/SideBar';
-import BidderList from '../../Components/BidderList';
+import BidderList from '../../Components/BidderList/BidderList';
 import ProjectApiService from '../../services/project-api-service';
+import BidsApiService from '../../services/bids-api-service';
 import TokenService from '../../services/token-service';
 
 class Project extends Component {
@@ -33,8 +34,24 @@ class Project extends Component {
     if (this.state.project.owner_id === TokenService.getPayload().user_id) {
       this.setState({
         owner: true
-      })
+      },this.checkIfOpen())
     }
+  }
+
+  checkIfOpen(){
+    if (this.state.project.open){
+      this.getBidders();
+    }
+  }
+
+  getBidders(){
+    const project_id = this.state.project.id;
+    BidsApiService.getBidders(project_id)
+      .then(bidders=>{
+        this.setState({
+          bidders,
+        })
+      })
   }
 
   componentDidMount() {
@@ -76,7 +93,7 @@ class Project extends Component {
           <hr />
         </div>
         <ul style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
-          <BidderList />
+          <BidderList bidders={this.state.bidders}/>
         </ul>
       </>
     } else {
