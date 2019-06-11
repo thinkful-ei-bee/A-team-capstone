@@ -4,17 +4,18 @@ import TokenService from './token-service';
 const CollaborationApiService = {
   postCollaborator(collaborator_id,project_id,position){
   // requires "project_id", "collaborator_id" and  "position"
+    const body = JSON.stringify({
+      collaborator_id,
+      project_id,
+      position
+    }); 
     return fetch(`${config.API_ENDPOINT}/collaboration`,{
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
         'Authorization' : `bearer ${TokenService.getAuthToken()}`
         },
-      body:{
-        collaborator_id,
-        project_id,
-        position
-      }
+      body
     })
     .then(res=>
       (!res.ok)
