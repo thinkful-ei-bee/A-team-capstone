@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import ProfileApiService from '../../services/profile-api-service';
 import SingleProject from '../../Components/SingleProject/SingleProject';
 import SideBar from '../../Components/SideBar/SideBar';
+import BidderList from '../../Components/BidderList/BidderList';
 import ProjectApiService from '../../services/project-api-service';
+import BidsApiService from '../../services/bids-api-service';
 import TokenService from '../../services/token-service';
 
 class Project extends Component {
@@ -23,6 +25,31 @@ class Project extends Component {
       .then(project => {
         this.setState({
           project: { ...project[0], open: true }
+        },this.checkOwner)
+      })
+  }
+
+  checkOwner(){
+    // if the current user is the owner then state owner will be set to true
+    if (this.state.project.owner_id === TokenService.getPayload().user_id) {
+      this.setState({
+        owner: true
+      },this.checkIfOpen())
+    }
+  }
+
+  checkIfOpen(){
+    if (this.state.project.open){
+      this.getBidders();
+    }
+  }
+
+  getBidders(){
+    const project_id = this.state.project.id;
+    BidsApiService.getBidders(project_id)
+      .then(bidders=>{
+        this.setState({
+          bidders,
         })
       })
   }
@@ -48,11 +75,6 @@ class Project extends Component {
   }
 
   componentDidUpdate() {
-    if (!this.state.owner && this.state.project.owner_id === this.state.profile.id) {
-      this.setState({
-        owner: true
-      })
-    }
 
     if (this.state.project && parseInt(this.props.match.params.id) !== this.state.project.id) {
       this.setProject();
@@ -71,18 +93,7 @@ class Project extends Component {
           <hr />
         </div>
         <ul style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
-          <li key={1}>
-            <h3><i>User 1</i></h3>
-            <button className='btn green-text'>Accept</button>
-            <button className='btn red-text'>Decline</button>
-          </li>
-          
-          <li key={2}><h3><i>User 2</i></h3>
-            <button className='btn green-text'>Accept</button>
-            <button className='btn red-text'>Decline</button></li>
-          <li key={3}><h3><i>User 3</i></h3>
-            <button className='btn green-text'>Accept</button>
-            <button className='btn red-text'>Decline</button></li>
+          <BidderList bidders={this.state.bidders}/>
         </ul>
       </>
     } else {
@@ -107,7 +118,8 @@ class Project extends Component {
   renderCollaborator() {
     // status whether project is still pending, closed and have become a collaborator or not
     // if collaborator, have access to message system
-    return <div>'Collaborator'</div>
+    const projectOpen = true;
+    return (projectOpen) ? <></> : <>{'Comments displayed here'}</>
   }
 
   renderNonCollaborator() {
