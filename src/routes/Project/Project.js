@@ -5,6 +5,7 @@ import SideBar from '../../Components/SideBar/SideBar';
 import BidderList from '../../Components/BidderList/BidderList';
 import ProjectApiService from '../../services/project-api-service';
 import BidsApiService from '../../services/bids-api-service';
+import CollaborationApiService from '../../services/collaboration-api-service';
 import TokenService from '../../services/token-service';
 
 class Project extends Component {
@@ -15,7 +16,35 @@ class Project extends Component {
     authorized: false,
     owner: false,
     project: false,
-    bidders: []
+    bidders: [],
+    accepted: {},
+    declined: {},
+  }
+
+  onAcceptedClick = (user) =>{
+    const accepted = this.state.accepted;
+    accepted[user] = 1;
+    const declined = this.state.declined;
+    if (user in this.state.declined){
+      delete declined[user];
+    }
+    this.setState({
+      accepted,
+      declined,
+    })
+  }
+
+  onDeclinedClick = (user) =>{
+    const declined = this.state.declined
+    declined[user] = 1;
+    const accepted = this.state.accepted;
+    if (user in this.state.accepted){
+      delete accepted[user];
+    }
+    this.setState({
+      accepted,
+      declined
+    })
   }
 
   setProject() {
@@ -42,6 +71,7 @@ class Project extends Component {
     if (this.state.project.open){
       this.getBidders();
     }
+    // else return comments display
   }
 
   getBidders(){
@@ -52,6 +82,20 @@ class Project extends Component {
           bidders,
         })
       })
+  }
+
+  handleSubmit=(e)=>{
+    e.preventDefault();
+    const project_id = this.state.project.id;
+    console.log(this.state.accepted)
+    Object.keys(this.state.accepted).forEach(collaborator_id=>{
+      console.log(collaborator_id,project_id);
+      CollaborationApiService.postCollaborator(parseInt(collaborator_id),project_id,'collaborator')
+        .then(res=>{
+          console.log(res);
+        })
+    })
+    
   }
 
   componentDidMount() {
@@ -92,9 +136,14 @@ class Project extends Component {
           <h2>ACTIVE BIDDERS:</h2>
           <hr />
         </div>
-        <ul style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
-          <BidderList bidders={this.state.bidders}/>
-        </ul>
+        <form onSubmit={this.handleSubmit} style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
+          <BidderList 
+            onDeclineClick={(e)=>this.onDeclinedClick(e.target.value)} 
+            onAcceptClick={(e)=>this.onAcceptedClick(e.target.value)} 
+            bidders={this.state.bidders}
+          />
+          <button type="submit">Submit</button>
+        </form>
       </>
     } else {
       display = <>

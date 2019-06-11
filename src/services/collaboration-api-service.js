@@ -2,17 +2,20 @@ import config from '../config';
 import TokenService from './token-service';
 //POST /api/collaboration which will require a body with collaborator id and project id and will only function if the project belongs to the authenticated user and it matches a bid (and in that case will remove the bid and create the collaboration.)
 const CollaborationApiService = {
-  postCollaborator(collaborator_id,project_id){
+  postCollaborator(collaborator_id,project_id,position){
+  // requires "project_id", "collaborator_id" and  "position"
+    const body = JSON.stringify({
+      collaborator_id,
+      project_id,
+      position
+    }); 
     return fetch(`${config.API_ENDPOINT}/collaboration`,{
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
         'Authorization' : `bearer ${TokenService.getAuthToken()}`
         },
-      body:{
-        collaborator_id,
-        project_id
-      }
+      body
     })
     .then(res=>
       (!res.ok)

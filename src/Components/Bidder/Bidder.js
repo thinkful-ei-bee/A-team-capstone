@@ -1,24 +1,18 @@
 import React from 'react';
-import TokenService from '../../services/token-service';
 
 class Bidder extends React.Component {
 
-  handleAcceptOnClick = () => {
-    // function to set user to ready to be changed to collaborator
-  }
-
-  handleDeclineOnClick = () => {
-    // function to set user to ready to be delined as collaborator
-  }
 
     render() {
 
         return (
-          <li>
+          <div key={this.props.userId}>
             <h3><i>{this.props.username}</i></h3>
-            <button onClick ={this.handleAcceptOnClick} className='btn green-text'>Accept</button>
-            <button onClick ={this.handleDeclineOnClick} className='btn red-text'>Decline</button>
-          </li>
+            <label htmlFor={`${this.props.username}-accept`}>Accept</label> 
+            <input onClick={this.props.onAcceptClick} id={`${this.props.userId}-accept`} type="radio" name={this.props.username} className='btn green-text' value={this.props.userId}/>
+            <label htmlFor={`${this.props.username}-decline`}>Decline</label>
+            <input onClick={this.props.onDeclineClick} id={`${this.props.userId}-decline`} type="radio" name={this.props.username}className='btn red-text' value={this.props.userId}/>
+          </div>
         );
     }
 }
