@@ -3,7 +3,6 @@ import Bidder from '../Bidder/Bidder';
 import TokenService from '../../services/token-service';
 
 class BidderList extends React.Component {
-  // will need props of list of bidders
 
   handleAcceptOnClick = () => {
     // function to set user to ready to be changed to collaborator
@@ -16,7 +15,7 @@ class BidderList extends React.Component {
     render() {
       const bidders = [];
       this.props.bidders.forEach(bidder=>{
-        bidders.push(<Bidder username={bidder.id}/>)
+        bidders.push(<Bidder username={bidder.username}/>)
       })
         return (
           <ul>
