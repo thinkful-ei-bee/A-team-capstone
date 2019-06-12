@@ -18,36 +18,7 @@ class Project extends Component {
     bidders: [],
     accepted: {},
     declined: {},
-<<<<<<< HEAD
-  }
-
-  onAcceptedClick = (user) => {
-    const accepted = this.state.accepted;
-    accepted[user] = 1;
-    const declined = this.state.declined;
-    if (user in this.state.declined) {
-      delete declined[user];
-    }
-    this.setState({
-      accepted,
-      declined,
-    })
-  }
-
-  onDeclinedClick = (user) => {
-    const declined = this.state.declined
-    declined[user] = 1;
-    const accepted = this.state.accepted;
-    if (user in this.state.accepted) {
-      delete accepted[user];
-    }
-    this.setState({
-      accepted,
-      declined
-    })
-=======
     collaborators:[]
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
   }
 
   setProject() {
@@ -56,13 +27,8 @@ class Project extends Component {
     ProjectApiService.getProject(projectId)
       .then(project => {
         this.setState({
-<<<<<<< HEAD
           project: { ...project[0], open: true }
         }, this.checkOwner)
-=======
-          project: { ...project[0], open:true }
-        },this.checkOwner)
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
       })
   }
 
@@ -71,13 +37,9 @@ class Project extends Component {
     if (this.state.project.owner_id === TokenService.getPayload().user_id) {
       this.setState({
         owner: true
-<<<<<<< HEAD
-      }, this.checkIfOpen())
-=======
       }, this.checkIfOpen)
     }else{
       this.checkIfOpen()
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
     }
     // else if project is open and user is a bidder, display bid is pending message
     // else if project is closed and user is a collaborator display comments
@@ -85,14 +47,9 @@ class Project extends Component {
     // else can assume user is not authorized, therefore display unauthorized
   }
 
-<<<<<<< HEAD
-  checkIfOpen() {
-    if (this.state.project.open) {
-=======
   checkIfOpen(){
     // check if project is open for bids
     if (this.state.project.openForBids){
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
       this.getBidders();
     }else{
     // if not open set state bidsopen to false and get collaborators
@@ -123,9 +80,6 @@ class Project extends Component {
       })
   }
 
-<<<<<<< HEAD
-  handleSubmit = (e) => {
-=======
   checkAuthorized(){
     let authorized = false;
     let userId=0;
@@ -196,30 +150,19 @@ class Project extends Component {
   }
 
   handleSubmit=(e)=>{
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
     e.preventDefault();
 
     // get project
     const project_id = this.state.project.id;
-<<<<<<< HEAD
-    console.log(this.state.accepted)
-    Object.keys(this.state.accepted).forEach(collaborator_id => {
-      console.log(collaborator_id, project_id);
-      CollaborationApiService.postCollaborator(parseInt(collaborator_id), project_id, 'collaborator')
-        .then(res => {
-=======
 
     // for each accepted bidder set them as a collaborator
     Object.keys(this.state.accepted).forEach(collaborator_id=>{
       CollaborationApiService.postCollaborator(parseInt(collaborator_id),project_id,'collaborator')
         .then(res=>{
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
           console.log(res);
         })
     })
 
-<<<<<<< HEAD
-=======
     //for each declined bidder change the status of their bid to declined
     const declinedBids = this.getDeclinedBiddersBidsData();
     declinedBids.forEach(bid=>{
@@ -240,7 +183,6 @@ class Project extends Component {
       .then((res)=>{
         this.setProject();
       })
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
   }
 
   componentDidMount() {
@@ -276,21 +218,10 @@ class Project extends Component {
     let display = [];
     if (this.state.project.openForBids) {
       display = <>
-<<<<<<< HEAD
         <form id="bidder-form" onSubmit={this.handleSubmit} style={{ listStyle: "none" }}>
           <BidderList
             onDeclineClick={(e) => this.onDeclinedClick(e.target.value)}
             onAcceptClick={(e) => this.onAcceptedClick(e.target.value)}
-=======
-        <div className="mbl-separator">
-          <h2>ACTIVE BIDDERS:</h2>
-          <hr />
-        </div>
-        <form onSubmit={this.handleSubmit} style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
-          <BidderList 
-            onDeclineClick={(e)=>this.onDeclinedClick(e.target.value)} 
-            onAcceptClick={(e)=>this.onAcceptedClick(e.target.value)} 
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
             bidders={this.state.bidders}
           />
           <button className="bidder-btn" type="submit">SUBMIT</button>
@@ -346,13 +277,8 @@ class Project extends Component {
     return (
       <section className="main-grid">
         <SideBar />
-<<<<<<< HEAD
-        <main style={{ paddingTop: "30px" }}>
-          <div class="mbl-separator">
-=======
         <main style={{paddingTop: "30px"}}>
           <div className="mbl-separator">
->>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
             <h2>PROJECT SPECS:</h2>
             <hr />
           </div>
