@@ -24,7 +24,7 @@ const CollaborationApiService = {
     );
   },
   getCollaborators(project_id){
-    return fetch(`${config.API_ENDPOINT}/collaborators/${project_id}`,{
+    return fetch(`${config.API_ENDPOINT}/collaboration/${project_id}`,{
       method: 'GET',
       headers:{
         'Content-Type':'application/json',
