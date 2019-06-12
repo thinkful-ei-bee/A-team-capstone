@@ -288,6 +288,9 @@ ul.bars {
   margin: 0;
 }
 
+.mbl-separator > h2 {
+  margin-bottom: 5px;
+}
 .sidebar {
   background: red;
   padding: 30px;
@@ -438,7 +441,7 @@ ul.bars {
 .project-page-grid {
   display: grid;
   grid-template-columns: 100%;
-  padding: 30px;
+  padding: 10px 30px 15px;
 }
 
 #project-page-bidders {
@@ -600,9 +603,15 @@ form > textarea {
   max-width: 397px;
   padding: 10px 30px 30px;
   box-shadow: 2px 2px 2px #999;
-  background: black;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
+    );
   color: white;
-  margin-top: 50px;
+  margin-top: 35px;
   margin-left: 30px;
   border: 1px solid white;
 }
@@ -650,6 +659,7 @@ form > textarea {
   width: 50%;
   margin-top: 30px;
   font-size: 20px;
+  font-family: "Rubik";
 }
 
 .bidder-input-grid {
@@ -657,6 +667,41 @@ form > textarea {
   grid-template-columns: 100%;
 }
 /* End Bidding Styles */
+
+/* Project Comments */
+#comment_text{
+  width: 100%;
+}
+
+.comment-grid{
+display: grid;
+grid-template-columns: 20% auto 20%;
+}
+
+#comments-form{
+  display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+#comments-form > .form-body > button.btn {
+  margin-left: 0;
+  width: 100%;
+}
+
+#comments_text{
+  width: 95%;
+  margin-left: 0;
+  height: 75px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.form-body{
+  padding: 15px;
+}
+/* End Project Comments */
+
 
 /* Classes */
 .btn {

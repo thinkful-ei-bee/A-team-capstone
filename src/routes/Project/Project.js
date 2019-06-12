@@ -188,7 +188,7 @@ class Project extends Component {
     return (
       <section className="main-grid">
         <SideBar />
-        <main style={{ paddingTop: "30px" }}>
+        <main style={{ paddingTop: "15px" }}>
           <div class="mbl-separator">
             <h2>PROJECT SPECS:</h2>
             <hr />

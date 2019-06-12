@@ -8,6 +8,7 @@ import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
 import Profile from './Components/Profile/Profile';
 import MblNav from './Components/MblNav/MblNav';
 import LandingPage from './Components/LandingPage/LandingPage';
+import ProjectCommentsForm from './Components/ProjectsCommentsForm/ProjectsCommentsForm';
 import Project from './routes/Project/Project'
 import { withRouter } from 'react-router-dom';
 
@@ -46,6 +47,7 @@ class App extends React.Component {
         <main>
           <Switch>
           <Route exact path={"/landing"} component={LandingPage} />
+          <Route exact path={"/comments"} component={ProjectCommentsForm} />
             <Route exact path={"/"} component={MainPage} />
             <Route path={"/login"} component={Login} />
             <Route path={"/register"} component={Registration} />
