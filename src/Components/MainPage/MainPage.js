@@ -95,7 +95,7 @@ class MainPage extends React.Component {
                 <SideBar updateBids={this.state.updateBids}></SideBar>
                 <main>
                     <Filters setSearch={this.setSearch}></Filters>
-                    <div class="mbl-separator">
+                    <div className="mbl-separator">
                         <h5>PROJECTS</h5>
                         <hr />
                     </div>
