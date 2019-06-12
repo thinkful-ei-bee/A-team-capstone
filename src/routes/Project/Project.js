@@ -12,13 +12,13 @@ class Project extends Component {
 
   state = {
     profile: {},
-    bidsOpen: true,
     authorized: false,
     owner: false,
     project: false,
     bidders: [],
     accepted: {},
     declined: {},
+<<<<<<< HEAD
   }
 
   onAcceptedClick = (user) => {
@@ -45,6 +45,9 @@ class Project extends Component {
       accepted,
       declined
     })
+=======
+    collaborators:[]
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
   }
 
   setProject() {
@@ -53,8 +56,13 @@ class Project extends Component {
     ProjectApiService.getProject(projectId)
       .then(project => {
         this.setState({
+<<<<<<< HEAD
           project: { ...project[0], open: true }
         }, this.checkOwner)
+=======
+          project: { ...project[0], open:true }
+        },this.checkOwner)
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
       })
   }
 
@@ -63,15 +71,35 @@ class Project extends Component {
     if (this.state.project.owner_id === TokenService.getPayload().user_id) {
       this.setState({
         owner: true
+<<<<<<< HEAD
       }, this.checkIfOpen())
+=======
+      }, this.checkIfOpen)
+    }else{
+      this.checkIfOpen()
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
     }
+    // else if project is open and user is a bidder, display bid is pending message
+    // else if project is closed and user is a collaborator display comments
+    // else if project is closed and user is not a collaborator display message saying user was declined
+    // else can assume user is not authorized, therefore display unauthorized
   }
 
+<<<<<<< HEAD
   checkIfOpen() {
     if (this.state.project.open) {
+=======
+  checkIfOpen(){
+    // check if project is open for bids
+    if (this.state.project.openForBids){
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
       this.getBidders();
+    }else{
+    // if not open set state bidsopen to false and get collaborators
+      if (this.state.owner){
+       this.getCollaborators();
+      }
     }
-    // else return comments display
   }
 
   getBidders() {
@@ -81,21 +109,138 @@ class Project extends Component {
         this.setState({
           bidders,
         })
+      },this.checkAuthorized)
+  }
+
+  getCollaborators(){
+    // only for owner
+    const project_id = this.state.project.id;
+    CollaborationApiService.getCollaborators(project_id)
+      .then(collaborators=>{
+        this.setState({
+          collaborators,
+        })
       })
   }
 
+<<<<<<< HEAD
   handleSubmit = (e) => {
+=======
+  checkAuthorized(){
+    let authorized = false;
+    let userId=0;
+    if (TokenService.getAuthToken()){
+      userId = TokenService.getPayload().user_id;
+    }
+
+    // check if user is in bidders
+    if (this.state.bidders && (this.state.bidders.find(bidder=>bidder.user_id===userId))){
+      authorized = true;
+    }
+    // check if user is a collaborator
+    else if (this.state.collaborators && (this.state.collaborators.find(collaborator=>collaborator.user_id===userId))){
+      authorized = true;
+    }
+
+    // set state authorized to authorized
+    this.setState({
+      authorized,
+    })
+  }
+
+  onAcceptedClick = (bidderId) =>{
+    const accepted = this.state.accepted;
+    accepted[bidderId] = bidderId;
+    const declined = this.state.declined;
+    if (bidderId in this.state.declined){
+      delete declined[bidderId];
+    }
+    this.setState({
+      accepted,
+      declined,
+    })
+  }
+
+  onDeclinedClick = (bidderId) =>{
+    const declined = this.state.declined
+    declined[bidderId] = bidderId;
+    const accepted = this.state.accepted;
+    if (bidderId in this.state.accepted){
+      delete accepted[bidderId];
+    }
+    this.setState({
+      accepted,
+      declined
+    })
+  }
+
+  getDeclinedBiddersBidsData(){
+    // get declined bidders
+    let declinedBiddersIds = Object.keys(this.state.declined);
+    declinedBiddersIds = declinedBiddersIds.map(id=>parseInt(id));
+    
+    // get bid data from the bidders
+    let declinedBiddersBids = this.state.bidders.filter(function(bidders){
+      return this.indexOf(bidders.user_id) >= 0;
+    },declinedBiddersIds)
+
+    // remove user data that does not pertain to bid
+    // and set status to declined
+    declinedBiddersBids = declinedBiddersBids.map(bid=>{
+      const {image,username,user_description, ...bidData} = bid;
+      bidData.status = "declined";
+      return bidData;
+    })
+
+    return declinedBiddersBids;
+  }
+
+  handleSubmit=(e)=>{
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
     e.preventDefault();
+
+    // get project
     const project_id = this.state.project.id;
+<<<<<<< HEAD
     console.log(this.state.accepted)
     Object.keys(this.state.accepted).forEach(collaborator_id => {
       console.log(collaborator_id, project_id);
       CollaborationApiService.postCollaborator(parseInt(collaborator_id), project_id, 'collaborator')
         .then(res => {
+=======
+
+    // for each accepted bidder set them as a collaborator
+    Object.keys(this.state.accepted).forEach(collaborator_id=>{
+      CollaborationApiService.postCollaborator(parseInt(collaborator_id),project_id,'collaborator')
+        .then(res=>{
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
           console.log(res);
         })
     })
 
+<<<<<<< HEAD
+=======
+    //for each declined bidder change the status of their bid to declined
+    const declinedBids = this.getDeclinedBiddersBidsData();
+    declinedBids.forEach(bid=>{
+      BidsApiService.updateBid(bid)
+        .then(res=>{
+          console.log(res);
+        })
+    });
+
+    // fetch call to update project to make sure openForBids is false
+    const project = this.state.project;
+    project.openForBids = false;
+    console.log('Sending project:',project)
+
+    // remove open as that key is only used on the client side
+    const {open, ...updatedProject} = project
+    ProjectApiService.updateProject(updatedProject)
+      .then((res)=>{
+        this.setProject();
+      })
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
   }
 
   componentDidMount() {
@@ -108,13 +253,13 @@ class Project extends Component {
           });
         });
     }
+
+    // set project
     this.setProject();
-
-
-    // fetch call to check collaborators/bidders on project
-    // fetch call to get bidders for owner to see
-    // if user matches one of the collaborators setstate authorized to true
-    // if user matches owner setstate owner to true
+      // fetch call to check collaborators/bidders on project
+      // fetch call to get bidders for owner to see
+      // if user matches one of the collaborators setstate authorized to true
+      // if user matches owner setstate owner to true
 
   }
 
@@ -122,7 +267,6 @@ class Project extends Component {
 
     if (this.state.project && parseInt(this.props.match.params.id) !== this.state.project.id) {
       this.setProject();
-
     }
   }
 
@@ -130,27 +274,42 @@ class Project extends Component {
     // list of bidders or collaborators
     // and message system
     let display = [];
-    if (this.state.bidsOpen) {
+    if (this.state.project.openForBids) {
       display = <>
+<<<<<<< HEAD
         <form id="bidder-form" onSubmit={this.handleSubmit} style={{ listStyle: "none" }}>
           <BidderList
             onDeclineClick={(e) => this.onDeclinedClick(e.target.value)}
             onAcceptClick={(e) => this.onAcceptedClick(e.target.value)}
+=======
+        <div className="mbl-separator">
+          <h2>ACTIVE BIDDERS:</h2>
+          <hr />
+        </div>
+        <form onSubmit={this.handleSubmit} style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
+          <BidderList 
+            onDeclineClick={(e)=>this.onDeclinedClick(e.target.value)} 
+            onAcceptClick={(e)=>this.onAcceptedClick(e.target.value)} 
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
             bidders={this.state.bidders}
           />
           <button className="bidder-btn" type="submit">SUBMIT</button>
         </form>
       </>
     } else {
+      const collaboratorUsers = []
+      this.state.collaborators.forEach(
+        (collaborator,i)=>
+          collaboratorUsers.push(<li key={i}>{collaborator.username}</li>)
+      )
       display = <>
         <h2>Collaborators:</h2>
         <ul>
-          <li key={2}>User 2</li>
-          <li key={3}>User 3</li>
+          {collaboratorUsers}
         </ul>
         <section>Comments Displayed Here...</section>
         <form>
-          <input type="text"></input>
+          <input type="textarea"></input>
           <buton className='btn'>Submit</buton>
         </form>
       </>
@@ -163,8 +322,7 @@ class Project extends Component {
   renderCollaborator() {
     // status whether project is still pending, closed and have become a collaborator or not
     // if collaborator, have access to message system
-    const projectOpen = true;
-    return (projectOpen) ? <></> : <>{'Comments displayed here'}</>
+    return (this.state.project.openForBids) ? <></> : <>{'Comments displayed here'}</>
   }
 
   renderNonCollaborator() {
@@ -188,8 +346,13 @@ class Project extends Component {
     return (
       <section className="main-grid">
         <SideBar />
+<<<<<<< HEAD
         <main style={{ paddingTop: "30px" }}>
           <div class="mbl-separator">
+=======
+        <main style={{paddingTop: "30px"}}>
+          <div className="mbl-separator">
+>>>>>>> 196d1fad2968d8ec87a5f23c2b3afdda30fc9588
             <h2>PROJECT SPECS:</h2>
             <hr />
           </div>

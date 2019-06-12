@@ -2,6 +2,17 @@ import config from '../config';
 import TokenService from './token-service';
 
 const BidsApiService = {
+  // /bids/others/:bid_id for PATCH
+  updateBid(bid){
+    return fetch(`${config.API_ENDPOINT}/bids/others/${bid.id}`,{
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify(bid)
+    })
+  },
   postBid(bid) {
     return fetch(`${config.API_ENDPOINT}/bids`,{
       method: 'POST',
