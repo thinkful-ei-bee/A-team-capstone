@@ -2,6 +2,17 @@ import config from '../config';
 import TokenService from './token-service';
 
 const ProjectApiService = {
+  // PATCH /api/project/:project_id 
+  updateProject(project){
+    return fetch(`${config.API_ENDPOINT}/project/${project.id}`,{
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify(project),
+    })
+  },
   submitProject(project) {
     return fetch(`${config.API_ENDPOINT}/projects`, {
       method: 'POST',
