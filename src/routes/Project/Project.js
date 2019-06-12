@@ -84,10 +84,34 @@ class Project extends Component {
       })
   }
 
+  getDeclinedBiddersBidsData(){
+    // get declined bidders
+    let declinedBiddersIds = Object.keys(this.state.declined);
+    declinedBiddersIds = declinedBiddersIds.map(id=>parseInt(id));
+    
+    // get bid data from the bidders
+    let declinedBiddersBids = this.state.bidders.filter(function(bidders){
+      return this.indexOf(bidders.user_id) >= 0;
+    },declinedBiddersIds)
+
+    // remove user data that does not pertain to bid
+    // and set status to declined
+    declinedBiddersBids = declinedBiddersBids.map(bid=>{
+      const {image,username,user_description, ...bidData} = bid;
+      bidData.status = "declined";
+      return bidData;
+    })
+
+    return declinedBiddersBids;
+  }
+
   handleSubmit=(e)=>{
     e.preventDefault();
+
+    // get project
     const project_id = this.state.project.id;
-    console.log(this.state.accepted)
+
+    // for each accepted bidder set them as a collaborator
     Object.keys(this.state.accepted).forEach(collaborator_id=>{
       console.log(collaborator_id,project_id);
       CollaborationApiService.postCollaborator(parseInt(collaborator_id),project_id,'collaborator')
@@ -95,7 +119,16 @@ class Project extends Component {
           console.log(res);
         })
     })
-    Object.keys(this.state.declined).forEach()
+
+    //for each declined bidder change the status of their bid to declined
+    const declinedBids = this.getDeclinedBiddersBidsData();
+    declinedBids.forEach(bid=>{
+      BidsApiService.updateBid(bid)
+        .then(res=>{
+          console.log(res);
+        })
+    });
+    
     
   }
 
