@@ -60,7 +60,7 @@ export default class AccountPanel extends React.Component {
       <li key={i}><Link to={`/projects/${bid.project_id}`}>{bid.project_name}</Link></li>
     ));
     
-    this.state.projects.forEach(project=>projects.push(<Link to={`/projects/${project.id}`}>{project.project_name}</Link>))
+    this.state.projects.forEach(project=>projects.push(<Link key={project.id} to={`/projects/${project.id}`}>{project.project_name}</Link>))
       return (
         TokenService.hasAuthToken()
           ? <article className="account-panel">
