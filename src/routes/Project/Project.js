@@ -27,12 +27,12 @@ class Project extends Component {
     ProjectApiService.getProject(projectId)
       .then(project => {
         this.setState({
-          project: { ...project[0], open:true }
-        },this.checkOwner)
+          project: { ...project[0], open: true }
+        }, this.checkOwner)
       })
   }
 
-  checkOwner(){
+  checkOwner() {
     // if the current user is the owner then state owner will be set to true
     if (this.state.project.owner_id === TokenService.getPayload().user_id) {
       this.setState({
@@ -59,10 +59,10 @@ class Project extends Component {
     }
   }
 
-  getBidders(){
+  getBidders() {
     const project_id = this.state.project.id;
     BidsApiService.getBidders(project_id)
-      .then(bidders=>{
+      .then(bidders => {
         this.setState({
           bidders,
         })
@@ -218,17 +218,13 @@ class Project extends Component {
     let display = [];
     if (this.state.project.openForBids) {
       display = <>
-        <div className="mbl-separator">
-          <h2>ACTIVE BIDDERS:</h2>
-          <hr />
-        </div>
-        <form onSubmit={this.handleSubmit} style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
-          <BidderList 
-            onDeclineClick={(e)=>this.onDeclinedClick(e.target.value)} 
-            onAcceptClick={(e)=>this.onAcceptedClick(e.target.value)} 
+        <form id="bidder-form" onSubmit={this.handleSubmit} style={{ listStyle: "none" }}>
+          <BidderList
+            onDeclineClick={(e) => this.onDeclinedClick(e.target.value)}
+            onAcceptClick={(e) => this.onAcceptedClick(e.target.value)}
             bidders={this.state.bidders}
           />
-          <button type="submit">Submit</button>
+          <button className="bidder-btn" type="submit">SUBMIT</button>
         </form>
       </>
     } else {
@@ -290,6 +286,10 @@ class Project extends Component {
             {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project}></SingleProject> : ''}
           </section>
           <section id="project-page-bidders">
+          <div class="mbl-separator" style={{paddingRight: "0"}}>
+          <h2>PENDING BIDDERS:</h2>
+          <hr />
+        </div>
             {display}
           </section>
         </main>

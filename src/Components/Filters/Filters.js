@@ -34,14 +34,7 @@ export default class Filters extends React.Component {
                     </form>
                 </div>
 
-                <div>
-                    <select className="spec_filter" value={this.state.language} onChange={(e) => this.changeSelection(e)}>
-                        <option name="language" value="">No Filter</option>
-                        <option name="language" value="HTML">HTML</option>
-                        <option name="language" value="CSS">CSS</option>
-                        <option name="language" value="JavaScript">JavaScript</option>
-                    </select>
-                </div>
+                
 
                 {/* not implementing this filter for now
                         
