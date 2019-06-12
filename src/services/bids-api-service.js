@@ -2,6 +2,7 @@ import config from '../config';
 import TokenService from './token-service';
 
 const BidsApiService = {
+  // /bids/others/:bid_id for PATCH
   postBid(bid) {
     return fetch(`${config.API_ENDPOINT}/bids`,{
       method: 'POST',
