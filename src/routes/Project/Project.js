@@ -21,11 +21,11 @@ class Project extends Component {
     declined: {},
   }
 
-  onAcceptedClick = (user) =>{
+  onAcceptedClick = (user) => {
     const accepted = this.state.accepted;
     accepted[user] = 1;
     const declined = this.state.declined;
-    if (user in this.state.declined){
+    if (user in this.state.declined) {
       delete declined[user];
     }
     this.setState({
@@ -34,11 +34,11 @@ class Project extends Component {
     })
   }
 
-  onDeclinedClick = (user) =>{
+  onDeclinedClick = (user) => {
     const declined = this.state.declined
     declined[user] = 1;
     const accepted = this.state.accepted;
-    if (user in this.state.accepted){
+    if (user in this.state.accepted) {
       delete accepted[user];
     }
     this.setState({
@@ -54,48 +54,48 @@ class Project extends Component {
       .then(project => {
         this.setState({
           project: { ...project[0], open: true }
-        },this.checkOwner)
+        }, this.checkOwner)
       })
   }
 
-  checkOwner(){
+  checkOwner() {
     // if the current user is the owner then state owner will be set to true
     if (this.state.project.owner_id === TokenService.getPayload().user_id) {
       this.setState({
         owner: true
-      },this.checkIfOpen())
+      }, this.checkIfOpen())
     }
   }
 
-  checkIfOpen(){
-    if (this.state.project.open){
+  checkIfOpen() {
+    if (this.state.project.open) {
       this.getBidders();
     }
     // else return comments display
   }
 
-  getBidders(){
+  getBidders() {
     const project_id = this.state.project.id;
     BidsApiService.getBidders(project_id)
-      .then(bidders=>{
+      .then(bidders => {
         this.setState({
           bidders,
         })
       })
   }
 
-  handleSubmit=(e)=>{
+  handleSubmit = (e) => {
     e.preventDefault();
     const project_id = this.state.project.id;
     console.log(this.state.accepted)
-    Object.keys(this.state.accepted).forEach(collaborator_id=>{
-      console.log(collaborator_id,project_id);
-      CollaborationApiService.postCollaborator(parseInt(collaborator_id),project_id,'collaborator')
-        .then(res=>{
+    Object.keys(this.state.accepted).forEach(collaborator_id => {
+      console.log(collaborator_id, project_id);
+      CollaborationApiService.postCollaborator(parseInt(collaborator_id), project_id, 'collaborator')
+        .then(res => {
           console.log(res);
         })
     })
-    
+
   }
 
   componentDidMount() {
@@ -132,17 +132,13 @@ class Project extends Component {
     let display = [];
     if (this.state.bidsOpen) {
       display = <>
-        <div class="mbl-separator">
-          <h2>ACTIVE BIDDERS:</h2>
-          <hr />
-        </div>
-        <form onSubmit={this.handleSubmit} style={{listStyle: "none", paddingLeft: "30px", paddingTop: "15px"}}>
-          <BidderList 
-            onDeclineClick={(e)=>this.onDeclinedClick(e.target.value)} 
-            onAcceptClick={(e)=>this.onAcceptedClick(e.target.value)} 
+        <form id="bidder-form" onSubmit={this.handleSubmit} style={{ listStyle: "none" }}>
+          <BidderList
+            onDeclineClick={(e) => this.onDeclinedClick(e.target.value)}
+            onAcceptClick={(e) => this.onAcceptedClick(e.target.value)}
             bidders={this.state.bidders}
           />
-          <button type="submit">Submit</button>
+          <button className="bidder-btn" type="submit">SUBMIT</button>
         </form>
       </>
     } else {
@@ -192,7 +188,7 @@ class Project extends Component {
     return (
       <section className="main-grid">
         <SideBar />
-        <main style={{paddingTop: "30px"}}>
+        <main style={{ paddingTop: "30px" }}>
           <div class="mbl-separator">
             <h2>PROJECT SPECS:</h2>
             <hr />
@@ -201,6 +197,10 @@ class Project extends Component {
             {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project}></SingleProject> : ''}
           </section>
           <section id="project-page-bidders">
+          <div class="mbl-separator" style={{paddingRight: "0"}}>
+          <h2>PENDING BIDDERS:</h2>
+          <hr />
+        </div>
             {display}
           </section>
         </main>
