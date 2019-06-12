@@ -277,13 +277,8 @@ class Project extends Component {
     return (
       <section className="main-grid">
         <SideBar />
-<<<<<<< HEAD
-        <main style={{ paddingTop: "15px" }}>
-          <div class="mbl-separator">
-=======
         <main style={{paddingTop: "30px"}}>
           <div className="mbl-separator">
->>>>>>> d868634362271e0b8457ec10d26b94a0504a111d
             <h2>PROJECT SPECS:</h2>
             <hr />
           </div>
