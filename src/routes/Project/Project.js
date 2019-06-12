@@ -129,7 +129,6 @@ class Project extends Component {
         })
     });
     
-    
   }
 
   componentDidMount() {
