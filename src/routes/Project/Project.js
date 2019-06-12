@@ -21,12 +21,12 @@ class Project extends Component {
     declined: {},
   }
 
-  onAcceptedClick = (user) =>{
+  onAcceptedClick = (bidderId) =>{
     const accepted = this.state.accepted;
-    accepted[user] = 1;
+    accepted[bidderId] = bidderId;
     const declined = this.state.declined;
-    if (user in this.state.declined){
-      delete declined[user];
+    if (bidderId in this.state.declined){
+      delete declined[bidderId];
     }
     this.setState({
       accepted,
@@ -34,12 +34,12 @@ class Project extends Component {
     })
   }
 
-  onDeclinedClick = (user) =>{
+  onDeclinedClick = (bidderId) =>{
     const declined = this.state.declined
-    declined[user] = 1;
+    declined[bidderId] = bidderId;
     const accepted = this.state.accepted;
-    if (user in this.state.accepted){
-      delete accepted[user];
+    if (bidderId in this.state.accepted){
+      delete accepted[bidderId];
     }
     this.setState({
       accepted,
@@ -95,6 +95,7 @@ class Project extends Component {
           console.log(res);
         })
     })
+    Object.keys(this.state.declined).forEach()
     
   }
 
