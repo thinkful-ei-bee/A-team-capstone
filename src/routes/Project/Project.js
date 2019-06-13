@@ -20,7 +20,8 @@ class Project extends Component {
     bidders: [],
     accepted: {},
     declined: {},
-    collaborators:[]
+    collaborators:[],
+    updateComments: false,
   }
 
   setProject() {
@@ -41,7 +42,9 @@ class Project extends Component {
         owner: true
       }, this.checkIfOpen)
     }else{
-      this.checkIfOpen()
+      this.setState({
+        owner: false
+      },this.checkIfOpen)
     }
     // else if project is open and user is a bidder, display bid is pending message
     // else if project is closed and user is a collaborator display comments
@@ -247,8 +250,8 @@ class Project extends Component {
         <ul>
           {collaboratorUsers}
         </ul>
-        <ProjectComments project_id = {this.state.project.id}/>
         <ProjectsCommentsForm project_id={this.state.project.id}/>
+        <ProjectComments project_id = {this.state.project.id} updateComments={this.state.updateComments}/>
       </>
     }
     return <>
@@ -262,8 +265,8 @@ class Project extends Component {
     return (this.state.project.openForBids) 
       ? <>Bid is Pending</> 
       : <>
-        <ProjectComments project_id={this.state.project.id}/>
         <ProjectsCommentsForm project_id={this.state.project.id}/>
+        <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments}/>
       </>
   }
 
