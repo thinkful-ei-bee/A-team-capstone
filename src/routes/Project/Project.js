@@ -248,7 +248,7 @@ class Project extends Component {
           {collaboratorUsers}
         </ul>
         <section>Comments Displayed Here...</section>
-        <ProjectsCommentsForm />
+        <ProjectsCommentsForm project_id={this.state.project.id}/>
       </>
     }
     return <>
@@ -263,7 +263,7 @@ class Project extends Component {
       ? <>Bid is Pending</> 
       : <>
         {'Comments displayed here'} 
-        <ProjectsCommentsForm />
+        <ProjectsCommentsForm project_id={this.state.project.id}/>
       </>
   }
 
