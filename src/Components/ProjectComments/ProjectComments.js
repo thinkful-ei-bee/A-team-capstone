@@ -22,6 +22,7 @@ export default class ProjectComments extends React.Component {
     componentDidUpdate(){
       if (this.props.updateComments){
         this.getComments();
+        this.props.setUpdateComments();
       }
     }
 
