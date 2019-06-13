@@ -703,9 +703,8 @@ form > textarea {
 
 .comments-header {
   background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5),
+    to bottom right,
+    rgba(0, 0, 0, 0.45),
     rgba(253, 5, 5, 0.75)
   );
   border-radius: 5px;
@@ -718,8 +717,6 @@ form > textarea {
   display: grid;
   grid-template-columns: 50% 50%;
 }
-
-
 
 #project_comments {
   padding: 45px 30px;
