@@ -4,6 +4,7 @@ import SingleProject from '../../Components/SingleProject/SingleProject';
 import SideBar from '../../Components/SideBar/SideBar';
 import BidderList from '../../Components/BidderList/BidderList';
 import ProjectApiService from '../../services/project-api-service';
+import ProjectComments from '../../Components/ProjectComments/ProjectComments';
 import BidsApiService from '../../services/bids-api-service';
 import CollaborationApiService from '../../services/collaboration-api-service';
 import TokenService from '../../services/token-service';
@@ -206,7 +207,6 @@ class Project extends Component {
   }
 
   componentDidUpdate() {
-
     if (this.state.project && parseInt(this.props.match.params.id) !== this.state.project.id) {
       this.setProject();
     }
@@ -243,6 +243,7 @@ class Project extends Component {
           <input type="textarea"></input>
           <buton className='btn'>Submit</buton>
         </form>
+        <ProjectComments></ProjectComments>
       </>
     }
     return <>
