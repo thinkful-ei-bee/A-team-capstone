@@ -42,6 +42,9 @@ export default class ProjectsCommentsForm extends React.Component {
           .then(res=>{
             console.log(res)
           })
+          .catch(res=>{
+            this.setState({error:res.error});
+          })
         comments.value = '';
     }
 
