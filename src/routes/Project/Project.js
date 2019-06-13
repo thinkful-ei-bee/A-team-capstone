@@ -53,22 +53,23 @@ class Project extends Component {
     // check if project is open for bids
     if (this.state.project.openForBids){
       this.getBidders();
-    }else{
-    // if owner get collaborators
-      if (this.state.owner){
-       this.getCollaborators();
-      }else{
-        this.checkAuthorized();
-      }
     }
+    // if owner get collaborators
+    if (this.state.owner){
+      this.getCollaborators();
+      }else{
+      this.checkAuthorized();
+      }
+    
   }
 
   getBidders() {
     const project_id = this.state.project.id;
     BidsApiService.getBidders(project_id)
       .then(bidders => {
+        const openBidders = bidders.filter(bidder => (bidder.status !== 'accepted' && bidder.status !== 'declined'));
         this.setState({
-          bidders,
+          bidders: openBidders
         })
       },this.checkAuthorized)
   }
@@ -85,7 +86,6 @@ class Project extends Component {
   }
 
   checkAuthorized(){
-    let authorized = false;
     let userId=0;
     if (TokenService.getAuthToken()){
       userId = TokenService.getPayload().user_id;
@@ -184,7 +184,7 @@ class Project extends Component {
 
     // fetch call to update project to make sure openForBids is false
     const project = this.state.project;
-    project.openForBids = false;
+    project.openForBids = true; // temporary
     console.log('Sending project:',project)
 
     // remove open as that key is only used on the client side
@@ -192,7 +192,7 @@ class Project extends Component {
     ProjectApiService.updateProject(updatedProject)
       .then((res)=>{
         this.setProject();
-      })
+     })
   }
 
   componentDidMount() {
@@ -225,8 +225,12 @@ class Project extends Component {
     // list of bidders or collaborators
     // and message system
     let display = [];
-    if (this.state.project.openForBids) {
-      display = <>
+    if (this.state.project.openForBids && this.state.bidders.length > 0) {
+      display.push(<>
+        <div class="mbl-separator" style={{paddingRight: "0"}}>
+          <h2>PENDING BIDDERS:</h2>
+          <hr />
+        </div>
         <form id="bidder-form" onSubmit={this.handleSubmit} style={{ listStyle: "none" }}>
           <BidderList
             onDeclineClick={(e) => this.onDeclinedClick(e.target.value)}
@@ -235,22 +239,26 @@ class Project extends Component {
           />
           <button className="bidder-btn" type="submit">SUBMIT</button>
         </form>
-      </>
-    } else {
-      const collaboratorUsers = []
-      this.state.collaborators.forEach(
-        (collaborator,i)=>
-          collaboratorUsers.push(<li key={i}>{collaborator.username}</li>)
-      )
-      display = <>
+      </>);
+    }
+
+    const collaboratorUsers = []
+    this.state.collaborators.forEach(
+      (collaborator,i)=>
+        collaboratorUsers.push(<li key={i}>{collaborator.username}</li>)
+    );
+
+    if (collaboratorUsers.length > 0) {
+      display.push(<>
         <h2>Collaborators:</h2>
         <ul>
           {collaboratorUsers}
         </ul>
         <section>Comments Displayed Here...</section>
         <ProjectsCommentsForm />
-      </>
+      </>)
     }
+    
     return <>
       {display}
     </>
@@ -297,10 +305,6 @@ class Project extends Component {
             {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project}></SingleProject> : ''}
           </section>
           <section id="project-page-bidders">
-          <div class="mbl-separator" style={{paddingRight: "0"}}>
-          <h2>PENDING BIDDERS:</h2>
-          <hr />
-        </div>
             {display}
           </section>
         </main>
