@@ -61,7 +61,7 @@ export default class ProjectsCommentsForm extends React.Component {
                     <div className="section-grid-item">
                         <h2>Leave A Comment</h2>
                         <form id="comments-form"
-                            onSubmit={this.handleSubmit}>
+                            onSubmit={(ev)=>this.props.handleCommentSubmit(ev,this.state.comment)}>
                                 <div className="form-top">
                                     <p>Comment</p>
                                 </div>
@@ -73,7 +73,7 @@ export default class ProjectsCommentsForm extends React.Component {
                             <div className='password'>
                                 <label htmlFor='comments_text'>Leave Your Comments Here</label>
                                 <textarea
-                                    name='comments'
+                                    name='comment'
                                     type='text'
                                     id="comments_text"
                                     required
