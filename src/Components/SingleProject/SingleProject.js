@@ -8,7 +8,8 @@ import { faMitten } from '@fortawesome/free-solid-svg-icons'
 class SingleProject extends React.Component {
 
     state = {
-        userBidOnThis: false
+        userBidOnThis: false,
+        bidStatus: null
     }
 
     onClickBid = () => {
@@ -19,7 +20,8 @@ class SingleProject extends React.Component {
         })
             .then(() => {
                 this.setState({
-                    userBidOnThis: true
+                    userBidOnThis: true,
+                    bidStatus: null
                 },
                     this.props.updateBids());
             })
@@ -44,16 +46,20 @@ class SingleProject extends React.Component {
     componentDidMount() {
         const project = this.props.project;
         let userBid = false;
+        let bidStatus = null;
         if (TokenService.hasAuthToken()) {
             BidsApiService.getUsersBids()
                 .then(bids => {
                     bids.forEach(bid => {
+                        console.log(bid);
                         if (bid.project_id === project.id) {
                             userBid = true;
+                            bidStatus = bid.status;
                         }
                     })
                     this.setState({
-                        userBidOnThis: userBid
+                        userBidOnThis: userBid,
+                        bidStatus: bidStatus
                     })
                 })
         }
@@ -89,7 +95,7 @@ class SingleProject extends React.Component {
                 <header>
                     <h2>{title}</h2>
                 </header>
-                {(project.owner_id === userId)
+                {(project.owner_id === userId || (this.state.userBidOnThis && this.state.bidStatus === 'accepted'))
                     ? <small style={{
                         background: "red", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
@@ -98,7 +104,7 @@ class SingleProject extends React.Component {
 
                     ><i>COLLABORATOR</i></small>
                     : null}
-                {(this.state.userBidOnThis)
+                {(this.state.userBidOnThis && !(this.state.bidStatus === 'accepted' || this.state.bidStatus === 'declined'))
                     ? <small style={{
                         background: "limegreen", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
