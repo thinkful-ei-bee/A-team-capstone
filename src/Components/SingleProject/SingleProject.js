@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import TokenService from '../../services/token-service';
 import BidsApiService from '../../services/bids-api-service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -116,7 +117,7 @@ class SingleProject extends React.Component {
                         <hr className="single-project-content-separator"></hr>
                         <h3>Developers Needed:</h3> <p>{project.openPositions}</p>
                         <hr className="single-project-content-separator"></hr>
-                        <h3>Deadline:</h3> <p>{project.deadline}</p>
+                        <h3>Deadline:</h3> <p>{moment(project.deadline).format('MM-DD-YYYY')}</p>
                     </article>}
                 {renderButton
                     ? this.renderBidButton()
