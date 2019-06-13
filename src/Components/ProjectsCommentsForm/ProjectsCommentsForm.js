@@ -37,7 +37,7 @@ export default class ProjectsCommentsForm extends React.Component {
             //     this.setState({ error: res.error });
             // });
 
-        const userComment = {content: this.state.comments}
+        const userComment = {content: this.state.comment}
         CommentsApiService.postComment(this.props.project_id,userComment)
           .then(res=>{
             console.log(res)
