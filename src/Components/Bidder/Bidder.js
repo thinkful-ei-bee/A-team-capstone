@@ -2,7 +2,6 @@ import React from 'react';
 
 class Bidder extends React.Component {
 
-
   render() {
 
     return (

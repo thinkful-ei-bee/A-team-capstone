@@ -1,7 +1,7 @@
 import config from '../config';
 import TokenService from './token-service';
 
-const commentsApiService = {
+const CommentsApiService = {
   getComments(project_id) {
     return fetch(`${config.API_ENDPOINT}/comments/${project_id}`, {
       method: 'GET',
@@ -34,4 +34,4 @@ const commentsApiService = {
   }
 }
 
-export default commentsApiService;
+export default CommentsApiService;

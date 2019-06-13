@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentsApiService from '../../services/comments-api-service';
 
 export default class ProjectsCommentsForm extends React.Component {
     constructor(props) {
@@ -20,7 +21,7 @@ export default class ProjectsCommentsForm extends React.Component {
         this.setState({ error: null });
 
         //deconstruct form values into variables
-        const { comment } = ev.target;
+        const { comments } = ev.target;
         // A fetch call is made to the server from this method @ line 4/AuthApiService.js to /auth/login endpoint in the server
         // ProjectCommentApiService.postComment({
         //     comment: comment.value
@@ -35,6 +36,16 @@ export default class ProjectsCommentsForm extends React.Component {
             // .catch(res => {
             //     this.setState({ error: res.error });
             // });
+
+        const userComment = {content: this.state.comment}
+        CommentsApiService.postComment(this.props.project_id,userComment)
+          .then(res=>{
+            console.log(res)
+          })
+          .catch(res=>{
+            this.setState({error:res.error});
+          })
+        comments.value = '';
     }
 
     handleChange = event => {
@@ -50,7 +61,7 @@ export default class ProjectsCommentsForm extends React.Component {
                     <div className="section-grid-item">
                         <h2>Leave A Comment</h2>
                         <form id="comments-form"
-                            onSubmit={this.handleSubmit}>
+                            onSubmit={(ev)=>this.props.handleCommentSubmit(ev,this.state.comment)}>
                                 <div className="form-top">
                                     <p>Comment</p>
                                 </div>
@@ -62,7 +73,7 @@ export default class ProjectsCommentsForm extends React.Component {
                             <div className='password'>
                                 <label htmlFor='comments_text'>Leave Your Comments Here</label>
                                 <textarea
-                                    name='comments'
+                                    name='comment'
                                     type='text'
                                     id="comments_text"
                                     required
