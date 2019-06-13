@@ -723,8 +723,22 @@ form > textarea {
 }
 
 .project-comment {
-  border-bottom: 1px solid;
-  padding: 15px 10px;
+  padding: 5px 25px 15px;
+  border-radius: 5px;
+  border: 1px solid red;
+  margin-top: 25px;
+  box-shadow: 1px 1px 1px #999;
+  background: black;
+  color: white;
+}
+
+.project-comment > h3{
+  font-style: italic;
+  text-shadow: 1px 1px 1px red;
+}
+
+.project-comment > small{
+  color: limegreen;
 }
 /* End Project Comments */
 
