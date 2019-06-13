@@ -666,6 +666,11 @@ form > textarea {
   display: grid;
   grid-template-columns: 100%;
 }
+
+#closebidslabel {
+  color: white;
+  display: inline;
+}
 /* End Bidding Styles */
 
 /* Project Comments */

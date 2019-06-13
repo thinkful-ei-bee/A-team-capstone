@@ -272,7 +272,7 @@ class Project extends Component {
             bidders={this.state.bidders}
           />
           <input id="closebids" name="closebids" type="checkbox" checked={this.state.closeBidding} onChange={this.checkClosedBox}/>
-          <label htmlFor="closebids">Close bidding</label>
+          <label id="closebidslabel" htmlFor="closebids">Close bidding</label>
           <button className="bidder-btn" type="submit">SUBMIT</button>
         </form>
       </>);
