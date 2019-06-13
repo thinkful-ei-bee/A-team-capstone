@@ -71,18 +71,18 @@ export default class AccountPanel extends React.Component {
       <li key={i}><Link to={`/projects/${bid.project_id}`}>{bid.project_name}</Link></li>
     ));
     
-    this.state.projects.forEach(project=>projects.push(<Link key={project.id} to={`/projects/${project.id}`}>{project.project_name}</Link>));
+    this.state.projects.forEach((project, i) => projects.push(<li key={i}><Link key={project.id} to={`/projects/${project.id}`}>{project.project_name}</Link></li>));
 
-    this.state.cohorts.forEach(cohort => cohorts.push(<Link key={cohort.project_id} to={`/projects/${cohort.project_id}`}>{cohort.project_name}</Link>));
+    this.state.cohorts.forEach((cohort, i) => cohorts.push(<li key={i}><Link key={cohort.project_id} to={`/projects/${cohort.project_id}`}>{cohort.project_name}</Link></li>));
       
     return (
         TokenService.hasAuthToken()
           ? <article className="account-panel">
           <h2><i>{this.state.profile.username}</i></h2>
           <h4>PROJECTS:</h4>
-          {projects.length ? projects : <i><p>None yet....</p></i>}
+          {projects.length ? <ul>{projects}</ul> : <i><p>None yet....</p></i>}
           <h4>COHORTS:</h4>
-          {cohorts.length ? cohorts : <i><p>None yet....</p></i>}
+          {cohorts.length ? <ul>{cohorts}</ul> : <i><p>None yet....</p></i>}
           <h4 className="bids-text">BIDS:</h4>
               <ul>
                 {bids}
