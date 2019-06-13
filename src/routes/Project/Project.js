@@ -8,6 +8,7 @@ import ProjectComments from '../../Components/ProjectComments/ProjectComments';
 import BidsApiService from '../../services/bids-api-service';
 import CollaborationApiService from '../../services/collaboration-api-service';
 import TokenService from '../../services/token-service';
+import ProjectsCommentsForm from '../../Components/ProjectsCommentsForm/ProjectsCommentsForm';
 
 class Project extends Component {
 
@@ -53,9 +54,11 @@ class Project extends Component {
     if (this.state.project.openForBids){
       this.getBidders();
     }else{
-    // if not open set state bidsopen to false and get collaborators
+    // if owner get collaborators
       if (this.state.owner){
        this.getCollaborators();
+      }else{
+        this.checkAuthorized();
       }
     }
   }
@@ -90,17 +93,23 @@ class Project extends Component {
 
     // check if user is in bidders
     if (this.state.bidders && (this.state.bidders.find(bidder=>bidder.user_id===userId))){
-      authorized = true;
+      this.setState({
+        authorized:true,
+      })
     }
     // check if user is a collaborator
-    else if (this.state.collaborators && (this.state.collaborators.find(collaborator=>collaborator.user_id===userId))){
-      authorized = true;
+    else {
+      CollaborationApiService.getCohorts()
+          .then(cohorts=>{
+            console.log(cohorts);
+            if (cohorts && 
+              cohorts.find(cohort=>cohort.project_id === this.state.project.id)){
+                this.setState({
+                  authorized:true,
+                })
+            }
+          })
     }
-
-    // set state authorized to authorized
-    this.setState({
-      authorized,
-    })
   }
 
   onAcceptedClick = (bidderId) =>{
@@ -239,11 +248,7 @@ class Project extends Component {
           {collaboratorUsers}
         </ul>
         <section>Comments Displayed Here...</section>
-        <form>
-          <input type="textarea"></input>
-          <buton className='btn'>Submit</buton>
-        </form>
-        <ProjectComments></ProjectComments>
+        <ProjectsCommentsForm />
       </>
     }
     return <>
@@ -254,7 +259,12 @@ class Project extends Component {
   renderCollaborator() {
     // status whether project is still pending, closed and have become a collaborator or not
     // if collaborator, have access to message system
-    return (this.state.project.openForBids) ? <></> : <>{'Comments displayed here'}</>
+    return (this.state.project.openForBids) 
+      ? <>Bid is Pending</> 
+      : <>
+        {'Comments displayed here'} 
+        <ProjectsCommentsForm />
+      </>
   }
 
   renderNonCollaborator() {
@@ -269,7 +279,7 @@ class Project extends Component {
 
     if (this.state.owner) {
       display = this.renderOwner();
-    } else if (this.authorized) {
+    } else if (this.state.authorized) {
       display = this.renderCollaborator();
     } else {
       display = this.renderNonCollaborator();
