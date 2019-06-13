@@ -22,6 +22,7 @@ class Project extends Component {
     accepted: {},
     declined: {},
     collaborators:[],
+    closeBidding: false,
     updateComments: false,
   }
 
@@ -51,6 +52,12 @@ class Project extends Component {
     // else if project is closed and user is a collaborator display comments
     // else if project is closed and user is not a collaborator display message saying user was declined
     // else can assume user is not authorized, therefore display unauthorized
+  }
+
+  checkClosedBox = () => {
+    this.setState({
+      closeBidding: !this.state.closeBidding
+    });
   }
 
   checkIfOpen(){
@@ -188,7 +195,7 @@ class Project extends Component {
 
     // fetch call to update project to make sure openForBids is false
     const project = this.state.project;
-    project.openForBids = true; // temporary
+    project.openForBids = !this.state.closeBidding;
     console.log('Sending project:',project)
 
     // remove open as that key is only used on the client side
@@ -264,6 +271,8 @@ class Project extends Component {
             onAcceptClick={(e) => this.onAcceptedClick(e.target.value)}
             bidders={this.state.bidders}
           />
+          <input id="closebids" name="closebids" type="checkbox" checked={this.state.closeBidding} onChange={this.checkClosedBox}/>
+          <label htmlFor="closebids">Close bidding</label>
           <button className="bidder-btn" type="submit">SUBMIT</button>
         </form>
       </>);
