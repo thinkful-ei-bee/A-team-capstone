@@ -9,6 +9,7 @@ import BidsApiService from '../../services/bids-api-service';
 import CollaborationApiService from '../../services/collaboration-api-service';
 import TokenService from '../../services/token-service';
 import ProjectsCommentsForm from '../../Components/ProjectsCommentsForm/ProjectsCommentsForm';
+import CommentsApiService from '../../services/comments-api-service';
 
 class Project extends Component {
 
@@ -198,6 +199,29 @@ class Project extends Component {
      })
   }
 
+  handleCommentSubmit = (ev,content) => {
+
+    ev.preventDefault();
+
+    // updates state.error
+    this.setState({ error: null });
+
+    //deconstruct form values into variables
+    const { comment } = ev.target;
+
+    const userComment = {content}
+    CommentsApiService.postComment(this.state.project.id,userComment)
+      .then(res=>{
+        this.setState({
+          updateComments: true
+        })
+      })
+      .catch(res=>{
+        this.setState({error:res.error});
+      })
+    comment.value = '';
+}
+
   componentDidMount() {
     // get Profile Info
     if (TokenService.hasAuthToken()) {
@@ -257,7 +281,7 @@ class Project extends Component {
         <ul>
           {collaboratorUsers}
         </ul>
-        <ProjectsCommentsForm project_id={this.state.project.id}/>
+        <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit}/>
         <ProjectComments project_id = {this.state.project.id} updateComments={this.state.updateComments}/>
       </>)
     }
@@ -273,7 +297,7 @@ class Project extends Component {
     return (this.state.project.openForBids) 
       ? <>Bid is Pending</> 
       : <>
-        <ProjectsCommentsForm project_id={this.state.project.id}/>
+        <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit}/>
         <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments}/>
       </>
   }
