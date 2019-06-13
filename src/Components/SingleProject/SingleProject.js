@@ -88,7 +88,7 @@ class SingleProject extends React.Component {
             userId = TokenService.getPayload().user_id;
         }
 
-        const renderButton = (userId && (project.owner_id !== userId) && !this.state.userBidOnThis)
+        const renderButton = (userId && (project.owner_id !== userId) && !this.state.userBidOnThis && project.openForBids === true)
 
         return (
             <article className={openClass} onClick={this.props.onClick}>
