@@ -1,21 +1,51 @@
 import React from 'react';
+import CommentsApiService from '../../services/comments-api-service';
 
 export default class ProjectComments extends React.Component {
+    state={
+      comments: []
+    }
+
+    getComments(){
+      CommentsApiService.getComments(this.props.project_id)
+        .then(comments=>{
+          this.setState({
+            comments
+          })
+        })
+    }
+
+    componentDidMount(){
+      this.getComments();
+    }
+
+    componentDidUpdate(){
+      if (this.props.updateComments){
+        this.getComments();
+      }
+    }
+
 
     render() {
+      const commentsList = [];
+      this.state.comments.forEach(comment=>{
+        commentsList.push(
+          <article className="project-comment" key={comment.id}>
+            <h3>{comment.author_id}</h3>
+            <p>{comment.content}</p>
+            <strong>{comment.date_created}</strong>
+          </article>
+        )
+      })
         return (
             <section id="project_comments">
                 <header className="comments-header">
                     <div className="comments-header-grid">
-                        <p>1 Comment</p>
+                        <p>{commentsList.length} {commentsList.length !== 1 ? 'Comments' : 'Comment'}</p>
                         <p>Comments on This Project</p>
                     </div>
                 </header>
-                <article className="project-comment">
-                    <h3>Collaborator Name Goes Here...</h3>
-                    <p>t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum</p>
-                    <strong>July 13 2019</strong>
-                </article>
+                {commentsList}
             </section>
         )
     }
