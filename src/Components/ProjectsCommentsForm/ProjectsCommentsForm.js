@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentsApiService from '../../services/comments-api-service';
 
 export default class ProjectsCommentsForm extends React.Component {
     constructor(props) {
@@ -20,7 +21,7 @@ export default class ProjectsCommentsForm extends React.Component {
         this.setState({ error: null });
 
         //deconstruct form values into variables
-        const { comment } = ev.target;
+        const { comments } = ev.target;
         // A fetch call is made to the server from this method @ line 4/AuthApiService.js to /auth/login endpoint in the server
         // ProjectCommentApiService.postComment({
         //     comment: comment.value
@@ -35,6 +36,13 @@ export default class ProjectsCommentsForm extends React.Component {
             // .catch(res => {
             //     this.setState({ error: res.error });
             // });
+
+        const userComment = {content: this.state.comments}
+        CommentsApiService.postComment(this.props.project_id,userComment)
+          .then(res=>{
+            console.log(res)
+          })
+        comments.value = '';
     }
 
     handleChange = event => {
