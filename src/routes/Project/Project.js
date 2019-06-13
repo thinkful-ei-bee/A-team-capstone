@@ -170,6 +170,12 @@ class Project extends Component {
     return declinedBiddersBids;
   }
 
+  setUpdateComments = ()=>{
+    this.setState({
+      updateComments: !this.state.updateComments
+    })
+  }
+
   handleSubmit=(e)=>{
     e.preventDefault();
 
@@ -219,9 +225,7 @@ class Project extends Component {
     const userComment = {content}
     CommentsApiService.postComment(this.state.project.id,userComment)
       .then(res=>{
-        this.setState({
-          updateComments: true
-        })
+        this.setUpdateComments();
       })
       .catch(res=>{
         this.setState({error:res.error});
@@ -291,7 +295,7 @@ class Project extends Component {
           {collaboratorUsers}
         </ul>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit}/>
-        <ProjectComments project_id = {this.state.project.id} updateComments={this.state.updateComments}/>
+        <ProjectComments project_id = {this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments}/>
       </>)
     }
     
@@ -307,7 +311,7 @@ class Project extends Component {
       ? <>Bid is Pending</> 
       : <>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit}/>
-        <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments}/>
+        <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments}/>
       </>
   }
 
