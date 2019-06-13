@@ -14,7 +14,7 @@ export default class ProjectComments extends React.Component {
                 <article className="project-comment">
                     <h3>Collaborator Name Goes Here...</h3>
                     <p>t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum</p>
-                    <strong>July 13 2019</strong>
+                    <span><small>Posted On: </small></span><small>July 13 2019</small>
                 </article>
             </section>
         )
