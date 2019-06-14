@@ -1,9 +1,10 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import SingleProject from "../SingleProject/SingleProject";
 import Filters from "../Filters/Filters";
 import SideBar from "../SideBar/SideBar";
 import ProjectApiService from '../../services/project-api-service';
-
+import TokenService from '../../services/token-service';
 
 class MainPage extends React.Component {
 
@@ -89,13 +90,16 @@ class MainPage extends React.Component {
 
     render() {
         const projects = this.state.projects;
-        
+        if (!TokenService.hasAuthToken()) {
+            return <Redirect to='/landing' />
+        }
+
         return (
             <section className="main-grid">
                 <SideBar updateBids={this.state.updateBids}></SideBar>
                 <main>
                     <Filters setSearch={this.setSearch}></Filters>
-                    <div class="mbl-separator">
+                    <div className="mbl-separator">
                         <h5>PROJECTS</h5>
                         <hr />
                     </div>

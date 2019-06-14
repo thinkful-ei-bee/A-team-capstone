@@ -1,6 +1,6 @@
 .section-grid{
     display: grid;
-    grid-template-columns: 33% 33%;
+    grid-template-columns: auto auto auto;
 }
 .section-grid-item{
     text-align: center;

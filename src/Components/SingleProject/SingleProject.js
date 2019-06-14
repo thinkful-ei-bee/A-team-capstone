@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import TokenService from '../../services/token-service';
 import BidsApiService from '../../services/bids-api-service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,7 +8,8 @@ import { faMitten } from '@fortawesome/free-solid-svg-icons'
 class SingleProject extends React.Component {
 
     state = {
-        userBidOnThis: false
+        userBidOnThis: false,
+        bidStatus: null
     }
 
     onClickBid = () => {
@@ -18,7 +20,8 @@ class SingleProject extends React.Component {
         })
             .then(() => {
                 this.setState({
-                    userBidOnThis: true
+                    userBidOnThis: true,
+                    bidStatus: null
                 },
                     this.props.updateBids());
             })
@@ -28,7 +31,7 @@ class SingleProject extends React.Component {
         const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp fa-2x" />
         return <>
             <button onClick={this.onClickBid} className="bid-btn"><small style={{
-                color: "red", color: "red",
+                color: "red",
                 
                 fontSize: "10px",
                 left: "25px",
@@ -43,16 +46,19 @@ class SingleProject extends React.Component {
     componentDidMount() {
         const project = this.props.project;
         let userBid = false;
+        let bidStatus = null;
         if (TokenService.hasAuthToken()) {
             BidsApiService.getUsersBids()
                 .then(bids => {
                     bids.forEach(bid => {
                         if (bid.project_id === project.id) {
                             userBid = true;
+                            bidStatus = bid.status;
                         }
                     })
                     this.setState({
-                        userBidOnThis: userBid
+                        userBidOnThis: userBid,
+                        bidStatus: bidStatus
                     })
                 })
         }
@@ -81,14 +87,14 @@ class SingleProject extends React.Component {
             userId = TokenService.getPayload().user_id;
         }
 
-        const renderButton = (userId && (project.owner_id !== userId) && !this.state.userBidOnThis)
+        const renderButton = (userId && (project.owner_id !== userId) && !this.state.userBidOnThis && project.openForBids === true)
 
         return (
             <article className={openClass} onClick={this.props.onClick}>
                 <header>
                     <h2>{title}</h2>
                 </header>
-                {(project.owner_id === userId)
+                {(project.owner_id === userId || (this.state.userBidOnThis && this.state.bidStatus === 'accepted'))
                     ? <small style={{
                         background: "red", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
@@ -97,7 +103,7 @@ class SingleProject extends React.Component {
 
                     ><i>COLLABORATOR</i></small>
                     : null}
-                {(this.state.userBidOnThis)
+                {(this.state.userBidOnThis && !(this.state.bidStatus === 'accepted' || this.state.bidStatus === 'declined'))
                     ? <small style={{
                         background: "limegreen", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
@@ -116,7 +122,7 @@ class SingleProject extends React.Component {
                         <hr className="single-project-content-separator"></hr>
                         <h3>Developers Needed:</h3> <p>{project.openPositions}</p>
                         <hr className="single-project-content-separator"></hr>
-                        <h3>Deadline:</h3> <p>{project.deadline}</p>
+                        <h3>Deadline:</h3> <p>{moment(project.deadline).format('MM-DD-YYYY')}</p>
                     </article>}
                 {renderButton
                     ? this.renderBidButton()

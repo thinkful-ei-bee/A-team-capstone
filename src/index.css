@@ -176,6 +176,7 @@ ul.bars {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  text-align: center;
 }
 
 #landing-form {
@@ -288,6 +289,9 @@ ul.bars {
   margin: 0;
 }
 
+.mbl-separator > h2 {
+  margin-bottom: 5px;
+}
 .sidebar {
   background: red;
   padding: 30px;
@@ -346,8 +350,8 @@ ul.bars {
 }
 
 .single-project-content-separator {
-  border-bottom: 0.5px solid red;
-  border-top: 0.5px solid red;
+  border-bottom: 0.5px solid darkred;
+  border-top: 0.5px solid darkred;
 }
 
 .bid-btn {
@@ -355,7 +359,7 @@ ul.bars {
   color: white;
   border: 1px solid white;
   border-radius: 5px;
-  padding: 10px 5px 7px 10px;
+  padding: 4px 0px 3px 6px;
   bottom: -20px;
   position: absolute;
   width: auto;
@@ -438,23 +442,38 @@ ul.bars {
 .project-page-grid {
   display: grid;
   grid-template-columns: 100%;
-  padding: 30px;
+  padding: 10px 30px 15px;
+}
+
+#project-page-bidders {
+  padding: 35px;
 }
 
 #project-page-bidders > ul {
   list-style: none;
+  padding-left: 15px;
 }
 
-#project-page-bidders > ul > li > button.btn{
+#project-page-bidders > ul > li > h3 {
+  display: inline;
+    background: linear-gradient( to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(253, 5, 5, 0.9) );
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid white;
+    box-shadow: 1px 1px 1px #999;
+}
+
+#project-page-bidders > ul > li > button.btn {
   margin: 0 5px 10px;
   text-align: center;
   border: 2px solid white;
   box-shadow: 1px 1px 1px #999;
   font-weight: 600;
   text-transform: uppercase;
-  padding-left:17px;
+  padding-left: 17px;
   font-size: 14px;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
 /* End Project Page Styles */
@@ -472,9 +491,16 @@ ul.bars {
 
 .account-panel > h4 {
   margin-bottom: 3px;
+  -webkit-text-stroke-width: 0.0001px;
+  -webkit-text-stroke-color: red;
 }
 
-.account-panel > h3 {
+.account-panel > .bids-text {
+  -webkit-text-stroke-color: limegreen;
+  margin-bottom: -8px;
+}
+
+.account-panel > h2 {
   text-shadow: 1px 1px 1px red;
 }
 .account-panel > i > p {
@@ -583,6 +609,202 @@ form > textarea {
 }
 /* End Form Styles */
 
+/* Bidding Styles */
+#bidder-form {
+  border-radius: 7px;
+  max-width: 397px;
+  padding: 10px 30px 30px;
+  box-shadow: 2px 2px 2px #999;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
+  );
+  color: white;
+  margin-top: 35px;
+  margin-left: 30px;
+  border: 1px solid white;
+}
+
+#bidder-form > div > h3 {
+  margin: -17px 0 10px;
+  text-shadow: 1px 1px 1px red;
+  font-style: italic;
+  max-width: 145px;
+  padding: 7px 0;
+  background: red;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid white;
+}
+
+#bidder-input > .bidder-input-grid > div > label {
+  display: block;
+  padding-left: 0;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+#bidder-input > .bidder-input-grid > div {
+  padding: 15px 10px 15px 0;
+  text-align: left;
+}
+
+#bidder-input {
+  margin: 20px 0 25px;
+  padding: 20px 15px 10px 15px;
+  border-bottom: 2px solid red;
+}
+
+#bidder-input:last-child {
+  border-bottom: 0;
+}
+.bidder-btn {
+  border: 1px solid white;
+  border-radius: 5px;
+  background: green;
+  padding: 8px 8px 6px 7px;
+  color: white;
+  display: block;
+  width: 50%;
+  margin-top: 30px;
+  font-size: 20px;
+  font-family: "Rubik";
+}
+
+.bidder-input-grid {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+#closebidslabel {
+  color: white;
+  display: inline;
+}
+/* End Bidding Styles */
+
+/* Project Comments */
+#comment_text {
+  width: 100%;
+}
+
+.comment-grid {
+  display: grid;
+  grid-template-columns: 20% auto 20%;
+}
+
+#comments-form {
+  display: block;
+  /* width: 100%; */
+  max-width: 600px;
+  margin-left: 0;
+}
+
+#comments-form > .form-body > button.btn {
+  margin-left: 0;
+  padding-left: 20px;
+  border: 1px solid white;
+  box-shadow: 1px 1px 1px #999;
+}
+
+#comments_text {
+  border: 0.5px solid #333;
+    height: 30px;
+    border-radius: 2px;
+    padding: 5px 5px 0 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    margin-left: 0;
+}
+
+.form-body {
+  /* padding: 15px; */
+}
+
+#comments-section {
+  margin-top: 90px;
+}
+
+#comments-section > div > #comments-form{
+  box-shadow: none;
+  border: none;
+}
+.comments-header {
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
+  );
+  border-radius: 5px;
+  color: white;
+  padding-left: 15px;
+  box-shadow: 1px 1px 1px #999;
+  margin-bottom: 50px;
+}
+
+.comments-header > h3 {
+  margin: 15px 0;
+}
+
+.comments-header-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#project_comments {
+  padding: 15px 0;
+  max-width: 600px;
+}
+
+.project-comment {
+  padding: 5px 15px 10px;
+  border-radius: 5px;
+  border: 1px solid white;
+  margin-top: 25px;
+  box-shadow: 1px 1px 1px #999;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
+  );
+  color: white;
+}
+
+.project-comment > h3 {
+  font-style: italic;
+  text-shadow: 1px 1px 1px darkred;
+  margin: 10px 6px 0;
+  display: inline-block;
+  padding-top: 4px;
+}
+
+.project-comment > p {
+  font-size: 20px;
+  text-shadow: 1px 1px 1px #666;
+  padding: 0 5px;
+}
+
+.project-comment > small {
+  color: white;
+  display: inline-block;
+  float: right;
+  margin-right: 10px;
+  padding-top: 17px;
+  text-shadow: 1px 1px 1px red;
+}
+
+.project-comment > hr {
+  border-width: 0.35px;
+  border-color: darkred;
+}
+/* End Project Comments */
+
 /* Classes */
 .btn {
   background: black;
@@ -611,11 +833,11 @@ form > textarea {
   display: none !important;
 }
 
-.green-text{
-  color: limegreen
+.green-text {
+  color: limegreen;
 }
 
-.red-text{
+.red-text {
   color: red;
 }
 /* End Classes */
@@ -703,6 +925,10 @@ form > textarea {
     display: block;
   }
 
+  .nav-menu > li > a {
+    padding-top: 5px;
+    padding-bottom: 3px;
+  }
   .top-nav > .nav-grid > .nav-grid-item-2 > .nav-nav {
     display: block;
   }
@@ -723,7 +949,7 @@ form > textarea {
     );
     padding: 30px;
     display: inline-block;
-    height: 100%;
+    min-height: 600px;
   }
 
   #mbl-nav {
@@ -757,7 +983,6 @@ form > textarea {
 
   .spec_filter {
     height: 32px;
-    width: 32%;
   }
 
   #filter_search {

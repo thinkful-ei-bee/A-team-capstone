@@ -45,7 +45,7 @@ export default class NewProjectForm extends React.Component {
   render() {
     let error = this.state.error;
     return (
-        <section className="section ">
+        <section className="section">
             <div className="section-grid-item">
                 <h2>New Project</h2>
                 <form id="new-project-form" onSubmit={this.save}>

@@ -4,12 +4,14 @@ import ProjectApiService from '../../services/project-api-service';
 import TokenService from '../../services/token-service';
 import BidsApiService from '../../services/bids-api-service';
 import { Link } from "react-router-dom";
+import CollaborationApiService from '../../services/collaboration-api-service';
 
 export default class AccountPanel extends React.Component {
 
   state = {
     profile: {},
     projects:[],
+    cohorts:[],
     bids: [],
     updating: false,
   }
@@ -32,6 +34,13 @@ export default class AccountPanel extends React.Component {
       });
   }
 
+  getUsersCohorts = () => {
+    CollaborationApiService.getCohorts()
+      .then(cohorts => {
+        this.setState( { cohorts })
+      });
+  }
+
   // get the profile to update the state when component mounts
   componentDidMount() {
     if(TokenService.hasAuthToken()) {
@@ -42,6 +51,7 @@ export default class AccountPanel extends React.Component {
       });
       this.getUsersProjects();
       this.getUsersBids();
+      this.getUsersCohorts();
     });
     }
   }
@@ -49,25 +59,38 @@ export default class AccountPanel extends React.Component {
   componentDidUpdate(){
     if(this.props.updateBids){
       this.getUsersBids();
+      this.getUsersCohorts();
     }
   }
 
   render() {
     const projects = [];
-    const bids = [];
+    const cohorts = [];
+    let bids = [];
+    const cohortProjectIds =[];
+    this.state.cohorts.forEach((cohort, i) => {
+      cohorts.push(<li key={i}><Link key={cohort.project_id} to={`/projects/${cohort.project_id}`}>{cohort.project_name}</Link></li>)
+      cohortProjectIds.push(cohort.project_id)
+    });
+    // keep track of project ids in cohorts and filter any bid that has that same project_id
+    const filteredBids = this.state.bids.filter(function(bid){return cohortProjectIds.indexOf(bid.project_id)<0},cohortProjectIds)
     
-    this.state.bids.forEach((bid, i) => bids.push(
+    filteredBids.forEach((bid, i) => bids.push(
       <li key={i}><Link to={`/projects/${bid.project_id}`}>{bid.project_name}</Link></li>
     ));
-    
-    this.state.projects.forEach(project=>projects.push(<Link to={`/projects/${project.id}`}>{project.project_name}</Link>))
-      return (
+
+    this.state.projects.forEach((project, i) => projects.push(<li key={i}><Link key={project.id} to={`/projects/${project.id}`}>{project.project_name}</Link></li>));
+
+      
+    return (
         TokenService.hasAuthToken()
           ? <article className="account-panel">
-          <h3><i>{this.state.profile.username}</i></h3>
-          <h4>Projects:</h4>
-          {projects.length ? projects : <i><p>None yet....</p></i>}
-          <h4>Bids:</h4>
+          <h2><i>{this.state.profile.username}</i></h2>
+          <h4>PROJECTS:</h4>
+          {projects.length ? <ul>{projects}</ul> : <i><p>None yet....</p></i>}
+          <h4>COHORTS:</h4>
+          {cohorts.length ? <ul>{cohorts}</ul> : <i><p>None yet....</p></i>}
+          <h4 className="bids-text">BIDS:</h4>
               <ul>
                 {bids}
               </ul>
