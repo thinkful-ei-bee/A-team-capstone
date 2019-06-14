@@ -33,7 +33,7 @@ export default class ProjectComments extends React.Component {
           <article className="project-comment" key={comment.id}>
             <h3>{comment.author_id}</h3>
             <p>{comment.content}</p>
-            <strong>{comment.date_created}</strong>
+            <span><small><i>POSTED: </i></small></span><small>{comment.date_created}</small>
           </article>
         )
       })
