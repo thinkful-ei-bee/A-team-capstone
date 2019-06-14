@@ -298,6 +298,7 @@ class Project extends Component {
           {collaboratorUsers}
         </ul>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
+        <hr />
         <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
       </>)
     }
@@ -314,9 +315,9 @@ class Project extends Component {
       ? <>Bid is Pending</>
       : <>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
-        <div className="">
+
             <hr />
-          </div>
+          
         <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
       </>
   }
