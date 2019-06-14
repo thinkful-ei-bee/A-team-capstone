@@ -22,6 +22,7 @@ export default class ProjectComments extends React.Component {
     componentDidUpdate(){
       if (this.props.updateComments){
         this.getComments();
+        this.props.setUpdateComments();
       }
     }
 
@@ -32,19 +33,16 @@ export default class ProjectComments extends React.Component {
         commentsList.push(
           <article className="project-comment" key={comment.id}>
             <h3>{comment.author_id}</h3>
+            <small>{comment.date_created}</small>
+            <hr></hr>
             <p>{comment.content}</p>
-            <span><small><i>POSTED: </i></small></span><small>{comment.date_created}</small>
+            
           </article>
         )
       })
         return (
             <section id="project_comments">
-                <header className="comments-header">
-                    <div className="comments-header-grid">
-                        <p>{commentsList.length} {commentsList.length !== 1 ? 'Comments' : 'Comment'}</p>
-                        <p>Comments on This Project</p>
-                    </div>
-                </header>
+                
                 {commentsList}
             </section>
         )

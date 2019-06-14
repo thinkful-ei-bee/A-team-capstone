@@ -55,17 +55,25 @@ export default class ProjectsCommentsForm extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="mbl-separator">
-                    <h2>LEAVE A COMMENT:</h2>
-                    <hr />
-                </div>
-                <section className="project-comments-form-section">
-                    <div className="section-grid-item">
+                <section id="comments-section" className="section">
+
+                    <div>
+                        {/* <div className="mbl-separator" style={{padding: "0", marginRight: "10px", marginBottom: "35px"}}>
+                            <h2>COMMENTS:</h2>
+                            <hr />
+                        </div> */}
+                        <header className="comments-header">
+                            <div className="comments-header-grid">
+                                {/* <p>{commentsList.length} {commentsList.length !== 1 ? 'Comments' : 'Comment'}</p> */}
+                                <h2>PROJECT COMMENTS</h2>
+                            </div>
+                        </header>
+
                         <form id="comments-form"
                             onSubmit={(ev) => this.props.handleCommentSubmit(ev, this.state.comment)}>
-                            <div className="form-top">
-                                <p>Comment</p>
-                            </div>
+                            {/* <div className="form-top" style={{ textAlign: "center" }}>
+                                <p>COMMENT</p>
+                            </div> */}
                             <div className="form-body">
                                 <div role='alert'>
                                     {/* {error && <p className='red'>{error}</p>} */}

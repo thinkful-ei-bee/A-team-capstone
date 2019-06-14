@@ -176,6 +176,7 @@ ul.bars {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  text-align: center;
 }
 
 #landing-form {
@@ -349,8 +350,8 @@ ul.bars {
 }
 
 .single-project-content-separator {
-  border-bottom: 0.5px solid red;
-  border-top: 0.5px solid red;
+  border-bottom: 0.5px solid darkred;
+  border-top: 0.5px solid darkred;
 }
 
 .bid-btn {
@@ -445,12 +446,22 @@ ul.bars {
 }
 
 #project-page-bidders {
-  padding-left: 35px;
-  padding-right: 35px;
+  padding: 35px;
 }
 
 #project-page-bidders > ul {
   list-style: none;
+  padding-left: 15px;
+}
+
+#project-page-bidders > ul > li > h3 {
+  display: inline;
+    background: linear-gradient( to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(253, 5, 5, 0.9) );
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid white;
+    box-shadow: 1px 1px 1px #999;
 }
 
 #project-page-bidders > ul > li > button.btn {
@@ -667,6 +678,11 @@ form > textarea {
   display: grid;
   grid-template-columns: 100%;
 }
+
+#closebidslabel {
+  color: white;
+  display: inline;
+}
 /* End Bidding Styles */
 
 /* Project Comments */
@@ -681,37 +697,57 @@ form > textarea {
 
 #comments-form {
   display: block;
-  width: 100%;
-  max-width: 100%;
+  /* width: 100%; */
+  max-width: 600px;
+  margin-left: 0;
 }
 
 #comments-form > .form-body > button.btn {
   margin-left: 0;
-  width: 100%;
+  padding-left: 20px;
+  border: 1px solid white;
+  box-shadow: 1px 1px 1px #999;
 }
 
 #comments_text {
-  width: 95%;
-  margin-left: 0;
-  height: 30px;
-  margin-bottom: 20px;
-  margin-top: 30px;
+  border: 0.5px solid #333;
+    height: 30px;
+    border-radius: 2px;
+    padding: 5px 5px 0 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    margin-left: 0;
 }
 
 .form-body {
-  padding: 0 15px 15px 15px;
+  /* padding: 15px; */
 }
 
+#comments-section {
+  margin-top: 90px;
+}
+
+#comments-section > div > #comments-form{
+  box-shadow: none;
+  border: none;
+}
 .comments-header {
   background: linear-gradient(
     to bottom right,
-    rgba(0, 0, 0, 0.45),
-    rgba(253, 5, 5, 0.75)
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
   );
   border-radius: 5px;
   color: white;
-  padding-left: 30px;
+  padding-left: 15px;
   box-shadow: 1px 1px 1px #999;
+  margin-bottom: 50px;
+}
+
+.comments-header > h3 {
+  margin: 15px 0;
 }
 
 .comments-header-grid {
@@ -720,37 +756,52 @@ form > textarea {
 }
 
 #project_comments {
-  padding: 45px 0;
-  max-width: 500px;
+  padding: 15px 0;
+  max-width: 600px;
 }
 
 .project-comment {
-  padding: 5px 25px 15px;
+  padding: 5px 15px 10px;
   border-radius: 5px;
-  border: 1px solid red;
+  border: 1px solid white;
   margin-top: 25px;
   box-shadow: 1px 1px 1px #999;
-  background: black;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
+  );
   color: white;
 }
 
 .project-comment > h3 {
   font-style: italic;
-  text-shadow: 1px 1px 1px red;
+  text-shadow: 1px 1px 1px darkred;
+  margin: 10px 6px 0;
+  display: inline-block;
+  padding-top: 4px;
+}
+
+.project-comment > p {
+  font-size: 20px;
+  text-shadow: 1px 1px 1px #666;
+  padding: 0 5px;
 }
 
 .project-comment > small {
-  color: limegreen;
-  font-size: 10px;
+  color: white;
+  display: inline-block;
+  float: right;
+  margin-right: 10px;
+  padding-top: 17px;
+  text-shadow: 1px 1px 1px red;
 }
 
-.project-comment > span > small > i {
-  font-size: 10px;
-}
-
-.project-comments-form-section {
-  /* padding-left: 30px; */
-  max-width: 500px;
+.project-comment > hr {
+  border-width: 0.35px;
+  border-color: darkred;
 }
 /* End Project Comments */
 
