@@ -445,7 +445,8 @@ ul.bars {
 }
 
 #project-page-bidders {
-  padding: 35px 35px 35px 0;
+  padding-left: 35px;
+  padding-right: 35px;
 }
 
 #project-page-bidders > ul {
@@ -692,13 +693,13 @@ form > textarea {
 #comments_text {
   width: 95%;
   margin-left: 0;
-  height: 75px;
+  height: 30px;
   margin-bottom: 20px;
   margin-top: 30px;
 }
 
 .form-body {
-  padding: 15px;
+  padding: 0 15px 15px 15px;
 }
 
 .comments-header {
@@ -719,7 +720,8 @@ form > textarea {
 }
 
 #project_comments {
-  padding: 45px 30px;
+  padding: 45px 0;
+  max-width: 500px;
 }
 
 .project-comment {
@@ -732,13 +734,23 @@ form > textarea {
   color: white;
 }
 
-.project-comment > h3{
+.project-comment > h3 {
   font-style: italic;
   text-shadow: 1px 1px 1px red;
 }
 
-.project-comment > small{
+.project-comment > small {
   color: limegreen;
+  font-size: 10px;
+}
+
+.project-comment > span > small > i {
+  font-size: 10px;
+}
+
+.project-comments-form-section {
+  /* padding-left: 30px; */
+  max-width: 500px;
 }
 /* End Project Comments */
 
