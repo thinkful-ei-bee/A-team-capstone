@@ -290,13 +290,16 @@ class Project extends Component {
 
     if (collaboratorUsers.length > 0) {
       display.push(<>
-        <div className="mbl-separator" style={{ padding: "0", marginRight: "10px", marginBottom: "35px" }}>
-          <h2>COLLABORATORS:</h2>
-          <hr />
-        </div>
-        <ul>
-          {collaboratorUsers}
-        </ul>
+        <section id="collab_section">
+          <div className="mbl-separator" style={{ padding: "0", marginRight: "10px", marginBottom: "35px" }}>
+            <h2>COLLABORATORS:</h2>
+            <hr />
+          </div>
+          <ul>
+            {collaboratorUsers}
+          </ul>
+        </section>
+
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
         <hr />
         <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
@@ -315,9 +318,7 @@ class Project extends Component {
       ? <>Bid is Pending</>
       : <>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
-
-            <hr />
-          
+        <hr />
         <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
       </>
   }
