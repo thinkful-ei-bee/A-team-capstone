@@ -185,7 +185,7 @@ class Project extends Component {
     Object.keys(this.state.accepted).forEach(collaborator_id => {
       CollaborationApiService.postCollaborator(parseInt(collaborator_id), project_id, 'collaborator')
         .then(res => {
-          console.log(res);
+          
         })
     })
 
@@ -194,14 +194,14 @@ class Project extends Component {
     declinedBids.forEach(bid => {
       BidsApiService.updateBid(bid)
         .then(res => {
-          console.log(res);
+          
         })
     });
 
     // fetch call to update project to make sure openForBids is false
     const project = this.state.project;
     project.openForBids = !this.state.closeBidding;
-    console.log('Sending project:', project)
+    
 
     // remove open as that key is only used on the client side
     const { open, ...updatedProject } = project

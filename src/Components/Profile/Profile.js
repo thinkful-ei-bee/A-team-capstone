@@ -16,7 +16,6 @@ export default class Profile extends Component {
   componentDidMount(){
     ProfileApiService.getProfile()
       .then(profile=>{
-        console.log(profile)
         this.setState({
           profile,
       }, 
@@ -35,7 +34,6 @@ export default class Profile extends Component {
     render() {
       const projects = [];
       this.state.projects.forEach(project=>projects.push(project.project_name))
-      console.log(projects);
       return(
         <article className="account-panel">
                         {this.state.profile.username}
