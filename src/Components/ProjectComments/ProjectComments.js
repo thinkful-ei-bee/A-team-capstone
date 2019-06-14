@@ -37,18 +37,15 @@ export default class ProjectComments extends React.Component {
           <article className="project-comment" key={comment.id}>
             <h3>{comment.username}</h3>
             <p>{comment.content}</p>
-            <strong>{moment(formattedTime, 'YYYY-MM-DD HH:mm:ss Z').local().format('MM-DD-YYYY HH:mm:ss')}</strong>
+            <small>{moment(formattedTime, 'YYYY-MM-DD HH:mm:ss Z').local().format('MM-DD-YYYY HH:mm:ss')}</small>
+            <hr></hr>
+            <p>{comment.content}</p>
           </article>
         )
       })
         return (
             <section id="project_comments">
-                <header className="comments-header">
-                    <div className="comments-header-grid">
-                        <p>{commentsList.length} {commentsList.length !== 1 ? 'Comments' : 'Comment'}</p>
-                        <p>Comments on This Project</p>
-                    </div>
-                </header>
+                
                 {commentsList}
             </section>
         )
