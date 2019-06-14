@@ -68,7 +68,6 @@ export default class ProjectsCommentsForm extends React.Component {
                                 <h2>PROJECT COMMENTS</h2>
                             </div>
                         </header>
-
                         <form id="comments-form"
                             onSubmit={(ev) => this.props.handleCommentSubmit(ev, this.state.comment)}>
                             {/* <div className="form-top" style={{ textAlign: "center" }}>
