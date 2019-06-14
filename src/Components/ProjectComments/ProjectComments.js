@@ -37,7 +37,7 @@ export default class ProjectComments extends React.Component {
           <article className="project-comment" key={comment.id}>
             <h3>{comment.username}</h3>
             <p>{comment.content}</p>
-            <strong>{moment(formattedTime).local().format('MM-DD-YYYY HH:mm:ss')}</strong>
+            <strong>{moment(formattedTime, 'YYYY-MM-DD HH:mm:ss Z').local().format('MM-DD-YYYY HH:mm:ss')}</strong>
           </article>
         )
       })

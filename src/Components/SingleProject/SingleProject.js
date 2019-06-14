@@ -31,7 +31,7 @@ class SingleProject extends React.Component {
         const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp fa-2x" />
         return <>
             <button onClick={this.onClickBid} className="bid-btn"><small style={{
-                color: "red", color: "red",
+                color: "red",
                 
                 fontSize: "10px",
                 left: "25px",
@@ -51,7 +51,6 @@ class SingleProject extends React.Component {
             BidsApiService.getUsersBids()
                 .then(bids => {
                     bids.forEach(bid => {
-                        console.log(bid);
                         if (bid.project_id === project.id) {
                             userBid = true;
                             bidStatus = bid.status;
