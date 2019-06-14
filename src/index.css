@@ -454,6 +454,12 @@ ul.bars {
   padding-left: 5px;
 }
 
+#project-page-bidders > div > hr{
+  max-width: 600px;
+    border: .5px solid red;
+    margin-left: 0px;
+}
+
 #project-page-bidders > ul > li > h3 {
   display: inline;
   background: linear-gradient(
@@ -732,6 +738,7 @@ form > textarea {
 
 #comments-section {
   margin-top: 45px;
+  margin-bottom: 55px;
 }
 
 #comments-section > div > #comments-form {
@@ -750,7 +757,7 @@ form > textarea {
   color: white;
   padding-left: 15px;
   box-shadow: 1px 1px 1px #999;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .comments-header > .comments-header-grid > h2 {
