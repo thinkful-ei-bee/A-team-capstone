@@ -7,7 +7,7 @@ import Registration from './routes/Registration/Registration'
 import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
 import Profile from './Components/Profile/Profile';
 import MblNav from './Components/MblNav/MblNav';
-import LandingPage from './Components/LandingPage/LandingPage';
+import LandingPage from './routes/LandingPage/LandingPage';
 import ProjectCommentsForm from './Components/ProjectsCommentsForm/ProjectsCommentsForm';
 import Project from './routes/Project/Project'
 import { withRouter } from 'react-router-dom';

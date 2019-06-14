@@ -1,13 +1,46 @@
 import React from 'react';
+import AuthApiService from '../../services/auth-api-service';
 
 export default class LandingPage extends React.Component {
 
-    handleSubmit = ev => {
+    state = {
+        error: null,
+        username: '',
+        password: '',
+        email: '',
+        image: '',
+        user_description: ''
+    };
 
+    handleSubmit = ev => {
+        ev.preventDefault()
+        const { email, username, password, image, user_description } = ev.target
+
+        this.setState({ error: null })
+        AuthApiService.postUser({
+            username: username.value,
+            password: password.value,
+            email: email.value,
+            image: image.value,
+            user_description: user_description.value
+        })
+            .then(user => {
+                email.value = ''
+                username.value = ''
+                password.value = ''
+                image.value = ''
+                user_description.value = ''
+                if (this.state.error === null) {
+                    this.props.history.push('/login');
+                }
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
 
-    handleChange = ev => {
-
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     render() {
@@ -30,7 +63,7 @@ export default class LandingPage extends React.Component {
                     <div id="landing-content-left" className="landing-content-grid-item">
                         {/* <header id="landing-content-header"> */}
                         <p className="landing-content-header">Sign Up today and get full access to exclusive features, like bidding, and creating projects to be bid on!</p>
-                        <img id="cellphone" src="https://i.imgur.com/qb6G69D.png"></img>
+                        <img id="cellphone" src="https://i.imgur.com/qb6G69D.png" alt="app on mobile device"></img>
                     </div>
                     <div className="landing-content-grid-item"><form id="landing-form" onSubmit={this.handleSubmit}>
                         <div className="form-top">
@@ -48,7 +81,7 @@ export default class LandingPage extends React.Component {
                                 id='registration-user-name'
                                 placeholder="Username(Required)"
                                 className="text"
-                                value=""
+                                value={this.state.username}
                                 onChange={(ev) => this.handleChange(ev)}
                             >
                             </input>
@@ -61,7 +94,8 @@ export default class LandingPage extends React.Component {
                                 type='text'
                                 placeholder="User Profile Image"
                                 className="text"
-
+                                value={this.state.image}
+                                onChange={(ev) => this.handleChange(ev)}
                             >
                             </input>
                         </div>
@@ -74,7 +108,7 @@ export default class LandingPage extends React.Component {
                                 required
                                 placeholder="Email(Required)"
                                 className="text"
-
+                                value={this.state.email}
                                 onChange={(ev) => this.handleChange(ev)}
                             >
                             </input>
@@ -88,6 +122,8 @@ export default class LandingPage extends React.Component {
                                 required
                                 placeholder="Your Experience/Credentials"
                                 className="text"
+                                value={this.state.user_description}
+                                onChange={(ev) => {this.handleChange(ev)}}
                             >
                             </textarea>
                         </div>
@@ -100,6 +136,8 @@ export default class LandingPage extends React.Component {
                                 required
                                 placeholder="Password(Required)"
                                 className="text"
+                                value={this.state.password}
+                                onChange={ev => this.handleChange(ev)}
                             >
                             </input>
                         </div>
