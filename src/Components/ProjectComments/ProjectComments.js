@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentsApiService from '../../services/comments-api-service';
+import moment from 'moment';
 
 export default class ProjectComments extends React.Component {
     state={
@@ -32,7 +33,7 @@ export default class ProjectComments extends React.Component {
       this.state.comments.forEach(comment=>{
         commentsList.push(
           <article className="project-comment" key={comment.id}>
-            <h3>{comment.author_id}</h3>
+            <h3>{comment.username}</h3>
             <p>{comment.content}</p>
             <strong>{comment.date_created}</strong>
           </article>
