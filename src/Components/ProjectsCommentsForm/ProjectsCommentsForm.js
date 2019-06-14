@@ -12,7 +12,7 @@ export default class ProjectsCommentsForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-         // invoked after form inputs are validated
+    // invoked after form inputs are validated
     handleSubmit = ev => {
 
         ev.preventDefault();
@@ -27,24 +27,24 @@ export default class ProjectsCommentsForm extends React.Component {
         //     comment: comment.value
         // })
 
-            // form values are cleared, token is saved 
-            // .then(res => {
-            //     comment.value = '';
-            // })
+        // form values are cleared, token is saved 
+        // .then(res => {
+        //     comment.value = '';
+        // })
 
-            // updates form state.error if login fails
-            // .catch(res => {
-            //     this.setState({ error: res.error });
-            // });
+        // updates form state.error if login fails
+        // .catch(res => {
+        //     this.setState({ error: res.error });
+        // });
 
-        const userComment = {content: this.state.comment}
-        CommentsApiService.postComment(this.props.project_id,userComment)
-          .then(res=>{
-            console.log(res)
-          })
-          .catch(res=>{
-            this.setState({error:res.error});
-          })
+        const userComment = { content: this.state.comment }
+        CommentsApiService.postComment(this.props.project_id, userComment)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(res => {
+                this.setState({ error: res.error });
+            })
         comments.value = '';
     }
 
@@ -55,40 +55,49 @@ export default class ProjectsCommentsForm extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <section className="section comment-grid">
-                    {/* spacer */}
-                    <div className="section-grid-item"></div>
-                    <div className="section-grid-item">
-                        <h2>Leave A Comment</h2>
+                <section id="comments-section" className="section">
+
+                    <div>
+                        {/* <div className="mbl-separator" style={{padding: "0", marginRight: "10px", marginBottom: "35px"}}>
+                            <h2>COMMENTS:</h2>
+                            <hr />
+                        </div> */}
+                        <header className="comments-header">
+                            <div className="comments-header-grid">
+                                {/* <p>{commentsList.length} {commentsList.length !== 1 ? 'Comments' : 'Comment'}</p> */}
+                                <h2>PROJECT COMMENTS</h2>
+                            </div>
+                        </header>
+
                         <form id="comments-form"
-                            onSubmit={(ev)=>this.props.handleCommentSubmit(ev,this.state.comment)}>
-                                <div className="form-top">
-                                    <p>Comment</p>
-                                </div>
-                                <div className="form-body">
+                            onSubmit={(ev) => this.props.handleCommentSubmit(ev, this.state.comment)}>
+                            {/* <div className="form-top" style={{ textAlign: "center" }}>
+                                <p>COMMENT</p>
+                            </div> */}
+                            <div className="form-body">
                                 <div role='alert'>
-                                {/* {error && <p className='red'>{error}</p>} */}
-                            </div>
-                            
-                            <div className='password'>
-                                <label htmlFor='comments_text'>Leave Your Comments Here</label>
-                                <textarea
-                                    name='comment'
-                                    type='text'
-                                    id="comments_text"
-                                    required
-                                    placeholder="Type A Comment"
-                                    className="text"
-                                    // value={this.state.comment}
-                                    onChange={(ev) => this.handleChange(ev)}
-                                >
-                                </textarea>
-                            </div>
-                            <button className="btn submit_btn" type='submit'>
-                                SUBMIT
-                            </button>
+                                    {/* {error && <p className='red'>{error}</p>} */}
                                 </div>
-                            
+
+                                <div className='password'>
+                                    <label htmlFor='comments_text'>Leave Your Comments Here</label>
+                                    <textarea
+                                        name='comment'
+                                        type='text'
+                                        id="comments_text"
+                                        required
+                                        placeholder="Type A Comment"
+                                        className="text"
+                                        // value={this.state.comment}
+                                        onChange={(ev) => this.handleChange(ev)}
+                                    >
+                                    </textarea>
+                                </div>
+                                <button className="btn submit_btn" type='submit'>
+                                    SUBMIT
+                            </button>
+                            </div>
+
                         </form>
                     </div>
                 </section>
