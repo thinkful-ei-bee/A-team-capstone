@@ -461,12 +461,20 @@ ul.bars {
 }
 
 #project-page-bidders > ul > li > h3 {
-  display: inline;
-  color: black;
-  padding: 0 5px;
+  display: inline-block;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
+  );
+  color: white;
+  padding: 10px 15px;
   border-radius: 5px;
-  text-shadow: 1px 1px 1px darkred;
-  font-size: 24px;
+  border: 1px solid white;
+  box-shadow: 1px 1px 1px #999;
+  margin: 0 0 10px 0;
 }
 
 #project-page-bidders > ul > li > button.btn {
@@ -816,7 +824,7 @@ form > textarea {
 /* End Project Comments */
 
 /* Collab Styles */
-#collab_section{
+#collab_section {
   margin-bottom: 90px;
 }
 /* End Collab Styles */
