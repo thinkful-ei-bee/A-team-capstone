@@ -112,7 +112,6 @@ class Project extends Component {
     else {
       CollaborationApiService.getCohorts()
           .then(cohorts=>{
-            console.log(cohorts);
             if (cohorts && 
               cohorts.find(cohort=>cohort.project_id === this.state.project.id)){
                 this.setState({
@@ -264,7 +263,8 @@ class Project extends Component {
     // and message system
     let display = [];
     if (this.state.project.openForBids && this.state.bidders.length > 0) {
-      display.push(<>
+      display.push(
+      <React.Fragment key="bidderList">
         <div class="mbl-separator" style={{paddingRight: "0"}}>
           <h2>PENDING BIDDERS:</h2>
           <hr />
@@ -279,7 +279,7 @@ class Project extends Component {
           <label id="closebidslabel" htmlFor="closebids">Close bidding</label>
           <button className="bidder-btn" type="submit">SUBMIT</button>
         </form>
-      </>);
+      </React.Fragment>);
     }
 
     const collaboratorUsers = []
@@ -289,14 +289,14 @@ class Project extends Component {
     );
 
     if (collaboratorUsers.length > 0) {
-      display.push(<>
+      display.push(<React.Fragment key="collaborationList">
         <h2>Collaborators:</h2>
         <ul>
           {collaboratorUsers}
         </ul>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit}/>
         <ProjectComments project_id = {this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments}/>
-      </>)
+      </React.Fragment>)
     }
     
     return <>
