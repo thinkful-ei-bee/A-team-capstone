@@ -21,14 +21,14 @@ export default class ProjectComments extends React.Component {
 
     createConnection(id) {
       const ws = new WebSocket(config.WS_ENDPOINT + `/${id}/?token=${TokenService.getAuthToken()}`);
-  
-        ws.onopen = () => {
-          ws.send('opened ws connection!');
-        }
-  
+        
         ws.onmessage = function(e) {
-          console.log('Server said: ' + e.data);
+          if (Number(e.data) === id) {
+            this.getComments();
+          }
         }
+
+        ws.onmessage = ws.onmessage.bind(this);
 
         this.setState({
           connection: ws
