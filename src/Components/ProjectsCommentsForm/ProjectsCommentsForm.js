@@ -23,29 +23,14 @@ export default class ProjectsCommentsForm extends React.Component {
         //deconstruct form values into variables
         const { comments } = ev.target;
         // A fetch call is made to the server from this method @ line 4/AuthApiService.js to /auth/login endpoint in the server
-        // ProjectCommentApiService.postComment({
-        //     comment: comment.value
-        // })
-
-        // form values are cleared, token is saved 
-        // .then(res => {
-        //     comment.value = '';
-        // })
-
-        // updates form state.error if login fails
-        // .catch(res => {
-        //     this.setState({ error: res.error });
-        // });
-
         const userComment = { content: this.state.comment }
         CommentsApiService.postComment(this.props.project_id, userComment)
             .then(res => {
-                
+                comments.value='';
             })
             .catch(res => {
                 this.setState({ error: res.error });
             })
-        comments.value = '';
     }
 
     handleChange = event => {
