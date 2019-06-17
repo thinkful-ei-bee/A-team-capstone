@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import SingleProject from "../SingleProject/SingleProject";
-import Filters from "../Filters/Filters";
-import SideBar from "../SideBar/SideBar";
+import SingleProject from "../../Components/SingleProject/SingleProject";
+import Filters from "../../Components/Filters/Filters";
+import SideBar from "../../Components/SideBar/SideBar";
 import ProjectApiService from '../../services/project-api-service';
 import TokenService from '../../services/token-service';
 
