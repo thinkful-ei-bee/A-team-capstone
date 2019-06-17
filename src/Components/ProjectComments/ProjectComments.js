@@ -1,10 +1,13 @@
 import React from 'react';
 import CommentsApiService from '../../services/comments-api-service';
 import moment from 'moment';
+import config from '../../config';
+import TokenService from '../../services/token-service';
 
 export default class ProjectComments extends React.Component {
     state={
-      comments: []
+      comments: [],
+      connection: {}
     }
 
     getComments(){
@@ -16,14 +19,38 @@ export default class ProjectComments extends React.Component {
         })
     }
 
+    createConnection(id) {
+      const ws = new WebSocket(config.WS_ENDPOINT + `/${id}/?token=${TokenService.getAuthToken()}`);
+        
+        ws.onmessage = function(e) {
+          if (Number(e.data) === id) {
+            this.getComments();
+          }
+        }
+
+        ws.onmessage = ws.onmessage.bind(this);
+
+        this.setState({
+          connection: ws
+        });
+    }
+
     componentDidMount(){
+      console.log('comments mounted');
       this.getComments();
+      this.createConnection(this.props.project_id);
     }
 
     componentDidUpdate(){
       if (this.props.updateComments){
         this.getComments();
         this.props.setUpdateComments();
+      }
+    }
+
+    componentWillUnmount() {
+      if (this.state.connection.close) {
+        this.state.connection.close();
       }
     }
 
