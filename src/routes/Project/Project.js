@@ -201,7 +201,6 @@ class Project extends Component {
     // fetch call to update project to make sure openForBids is false
     const project = this.state.project;
     project.openForBids = !this.state.closeBidding;
-    
 
     // remove open as that key is only used on the client side
     const { open, ...updatedProject } = project
@@ -313,9 +312,7 @@ class Project extends Component {
   renderCollaborator() {
     // status whether project is still pending, closed and have become a collaborator or not
     // if collaborator, have access to message system
-    return (this.state.project.openForBids)
-      ? <>Bid is Pending</>
-      : <>
+    return <>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
         <hr />
         <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
