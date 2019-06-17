@@ -50,7 +50,6 @@ class App extends React.Component {
             <Route path={"/login"} component={Login} />
             <Route path={"/register"} component={Registration} />
             <Route path={"/new-project"} component={NewProjectForm} />
-            <Route path={"/profile"} component={Profile} />
             <Route path={"/projects/:id"} component={Project} />
           </Switch>
         </main>
