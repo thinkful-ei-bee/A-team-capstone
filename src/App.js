@@ -5,7 +5,6 @@ import MainPage from './routes/MainPage/MainPage'
 import Login from './routes/Login/Login'
 import Registration from './routes/Registration/Registration'
 import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
-import Profile from './Components/Profile/Profile';
 import MblNav from './Components/MblNav/MblNav';
 import LandingPage from './routes/LandingPage/LandingPage';
 import ProjectCommentsForm from './Components/ProjectsCommentsForm/ProjectsCommentsForm';
