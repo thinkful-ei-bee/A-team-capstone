@@ -12,7 +12,16 @@ export default class ProjectComments extends React.Component {
 
     getComments(){
       CommentsApiService.getComments(this.props.project_id)
-        .then(comments=>{
+        .then(comments => {
+
+          comments = comments.sort((comment1, comment2) => {
+            if (comment1.date_created > comment2.date_created) { 
+              return -1; 
+            } else {
+              return 1;
+            }
+          });
+
           this.setState({
             comments
           })
@@ -36,7 +45,6 @@ export default class ProjectComments extends React.Component {
     }
 
     componentDidMount(){
-      console.log('comments mounted');
       this.getComments();
       this.createConnection(this.props.project_id);
     }
