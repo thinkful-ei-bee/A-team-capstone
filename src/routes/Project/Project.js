@@ -235,6 +235,7 @@ class Project extends Component {
   componentDidMount() {
     // get Profile Info
     if (TokenService.hasAuthToken()) {
+    
       ProfileApiService.getProfile()
         .then(profile => {
           this.setState({
