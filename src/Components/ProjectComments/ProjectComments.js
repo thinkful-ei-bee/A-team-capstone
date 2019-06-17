@@ -62,6 +62,14 @@ export default class ProjectComments extends React.Component {
       }
     }
 
+    componentWillReceiveProps() {
+      // if (this.state.connection.close) {
+      //   this.state.connection.close();
+      // }
+
+      this.getComments();
+      this.createConnection(this.props.project_id);
+    }
 
     render() {
       const commentsList = [];
