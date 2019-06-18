@@ -1,5 +1,6 @@
 import React from 'react';
 import AuthApiService from '../../services/auth-api-service';
+import Footer from "../../Components/Footer/Footer";
 
 export default class LandingPage extends React.Component {
 
@@ -147,18 +148,7 @@ export default class LandingPage extends React.Component {
                     </form>
                     </div>
                 </section>
-                <section id="stats" className=" stats-grid">
-                    {/* <header class="item1"><h2>APP STATS</h2></header > */}
-                    <article className="item2 stats-grid-item">
-                    <h1><span style={{ color: "red" }}>Bid</span>Hub</h1>
-                    </article>
-                    <article className="item3 stats-grid-item">
-                        
-                    </article>
-                    <article className="item4 stats-grid-item">
-                
-                    </article>
-                </section>
+                <Footer></Footer>
             </div>
         )
     }

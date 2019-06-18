@@ -1,6 +1,6 @@
 import React from 'react';
 import RegistrationForm from '../../Components/RegistrationForm/RegistrationForm';
-
+import Footer from '../../Components/Footer/Footer';
 class Registration extends React.Component {
 
     static defaultProps = {
@@ -20,6 +20,7 @@ class Registration extends React.Component {
                 <RegistrationForm
                     onRegistrationSuccess={this.handleRegistrationSuccess}
                 />
+                <Footer></Footer>
             </section>
         )
     }

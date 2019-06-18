@@ -4,7 +4,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* Logo */
+#footer > article > #logo > h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
 
+#footer > article > #logo > h1 > span > .thumbsUp {
+  font-size: 10px;
+  margin-right:1px;
+}
+
+.LoginPage > #footer{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+/* End Logo Styles */
 /* Nav Styles */
 .top-nav > .nav-grid > .nav-grid-item-2 > .nav-nav {
   display: none;
@@ -438,6 +456,19 @@ ul.bars {
   padding: 0 46px 15px 30px;
 }
 /* End Main/Landing Styles */
+
+/* Footer Styles */
+#footer {
+  background: black;
+  border-top: 0.075px solid red;
+  padding: 10px 30px 5px;
+}
+#footer article > h1 {
+  -webkit-text-stroke-width: 0.0001px;
+  -webkit-text-stroke-color: red;
+  color: white;
+}
+/* Footer Styles */
 
 /* Project Page Styles */
 .project-page-grid {
@@ -874,6 +905,7 @@ form > textarea {
 }
 
 @media (min-width: 678px) {
+
   .text {
     width: 83%;
   }
@@ -988,6 +1020,11 @@ form > textarea {
 }
 
 @media (min-width: 992px) {
+  .LoginPage > #footer{
+    position: unset;
+    width: auto;
+  }
+
   .main-single-project-square > header > h2 {
     font-size: 16px;
   }
