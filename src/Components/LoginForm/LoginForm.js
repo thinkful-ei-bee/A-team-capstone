@@ -76,41 +76,43 @@ export default class LoginForm extends Component {
                         <p>Pass:"Demo1234!"</p>
                         <form id="login-form"
                             onSubmit={this.handleSubmitJwtAuth}>
-                                <div className="form-top">
-                                    <p>LOGIN</p>
-                                </div>
+                            <div className="form-top">
+                                <p>LOGIN</p>
+                            </div>
                             <div role='alert'>
                                 {error && <p className='red'>{error}</p>}
                             </div>
-                            <div className='user_name'>
-                                <label htmlFor='login_user_name'>Username</label>
+
+                                <label htmlFor='login_user_name'>
                                 <input
-                                    name='username'
-                                    id='login_user_name'
-                                    required
-                                    placeholder="Username(Required)"
-                                    className="text"
-                                    value={this.state.username}
-                                    onChange={(ev) => this.handleChange(ev)}
-                                    autoComplete="username"
-                                >
-                                </input>
-                            </div>
-                            <div className='password'>
-                                <label htmlFor='login_password'>Password</label>
+                                        name='username'
+                                        id='login_user_name'
+                                        aria-label= 'login_user_name'
+                                        aria-required="true"
+                                        placeholder="Username(Required)"
+                                        className="text"
+                                        value={this.state.username}
+                                        onChange={(ev) => this.handleChange(ev)}
+                                        autoComplete="username"
+                                    >
+                                    </input>
+                                </label>
+
+                                <label htmlFor='login_password'>
                                 <input
-                                    name='password'
-                                    type='password'
-                                    id="login_password"
-                                    required
-                                    placeholder="Password(Required)"
-                                    className="text"
-                                    value={this.state.password}
-                                    onChange={(ev) => this.handleChange(ev)}
-                                    autoComplete="current-password"
-                                >
-                                </input>
-                            </div>
+                                        name='password'
+                                        type='password'
+                                        id="login_password"
+                                        aria-label= 'login_password'
+                                        aria-required="true"
+                                        placeholder="Password(Required)"
+                                        className="text"
+                                        value={this.state.password}
+                                        onChange={(ev) => this.handleChange(ev)}
+                                        autoComplete="current-password"
+                                    >
+                                    </input>
+                                </label>
                             <button className="btn submit_btn" type='submit'>
                                 SUBMIT
                             </button>

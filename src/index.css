@@ -566,9 +566,9 @@ form {
   box-shadow: 1px 1px 1px #999;
 }
 
-#contact-form > div > .text,
-#login-form > div > .text,
-#new-project-form > div > .text {
+#contact-form > div > label > .text,
+#login-form > div > label > .text,
+#new-project-form > div > label > .text {
   margin-left: 0px;
 }
 
@@ -591,8 +591,6 @@ form {
   padding-bottom: 30px;
 }
 
-#login-form {
-}
 .text {
   border: 0.5px solid #333;
   width: 70%;
@@ -603,12 +601,12 @@ form {
   border-top: 0;
   border-right: 0;
   border-left: 0;
-  margin-left: 30px;
+  /* margin-left: 30px; */
 }
 
 label {
-  display: none;
-  padding-left: 30px;
+  /* display: none; */
+  /* padding-left: 30px; */
 }
 
 form > button.btn {
