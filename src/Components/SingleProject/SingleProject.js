@@ -103,7 +103,7 @@ class SingleProject extends React.Component {
 
                     ><i>COLLABORATOR</i></small>
                     : null}
-                {(this.state.userBidOnThis && !(this.state.bidStatus === 'accepted' || this.state.bidStatus === 'declined'))
+                {(this.state.userBidOnThis && this.state.bidStatus === null )
                     ? <small style={{
                         background: "limegreen", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
@@ -111,6 +111,15 @@ class SingleProject extends React.Component {
                     }
 
                     ><i>BID PENDING</i></small>
+                    : null}
+                {(this.state.userBidOnThis && this.state.bidStatus === 'declined' )
+                    ? <small style={{
+                        background: "red", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        bottom: "16px", right: "15px", border: "1px solid white"
+                    }
+                    }
+
+                    ><i>BID DECLINED</i></small>
                     : null}
                 {project.open &&
                     <article>

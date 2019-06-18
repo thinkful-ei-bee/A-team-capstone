@@ -185,7 +185,7 @@ class Project extends Component {
     Object.keys(this.state.accepted).forEach(collaborator_id => {
       CollaborationApiService.postCollaborator(parseInt(collaborator_id), project_id, 'collaborator')
         .then(res => {
-          console.log(res);
+          
         })
     })
 
@@ -194,14 +194,13 @@ class Project extends Component {
     declinedBids.forEach(bid => {
       BidsApiService.updateBid(bid)
         .then(res => {
-          console.log(res);
+          
         })
     });
 
     // fetch call to update project to make sure openForBids is false
     const project = this.state.project;
     project.openForBids = !this.state.closeBidding;
-    console.log('Sending project:', project)
 
     // remove open as that key is only used on the client side
     const { open, ...updatedProject } = project
@@ -235,6 +234,7 @@ class Project extends Component {
   componentDidMount() {
     // get Profile Info
     if (TokenService.hasAuthToken()) {
+    
       ProfileApiService.getProfile()
         .then(profile => {
           this.setState({
@@ -289,16 +289,18 @@ class Project extends Component {
     );
 
     if (collaboratorUsers.length > 0) {
-
       display.push(<React.Fragment key="collaborationList">
-        <div className="mbl-separator" style={{ padding: "0", marginRight: "10px", marginBottom: "35px" }}>
-          <h2>COLLABORATORS:</h2>
-          <hr />
-        </div>
-        <ul>
-          {collaboratorUsers}
-        </ul>
+        <section id="collab_section">
+              <div className="mbl-separator" style={{ padding: "0", marginRight: "10px", marginBottom: "35px" }}>
+              <h2>COLLABORATORS:</h2>
+              <hr />
+           </div>
+           <ul>
+             {collaboratorUsers}
+           </ul>
+        </section>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
+        <hr />
         <ProjectComments project_id = {this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
       </React.Fragment>)
     }
@@ -311,10 +313,9 @@ class Project extends Component {
   renderCollaborator() {
     // status whether project is still pending, closed and have become a collaborator or not
     // if collaborator, have access to message system
-    return (this.state.project.openForBids)
-      ? <>Bid is Pending</>
-      : <>
+    return <>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
+        <hr />
         <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
       </>
   }

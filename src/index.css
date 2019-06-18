@@ -451,17 +451,30 @@ ul.bars {
 
 #project-page-bidders > ul {
   list-style: none;
-  padding-left: 15px;
+  padding-left: 5px;
+}
+
+#project-page-bidders > hr {
+  max-width: 600px;
+  border: 0.75px solid red;
+  margin-left: 0px;
 }
 
 #project-page-bidders > ul > li > h3 {
-  display: inline;
-    background: linear-gradient( to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(253, 5, 5, 0.9) );
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 1px solid white;
-    box-shadow: 1px 1px 1px #999;
+  display: inline-block;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
+  );
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: 1px 1px 1px #999;
+  margin: 0 0 10px 0;
 }
 
 #project-page-bidders > ul > li > button.btn {
@@ -707,16 +720,17 @@ form > textarea {
   padding-left: 20px;
   border: 1px solid white;
   box-shadow: 1px 1px 1px #999;
+  border-radius: 7px;
 }
 
 #comments_text {
   border: 0.5px solid #333;
-    height: 30px;
-    border-radius: 2px;
-    padding: 5px 5px 0 5px;
-    margin-bottom: 10px;
-    width: 100%;
-    margin-left: 0;
+  height: 100px;
+  border-radius: 2px;
+  padding: 5px 5px 0 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  margin-left: 0;
 }
 
 .form-body {
@@ -724,10 +738,11 @@ form > textarea {
 }
 
 #comments-section {
-  margin-top: 90px;
+  margin-top: 45px;
+  margin-bottom: 35px;
 }
 
-#comments-section > div > #comments-form{
+#comments-section > div > #comments-form {
   box-shadow: none;
   border: none;
 }
@@ -743,16 +758,16 @@ form > textarea {
   color: white;
   padding-left: 15px;
   box-shadow: 1px 1px 1px #999;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
-.comments-header > h3 {
-  margin: 15px 0;
+.comments-header > .comments-header-grid > h2 {
+  padding: 15px 0;
 }
 
 .comments-header-grid {
-  display: grid;
-  grid-template-columns: 50% 50%;
+  /* display: grid;
+  grid-template-columns: 50% 50%; */
 }
 
 #project_comments {
@@ -802,8 +817,17 @@ form > textarea {
 .project-comment > hr {
   border-width: 0.35px;
   border-color: darkred;
+  max-width: 600px;
+  border: 0.5px solid darkred;
+  margin-left: 0px;
 }
 /* End Project Comments */
+
+/* Collab Styles */
+#collab_section {
+  margin-bottom: 90px;
+}
+/* End Collab Styles */
 
 /* Classes */
 .btn {

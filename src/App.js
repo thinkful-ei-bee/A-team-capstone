@@ -1,11 +1,10 @@
 import React from 'react';
 import { Route, Switch } from "react-router-dom";
 import TopNav from './Components/TopNav/TopNav';
-import MainPage from './Components/MainPage/MainPage'
+import MainPage from './routes/MainPage/MainPage'
 import Login from './routes/Login/Login'
 import Registration from './routes/Registration/Registration'
 import NewProjectForm from './Components/NewProjectForm/NewProjectForm';
-import Profile from './Components/Profile/Profile';
 import MblNav from './Components/MblNav/MblNav';
 import LandingPage from './routes/LandingPage/LandingPage';
 import ProjectCommentsForm from './Components/ProjectsCommentsForm/ProjectsCommentsForm';
@@ -27,8 +26,7 @@ class App extends React.Component {
   checkHeight = () =>{
     const htmlElem = document.getElementsByTagName('html')[0];
     // need to check if other browsers support html.clientHeight as well as window.outerHeight
-    if (htmlElem.clientHeight < window.outerHeight){
-      console.log('not full screen');
+    if (htmlElem.scrollHeight < window.innerHeight){
       // check to see if the html doc is full screen of the window
 
       //return class here
@@ -52,7 +50,6 @@ class App extends React.Component {
             <Route path={"/login"} component={Login} />
             <Route path={"/register"} component={Registration} />
             <Route path={"/new-project"} component={NewProjectForm} />
-            <Route path={"/profile"} component={Profile} />
             <Route path={"/projects/:id"} component={Project} />
           </Switch>
         </main>
