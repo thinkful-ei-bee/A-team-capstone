@@ -186,8 +186,9 @@ ul.bars {
 .form-top {
   background: linear-gradient(
     to bottom right,
-    rgba(0, 0, 0, 0.45),
-    rgba(253, 5, 5, 0.75)
+    rgba(0, 0, 0, 0.95),
+    rgba(0, 0, 0, 0.75),
+    rgba(253, 5, 5, 1)
   );
   padding: 30px;
 }
@@ -359,7 +360,7 @@ ul.bars {
   color: white;
   border: 1px solid white;
   border-radius: 5px;
-  padding: 4px 0px 3px 6px;
+  padding: 1px 5px 5px 6px;
   bottom: -20px;
   position: absolute;
   width: auto;
