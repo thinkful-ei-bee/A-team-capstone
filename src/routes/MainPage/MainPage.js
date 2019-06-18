@@ -97,7 +97,7 @@ class MainPage extends React.Component {
         return (
             <section className="main-grid">
                 <SideBar updateBids={this.state.updateBids}></SideBar>
-                <main>
+                <section>
                     <Filters setSearch={this.setSearch}></Filters>
                     <div className="mbl-separator">
                         <h5>PROJECTS</h5>
@@ -106,7 +106,7 @@ class MainPage extends React.Component {
                     <section className="main-project-grid">
                         {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project} onClick={() => this.alternateOpen(i)} updateBids={this.updateBids}></SingleProject>)}
                     </section>
-                </main>
+                </section>
             </section>
         )
     }
