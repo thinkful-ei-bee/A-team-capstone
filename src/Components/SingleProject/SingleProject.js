@@ -31,13 +31,11 @@ class SingleProject extends React.Component {
         const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp fa-2x" />
         return <>
             <button onClick={this.onClickBid} className="bid-btn"><small style={{
-                color: "red",
-                
+                color: "white",
                 fontSize: "10px",
                 left: "25px",
-                letterSpacing: "8px",
-                fontWeight: "600"
-            }}>{mitten}</small></button>
+               
+            }}>BID</small><p className="invisible"></p></button>
             
         </>
     }
@@ -96,29 +94,26 @@ class SingleProject extends React.Component {
                 </header>
                 {(project.owner_id === userId || (this.state.userBidOnThis && this.state.bidStatus === 'accepted'))
                     ? <small style={{
-                        background: "red", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        background: "#980000", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
                     }
                     }
-
                     ><i>COLLABORATOR</i></small>
                     : null}
                 {(this.state.userBidOnThis && this.state.bidStatus === null )
                     ? <small style={{
-                        background: "limegreen", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        background: "rgb(19, 90, 15)", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
                     }
                     }
-
                     ><i>BID PENDING</i></small>
                     : null}
                 {(this.state.userBidOnThis && this.state.bidStatus === 'declined' )
                     ? <small style={{
-                        background: "red", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
-                        bottom: "16px", right: "15px", border: "1px solid white"
+                        background: "black", color: "red", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        bottom: "16px", right: "15px", border: "1px solid red"
                     }
                     }
-
                     ><i>BID DECLINED</i></small>
                     : null}
                 {project.open &&
