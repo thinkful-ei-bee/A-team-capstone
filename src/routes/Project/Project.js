@@ -117,6 +117,10 @@ class Project extends Component {
                 this.setState({
                   authorized:true,
                 })
+            }else{
+              this.setState({
+                authorized:false,
+              })
             }
           })
     }
