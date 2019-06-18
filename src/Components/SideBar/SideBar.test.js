@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SideBar from './Sidebar';
+import SideBar from './SideBar';
 import { BrowserRouter } from "react-router-dom";
 
 it('renders without crashing', () => {
