@@ -29,7 +29,8 @@ export default class Filters extends React.Component {
             <section className="filter-box">
                 <div className="filter-grid-item">
                     <form id="filter_search" onSubmit={this.handleSubmit}>
-                        <input className="search_input" type="text" name="searchTerm" placeholder="Search" value={this.state.searchTerm} onChange={(e) => this.changeFields(e)} />
+                        <label htmlFor="search"></label>
+                        <input className="search_input" type="text" aria-label='search' name="searchTerm" placeholder="Search" value={this.state.searchTerm} onChange={(e) => this.changeFields(e)} />
                         <button id="searchBtn">S</button>
                     </form>
                 </div>
