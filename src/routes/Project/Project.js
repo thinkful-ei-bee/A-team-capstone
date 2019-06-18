@@ -341,7 +341,7 @@ class Project extends Component {
     return (
       <section className="main-grid">
         <SideBar />
-        <main style={{ paddingTop: "30px" }}>
+        <section style={{ paddingTop: "15px" }}>
           <div className="mbl-separator">
             <h2>PROJECT SPECS:</h2>
             <hr />
@@ -352,7 +352,7 @@ class Project extends Component {
           <section id="project-page-bidders">
             {display}
           </section>
-        </main>
+        </section>
       </section>
     )
   }
