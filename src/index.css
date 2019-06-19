@@ -12,6 +12,10 @@ body {
   font-size: 20px;
 }
 
+#footer > article > #logo > h1 > span {
+  color: red;
+}
+
 #footer > article > #logo > h1 > span > .thumbsUp {
   font-size: 10px;
   margin-right: 1px;
@@ -51,6 +55,10 @@ body {
   margin-top: 15px;
 }
 
+.nav-grid-item > #logo > span {
+  color: red;
+}
+
 ul.bars {
   padding-right: 0;
   margin-right: 0;
@@ -83,6 +91,29 @@ ul.bars {
 
 #mbl-nav > .nav-nav > .nav-menu {
   margin-bottom: 25px;
+}
+#mbl-nav > #logo > h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  margin: -10px 0 5px 0;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #333;
+  background: black;
+}
+#mbl-nav > #logo > h1 > span {
+  color: red;
+  text-shadow: 1.5px 1.5px 1.5px #000;
+}
+
+#mbl-nav > hr {
+  border-color: black;
+}
+
+#mbl-nav > #logo > h1 > span > .thumbsUp {
+  margin-right: 0;
+  font-size: 17px;
 }
 
 .backdrop {
@@ -218,11 +249,12 @@ ul.bars {
   max-width: 500px;
 }
 
-#landing-form > div > label > input, #landing-form > div > label > textarea{
-  margin-left:30px;
+#landing-form > div > label > input,
+#landing-form > div > label > textarea {
+  margin-left: 30px;
 }
 
-#landing_banner > article > a > button{
+#landing_banner > article > a > button {
   font-size: 20px;
   padding: 10px;
   font-family: "Rubik";
@@ -326,7 +358,7 @@ ul.bars {
   color: white;
 }
 
-.stats-grid-item-last{
+.stats-grid-item-last {
   text-align: right;
   padding-right: 30px;
 }

@@ -9,7 +9,7 @@ export default class Logo extends React.Component {
         const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp fa-4x" />
         return (
             <Link to={'/'} id="logo">
-                <h1><span style={{ color: "red" }}>{mitten}Bid</span>Hub</h1>
+                <h1><span>{mitten}Bid</span>Hub</h1>
             </Link>
         )
     }
