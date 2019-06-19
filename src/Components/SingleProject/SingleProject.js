@@ -118,8 +118,8 @@ class SingleProject extends React.Component {
                     : null}
                 {(!this.state.userBidOnThis || this.state.bidStatus === null) && project.openForBids === false && project.owner_id !== userId
                     ? <small style={{
-                        background: "black", color: "red", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
-                        bottom: "16px", right: "15px", border: "1px solid red"
+                        background: "black", color: "green", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        bottom: "16px", right: "15px", border: "1px solid green"
                     }
                     }
                     ><i>BIDDING CLOSED</i></small>
