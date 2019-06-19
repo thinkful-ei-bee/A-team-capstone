@@ -6,10 +6,10 @@ export default class SideBar extends React.Component {
 
     render() {
         return (
-            <aside className="sidebar">
+            <section className="sidebar">
                 <AccountPanel updateBids={this.props.updateBids}></AccountPanel>
                 <TipBox></TipBox>
-            </aside>
+            </section>
         )
     }
 }

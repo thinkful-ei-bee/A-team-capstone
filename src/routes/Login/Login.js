@@ -1,5 +1,6 @@
 import React, { Component} from 'react'
 import LoginForm from '../../Components/LoginForm/LoginForm'
+import Footer from '../../Components/Footer/Footer';
 
 class Login extends Component {
 
@@ -26,6 +27,7 @@ class Login extends Component {
         <LoginForm
           onLoginSuccess={this.handleLoginSuccess}
         />
+        <Footer></Footer>
       </section>
     )
   }

@@ -59,31 +59,38 @@ export default class AccountPanel extends React.Component {
   componentDidUpdate(){
     if(this.props.updateBids){
       this.getUsersBids();
+      this.getUsersCohorts();
     }
   }
 
   render() {
     const projects = [];
     const cohorts = [];
-    const bids = [];
+    let bids = [];
+    const cohortProjectIds =[];
+    this.state.cohorts.forEach((cohort, i) => {
+      cohorts.push(<li key={i}><Link key={cohort.project_id} to={`/projects/${cohort.project_id}`}>{cohort.project_name}</Link></li>)
+      cohortProjectIds.push(cohort.project_id)
+    });
+    // keep track of project ids in cohorts and filter any bid that has that same project_id
+    const filteredBids = this.state.bids.filter(function(bid){return cohortProjectIds.indexOf(bid.project_id)<0},cohortProjectIds)
     
-    this.state.bids.forEach((bid, i) => bids.push(
+    filteredBids.forEach((bid, i) => bids.push(
       <li key={i}><Link to={`/projects/${bid.project_id}`}>{bid.project_name}</Link></li>
     ));
-    
-    this.state.projects.forEach(project=>projects.push(<Link key={project.id} to={`/projects/${project.id}`}>{project.project_name}</Link>));
 
-    this.state.cohorts.forEach(cohort => cohorts.push(<Link key={cohort.project_id} to={`/projects/${cohort.project_id}`}>{cohort.project_name}</Link>));
+    this.state.projects.forEach((project, i) => projects.push(<li key={i}><Link key={project.id} to={`/projects/${project.id}`}>{project.project_name}</Link></li>));
+
       
     return (
         TokenService.hasAuthToken()
           ? <article className="account-panel">
           <h2><i>{this.state.profile.username}</i></h2>
-          <h4>PROJECTS:</h4>
-          {projects.length ? projects : <i><p>None yet....</p></i>}
-          <h4>COHORTS:</h4>
-          {cohorts.length ? cohorts : <i><p>None yet....</p></i>}
-          <h4 className="bids-text">BIDS:</h4>
+          <h3>PROJECTS:</h3>
+          {projects.length ? <ul>{projects}</ul> : <i><p>None yet....</p></i>}
+          <h3>COHORTS:</h3>
+          {cohorts.length ? <ul>{cohorts}</ul> : <i><p>None yet....</p></i>}
+          <h3 className="bids-text">BIDS:</h3>
               <ul>
                 {bids}
               </ul>
