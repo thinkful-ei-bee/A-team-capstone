@@ -71,7 +71,7 @@ export default class LandingPage extends React.Component {
                     <div id="landing-content-left" className="landing-content-grid-item">
                         {/* <header id="landing-content-header"> */}
                         <p className="landing-content-header">Sign Up today and get full access to exclusive features, like bidding, and creating projects to be bid on!</p>
-                        <img id="cellphone" src="https://i.imgur.com/qb6G69D.png" alt="app on mobile device"></img>
+                        <img id="cellphone" src="https://i.imgur.com/RYZDtjt.png" alt="app on mobile device"></img>
                     </div>
                     <div className="landing-content-grid-item"><form id="landing-form" onSubmit={this.handleSubmit}>
                         <div className="form-top">
@@ -162,6 +162,7 @@ export default class LandingPage extends React.Component {
                     </form>
                     </div>
                 </section>
+                
                 <Footer></Footer>
             </div>
         )
