@@ -4,7 +4,7 @@ import TokenService from '../../services/token-service';
 import BidsApiService from '../../services/bids-api-service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMitten } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-dom';
+import { Link } from 'react-router-dom';
 class SingleProject extends React.Component {
 
     state = {
@@ -25,6 +25,11 @@ class SingleProject extends React.Component {
                 },
                     this.props.updateBids());
             })
+    }
+
+    renderLink = (project) => {
+        const link = `/projects/${project.id}`;
+        return <Link to={link} className="project-page-link">Project Page</Link>;
     }
 
     renderBidButton = () => {
@@ -65,6 +70,7 @@ class SingleProject extends React.Component {
     render() {
 
         const project = this.props.project;
+        
         let openClass = "main-single-project-square open";
         let title = project.project_name;
 
@@ -135,6 +141,7 @@ class SingleProject extends React.Component {
                         <h3>Developers Needed:</h3> <p>{project.openPositions}</p>
                         <hr className="single-project-content-separator"></hr>
                         <h3>Deadline:</h3> <p>{moment(project.deadline).format('MM-DD-YYYY')}</p>
+                        {this.props.renderLink ? this.renderLink(project) : null}
                     </article>}
                 {renderButton
                     ? this.renderBidButton()
