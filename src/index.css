@@ -64,10 +64,10 @@ body {
 
 .nav-grid-item > #logo > h1 {
   margin-top: 13px;
-  font-size: 30px;
+  font-size: 36px;
 }
 
-.nav-grid-item > #logo > span {
+.nav-grid-item > #logo > h1 > span {
   color: red;
 }
 
