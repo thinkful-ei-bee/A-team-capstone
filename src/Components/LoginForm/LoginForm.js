@@ -57,6 +57,9 @@ export default class LoginForm extends Component {
         this.setState({ [event.target.name]: event.target.value })
     }
 
+    demoLogin = () => {
+        this.setState({username: "demo1234",password: "Demo1234!"})
+    }
 
     // render LoginForm component
     render() {
@@ -72,8 +75,8 @@ export default class LoginForm extends Component {
                     <div className="section-grid-item"></div>
                     <div className="section-grid-item">
                         <h2>Login</h2>
-                        <p>Username:"demo1234"</p>
-                        <p>Pass:"Demo1234!"</p>
+                        {/* <p>Username:"demo1234"</p>
+                        <p>Pass:"Demo1234!"</p> */}
                         <form id="login-form"
                             onSubmit={this.handleSubmitJwtAuth}>
                             <div className="form-top">
@@ -83,39 +86,45 @@ export default class LoginForm extends Component {
                                 {error && <p className='red'>{error}</p>}
                             </div>
 
-                                <label htmlFor='login_user_name'>
+                            <label htmlFor='login_user_name'>
                                 <input
-                                        name='username'
-                                        id='login_user_name'
-                                        aria-label= 'login_user_name'
-                                        aria-required="true"
-                                        placeholder="Username(Required)"
-                                        className="text"
-                                        value={this.state.username}
-                                        onChange={(ev) => this.handleChange(ev)}
-                                        autoComplete="username"
-                                    >
-                                    </input>
-                                </label>
+                                    name='username'
+                                    id='login_user_name'
+                                    aria-label='login_user_name'
+                                    aria-required="true"
+                                    placeholder="Username(Required)"
+                                    className="text"
+                                    value={this.state.username}
+                                    onChange={(ev) => this.handleChange(ev)}
+                                    autoComplete="username"
+                                >
+                                </input>
+                            </label>
 
-                                <label htmlFor='login_password'>
+                            <label htmlFor='login_password'>
                                 <input
-                                        name='password'
-                                        type='password'
-                                        id="login_password"
-                                        aria-label= 'login_password'
-                                        aria-required="true"
-                                        placeholder="Password(Required)"
-                                        className="text"
-                                        value={this.state.password}
-                                        onChange={(ev) => this.handleChange(ev)}
-                                        autoComplete="current-password"
-                                    >
-                                    </input>
-                                </label>
+                                    name='password'
+                                    type='password'
+                                    id="login_password"
+                                    aria-label='login_password'
+                                    aria-required="true"
+                                    placeholder="Password(Required)"
+                                    className="text"
+                                    value={this.state.password}
+                                    onChange={(ev) => this.handleChange(ev)}
+                                    autoComplete="current-password"
+                                >
+                                </input>
+                            </label>
+                            {/* <div className="form-tip">
+                                <small>Click "DEMO", then click "SUBMIT, to login as demo!</small>
+                            </div> */}
+
                             <button className="btn submit_btn" type='submit'>
                                 SUBMIT
                             </button>
+
+                            <button className="btn" onClick={this.demoLogin}>DEMO</button>
                         </form>
                     </div>
                 </section>
