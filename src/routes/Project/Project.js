@@ -353,7 +353,7 @@ class Project extends Component {
               <hr />
             </div>
             <section className="project-page-grid">
-              {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project}></SingleProject> : ''}
+              {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project} updateBids={() => {}}></SingleProject> : ''}
             </section>
             <section id="project-page-bidders">
               {display}
