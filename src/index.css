@@ -3,6 +3,7 @@ body {
   font-family: "Rubik";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
 }
 /* Logo */
 #footer > article > #logo > h1 {
@@ -13,10 +14,10 @@ body {
 
 #footer > article > #logo > h1 > span > .thumbsUp {
   font-size: 10px;
-  margin-right:1px;
+  margin-right: 1px;
 }
 
-.LoginPage > #footer{
+.LoginPage > #footer {
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -24,12 +25,18 @@ body {
 
 /* End Logo Styles */
 /* Nav Styles */
+.top-nav {
+  height: 65px;
+  box-shadow: 1px 1px 1.5px #999;
+  border-bottom: 0.011111px solid red;
+}
+
 .top-nav > .nav-grid > .nav-grid-item-2 > .nav-nav {
   display: none;
 }
 
 .nav-menu {
-  padding-top: 18px;
+  padding-top: 7px;
   padding-left: 0;
 }
 
@@ -39,6 +46,11 @@ body {
   padding: 2px;
   border-radius: 5px;
 }
+
+.nav-grid-item > #logo > h1 {
+  margin-top: 15px;
+}
+
 ul.bars {
   padding-right: 0;
   margin-right: 0;
@@ -119,6 +131,10 @@ ul.bars {
   );
 }
 
+.overlay > article {
+  margin-top: 60px;
+}
+
 .overlay > article > h1 {
   color: white;
   margin: auto;
@@ -139,6 +155,7 @@ ul.bars {
 }
 
 .overlay > button {
+  min-width: 200px;
   padding: 10px;
   margin-top: 20px;
   width: 50%;
@@ -201,6 +218,28 @@ ul.bars {
   max-width: 500px;
 }
 
+#landing-form > div > label > input, #landing-form > div > label > textarea{
+  margin-left:30px;
+}
+
+#landing_banner > article > a > button{
+  font-size: 20px;
+  padding: 10px;
+  font-family: "Rubik";
+  margin-top: 25px;
+}
+
+#landing_banner > article > article > .thumbsUp {
+  display: inline;
+  border-radius: 5px;
+  border: 2px solid white;
+  padding: 4px;
+  text-shadow: 1.5px 1.5px 1.5px solid #000;
+}
+
+#landing_banner > article > article > h1 {
+  display: inline;
+}
 .form-top {
   background: linear-gradient(
     to bottom right,
@@ -283,8 +322,13 @@ ul.bars {
 }
 
 .stats-grid-item {
-  align-self: center;
   justify-content: start;
+  color: white;
+}
+
+.stats-grid-item-last{
+  text-align: right;
+  padding-right: 30px;
 }
 
 .stats-grid-item > h1 {
@@ -379,7 +423,7 @@ ul.bars {
   border: 1px solid white;
   border-radius: 5px;
   padding: 1px 5px 5px 6px;
-  bottom: -20px;
+  bottom: -10px;
   position: absolute;
   width: auto;
   height: auto;
@@ -478,7 +522,7 @@ ul.bars {
 }
 
 #project-page-bidders {
-  padding: 35px;
+  padding: 0 35px 35px;
 }
 
 #project-page-bidders > ul {
@@ -747,7 +791,6 @@ form > textarea {
 
 #comments-form > .form-body > button.btn {
   margin-left: 0;
-  padding-left: 20px;
   border: 1px solid white;
   box-shadow: 1px 1px 1px #999;
   border-radius: 7px;
@@ -855,7 +898,7 @@ form > textarea {
 
 /* Collab Styles */
 #collab_section {
-  margin-bottom: 90px;
+  margin-bottom: 30px;
 }
 /* End Collab Styles */
 
@@ -867,7 +910,6 @@ form > textarea {
   border: none;
   border-radius: 3px;
   font-weight: 400;
-  letter-spacing: 10px;
 }
 
 .nav-btn {
@@ -905,7 +947,6 @@ form > textarea {
 }
 
 @media (min-width: 678px) {
-
   .text {
     width: 83%;
   }
@@ -1020,7 +1061,7 @@ form > textarea {
 }
 
 @media (min-width: 992px) {
-  .LoginPage > #footer{
+  .LoginPage > #footer {
     position: unset;
     width: auto;
   }
@@ -1028,6 +1069,11 @@ form > textarea {
   .main-single-project-square > header > h2 {
     font-size: 16px;
   }
+
+  .overlay > article {
+    margin-top: 90px;
+  }
+
   .overlay > article > h1 {
     color: white;
     margin: auto;
@@ -1038,7 +1084,6 @@ form > textarea {
   }
   .overlay > article > p {
     font-size: 24px;
-    margin-bottom: 50px;
   }
 
   .spec_filter {

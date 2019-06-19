@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectApiService from '../../services/project-api-service';
+import Footer from '../Footer/Footer';
 
 export default class NewProjectForm extends React.Component {
   
@@ -140,6 +141,7 @@ export default class NewProjectForm extends React.Component {
                      <button className="btn btn-cancel" onClick={this.cancel}>Cancel</button>
                  </form>
             </div>
+            <Footer></Footer>
         </section>
     );
   }

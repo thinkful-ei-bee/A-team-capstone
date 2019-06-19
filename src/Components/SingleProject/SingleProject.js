@@ -4,7 +4,7 @@ import TokenService from '../../services/token-service';
 import BidsApiService from '../../services/bids-api-service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMitten } from '@fortawesome/free-solid-svg-icons'
-
+import { Link } from 'react-dom';
 class SingleProject extends React.Component {
 
     state = {
@@ -28,14 +28,14 @@ class SingleProject extends React.Component {
     }
 
     renderBidButton = () => {
-        const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp fa-2x" />
+        const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp" />
         return <>
             <button onClick={this.onClickBid} className="bid-btn"><small style={{
                 color: "white",
                 fontSize: "10px",
                 left: "25px",
                
-            }}>BID</small><p className="invisible"></p></button>
+            }}>{mitten}BID</small><p className="invisible"></p></button>
             
         </>
     }
