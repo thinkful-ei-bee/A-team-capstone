@@ -106,7 +106,7 @@ class MainPage extends React.Component {
                             <hr />
                         </div>
                         <section className="main-project-grid">
-                            {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project} onClick={() => this.alternateOpen(i)} renderLink updateBids={this.updateBids}></SingleProject>)}
+                            {projects.map((project, i) => <SingleProject key={project.id} classname="btn" project={project} onClick={() => this.alternateOpen(i)} renderLink updateBids={this.updateBids}></SingleProject>)}
                         </section>
                     </section>
 
