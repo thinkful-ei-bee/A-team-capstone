@@ -11,13 +11,10 @@ export default class Footer extends React.Component {
             <section id="footer" className=" stats-grid">
                 {/* <header class="item1"><h2>APP STATS</h2></header > */}
                 <article className="item2 stats-grid-item">
-                    <Logo></Logo>
+                © 2019 BidHub, All Rights Reserved.
                 </article>
-                <article className="item3 stats-grid-item">
-
-                </article>
-                <article className="item4 stats-grid-item">
-
+                <article className="item4 stats-grid-item-last">
+                <Logo></Logo>
                 </article>
             </section>
         )
