@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export default class Filters extends React.Component {
 
     state = {
@@ -25,13 +26,14 @@ export default class Filters extends React.Component {
     }
 
     render() {
+        const search = <FontAwesomeIcon icon={faSearch} className="" />
         return (
             <section className="filter-box">
                 <div className="filter-grid-item">
                     <form id="filter_search" onSubmit={this.handleSubmit}>
                         <label htmlFor="search"></label>
                         <input className="search_input" type="text" aria-label='search' name="searchTerm" placeholder="Search" value={this.state.searchTerm} onChange={(e) => this.changeFields(e)} />
-                        <button id="searchBtn">S</button>
+                        <button id="searchBtn">{search}</button>
                     </form>
                 </div>
 
