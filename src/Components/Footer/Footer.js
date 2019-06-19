@@ -14,7 +14,7 @@ export default class Footer extends React.Component {
                 © 2019 <span>Bid</span>Hub, All Rights Reserved.
                 </article>
                 <article className="item4 stats-grid-item-last">
-                <Logo></Logo>
+                <Logo id ='-footer'></Logo>
                 </article>
             </section>
         )
