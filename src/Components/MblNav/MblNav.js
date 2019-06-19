@@ -9,7 +9,7 @@ export default class MblNav extends React.Component {
         const open = (!this.props.open && 'invisible') || '';
         return (
             <aside id="mbl-nav" className={open}>
-                <Logo></Logo>
+                {/* <Logo></Logo> */}
                 <NavMenu swapOpen={this.props.swapOpen}></NavMenu>
                 <AccountPanel></AccountPanel>
                 <TipBox></TipBox>
