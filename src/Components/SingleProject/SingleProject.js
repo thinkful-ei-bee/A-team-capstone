@@ -4,7 +4,7 @@ import TokenService from '../../services/token-service';
 import BidsApiService from '../../services/bids-api-service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMitten } from '@fortawesome/free-solid-svg-icons'
-
+import { Link } from 'react-router-dom';
 class SingleProject extends React.Component {
 
     state = {
@@ -28,16 +28,14 @@ class SingleProject extends React.Component {
     }
 
     renderBidButton = () => {
-        const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp fa-2x" />
+        const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp" />
         return <>
             <button onClick={this.onClickBid} className="bid-btn"><small style={{
-                color: "red",
-                
+                color: "white",
                 fontSize: "10px",
                 left: "25px",
-                letterSpacing: "8px",
-                fontWeight: "600"
-            }}>{mitten}</small></button>
+               
+            }}>{mitten}BID</small><p className="invisible"></p></button>
             
         </>
     }
@@ -67,6 +65,7 @@ class SingleProject extends React.Component {
     render() {
 
         const project = this.props.project;
+        const link = `/projects/${project.id}`;
         let openClass = "main-single-project-square open";
         let title = project.project_name;
 
@@ -92,34 +91,39 @@ class SingleProject extends React.Component {
         return (
             <article className={openClass} onClick={this.props.onClick}>
                 <header>
-                    <h2>{title}</h2>
+                    <h2><Link to={link} className="project-page-link">{title}</Link></h2>
                 </header>
                 {(project.owner_id === userId || (this.state.userBidOnThis && this.state.bidStatus === 'accepted'))
                     ? <small style={{
-                        background: "red", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        background: "#980000", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
                     }
                     }
-
                     ><i>COLLABORATOR</i></small>
                     : null}
-                {(this.state.userBidOnThis && this.state.bidStatus === null )
+                {(this.state.userBidOnThis && (this.state.bidStatus === null || this.state.bidStatus === ''))
                     ? <small style={{
-                        background: "limegreen", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        background: "rgb(19, 90, 15)", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
                     }
                     }
-
                     ><i>BID PENDING</i></small>
                     : null}
                 {(this.state.userBidOnThis && this.state.bidStatus === 'declined' )
                     ? <small style={{
-                        background: "red", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
-                        bottom: "16px", right: "15px", border: "1px solid white"
+                        background: "black", color: "red", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        bottom: "16px", right: "15px", border: "1px solid red"
                     }
                     }
-
                     ><i>BID DECLINED</i></small>
+                    : null}
+                {(!this.state.userBidOnThis || ((this.state.bidStatus === null) || this.state.bidStatus === '')) && project.openForBids === false && project.owner_id !== userId
+                    ? <small style={{
+                        background: "black", color: "green", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
+                        bottom: "16px", right: "15px", border: "1px solid green"
+                    }
+                    }
+                    ><i>BIDDING CLOSED</i></small>
                     : null}
                 {project.open &&
                     <article>

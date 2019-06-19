@@ -5,6 +5,7 @@ import Filters from "../../Components/Filters/Filters";
 import SideBar from "../../Components/SideBar/SideBar";
 import ProjectApiService from '../../services/project-api-service';
 import TokenService from '../../services/token-service';
+import Footer from '../../Components/Footer/Footer';
 
 class MainPage extends React.Component {
 
@@ -95,19 +96,23 @@ class MainPage extends React.Component {
         }
 
         return (
-            <section className="main-grid">
-                <SideBar updateBids={this.state.updateBids}></SideBar>
-                <main>
-                    <Filters setSearch={this.setSearch}></Filters>
-                    <div className="mbl-separator">
-                        <h5>PROJECTS</h5>
-                        <hr />
-                    </div>
-                    <section className="main-project-grid">
-                        {projects.map((project, i) => <SingleProject key={i} classname="btn" project={project} onClick={() => this.alternateOpen(i)} updateBids={this.updateBids}></SingleProject>)}
+            <React.Fragment>
+                <section className="main-grid">
+                    <SideBar updateBids={this.state.updateBids}></SideBar>
+                    <section>
+                        <Filters setSearch={this.setSearch}></Filters>
+                        <div className="mbl-separator">
+                            <h5>PROJECTS</h5>
+                            <hr />
+                        </div>
+                        <section className="main-project-grid">
+                            {projects.map((project, i) => <SingleProject key={project.id} classname="btn" project={project} onClick={() => this.alternateOpen(i)} renderLink updateBids={this.updateBids}></SingleProject>)}
+                        </section>
                     </section>
-                </main>
-            </section>
+
+                </section>
+                <Footer></Footer>
+            </React.Fragment>
         )
     }
 }

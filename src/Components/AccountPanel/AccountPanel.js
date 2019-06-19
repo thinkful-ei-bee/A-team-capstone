@@ -86,11 +86,11 @@ export default class AccountPanel extends React.Component {
         TokenService.hasAuthToken()
           ? <article className="account-panel">
           <h2><i>{this.state.profile.username}</i></h2>
-          <h4>PROJECTS:</h4>
+          <h3>PROJECTS:</h3>
           {projects.length ? <ul>{projects}</ul> : <i><p>None yet....</p></i>}
-          <h4>COHORTS:</h4>
+          <h3>COHORTS:</h3>
           {cohorts.length ? <ul>{cohorts}</ul> : <i><p>None yet....</p></i>}
-          <h4 className="bids-text">BIDS:</h4>
+          <h3 className="bids-text">BIDS:</h3>
               <ul>
                 {bids}
               </ul>

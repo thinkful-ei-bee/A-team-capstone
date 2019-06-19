@@ -3,15 +3,54 @@ body {
   font-family: "Rubik";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
+}
+/* Logo */
+#footer > article > #logo-footer > h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 22px;
+  color: white;
 }
 
+#footer > article > #logo-footer > h1 > span,
+#footer > article > span {
+  color: red;
+}
+
+#logo-footer {
+  text-decoration: unset;
+}
+
+#footer > article > #logo-footer > h1 > span > .thumbsUp {
+  font-size: 10px;
+  margin-right: 1px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 3px;
+}
+
+.LoginPage > #footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+/* End Logo Styles */
 /* Nav Styles */
+.top-nav {
+  height: 65px;
+  box-shadow: 1px 1px 1.5px #999;
+  border-bottom: 0.011111px solid red;
+}
+
 .top-nav > .nav-grid > .nav-grid-item-2 > .nav-nav {
   display: none;
 }
 
 .nav-menu {
-  padding-top: 18px;
+  padding-top: 7px;
   padding-left: 0;
 }
 
@@ -20,7 +59,18 @@ body {
   border: 2px solid white;
   padding: 2px;
   border-radius: 5px;
+  margin-right: 0;
 }
+
+.nav-grid-item > #logo > h1 {
+  margin-top: 13px;
+  font-size: 36px;
+}
+
+.nav-grid-item > #logo > h1 > span {
+  color: red;
+}
+
 ul.bars {
   padding-right: 0;
   margin-right: 0;
@@ -53,6 +103,29 @@ ul.bars {
 
 #mbl-nav > .nav-nav > .nav-menu {
   margin-bottom: 25px;
+}
+#mbl-nav > #logo > h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  margin: -10px 0 5px 0;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #333;
+  background: black;
+}
+#mbl-nav > #logo > h1 > span {
+  color: red;
+  text-shadow: 1.5px 1.5px 1.5px #000;
+}
+
+#mbl-nav > hr {
+  border-color: black;
+}
+
+#mbl-nav > #logo > h1 > span > .thumbsUp {
+  margin-right: 0;
+  font-size: 17px;
 }
 
 .backdrop {
@@ -101,6 +174,10 @@ ul.bars {
   );
 }
 
+.overlay > article {
+  margin-top: 60px;
+}
+
 .overlay > article > h1 {
   color: white;
   margin: auto;
@@ -121,6 +198,7 @@ ul.bars {
 }
 
 .overlay > button {
+  min-width: 200px;
   padding: 10px;
   margin-top: 20px;
   width: 50%;
@@ -183,11 +261,35 @@ ul.bars {
   max-width: 500px;
 }
 
+#landing-form > div > label > input,
+#landing-form > div > label > textarea {
+  margin-left: 30px;
+}
+
+#landing_banner > article > a > button {
+  font-size: 20px;
+  padding: 10px;
+  font-family: "Rubik";
+  margin-top: 25px;
+}
+
+#landing_banner > article > article > .thumbsUp {
+  display: inline;
+  border-radius: 5px;
+  border: 2px solid white;
+  padding: 4px;
+  text-shadow: 1.5px 1.5px 1.5px solid #000;
+}
+
+#landing_banner > article > article > h1 {
+  display: inline;
+}
 .form-top {
   background: linear-gradient(
     to bottom right,
-    rgba(0, 0, 0, 0.45),
-    rgba(253, 5, 5, 0.75)
+    rgba(0, 0, 0, 0.95),
+    rgba(0, 0, 0, 0.75),
+    rgba(253, 5, 5, 1)
   );
   padding: 30px;
 }
@@ -212,7 +314,7 @@ ul.bars {
   display: block;
   margin: 0 auto 30px;
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
 }
 
 #stats {
@@ -264,8 +366,13 @@ ul.bars {
 }
 
 .stats-grid-item {
-  align-self: center;
   justify-content: start;
+  color: white;
+}
+
+.stats-grid-item-last {
+  text-align: right;
+  padding-right: 30px;
 }
 
 .stats-grid-item > h1 {
@@ -329,11 +436,12 @@ ul.bars {
   position: relative;
 }
 
-.main-single-project-square > header > h2 {
-  text-shadow: 0.25px 0.25px 0.25px #fff;
+.main-single-project-square > header > h2 > a.project-page-link {
   margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 5px;
+  color: white;
+  text-decoration-color: red;
 }
 
 .main-single-project-square > article > h3 {
@@ -359,8 +467,8 @@ ul.bars {
   color: white;
   border: 1px solid white;
   border-radius: 5px;
-  padding: 4px 0px 3px 6px;
-  bottom: -20px;
+  padding: 1px 5px 5px 6px;
+  bottom: -10px;
   position: absolute;
   width: auto;
   height: auto;
@@ -434,9 +542,22 @@ ul.bars {
 .filter-box {
   display: flex;
   flex-direction: column;
-  padding: 0 46px 15px 30px;
+  padding: 0 46px 0 30px;
 }
 /* End Main/Landing Styles */
+
+/* Footer Styles */
+#footer {
+  background: black;
+  border-top: 0.075px solid red;
+  padding: 10px 30px 5px;
+}
+#footer article > h1 {
+  -webkit-text-stroke-width: 0.0001px;
+  -webkit-text-stroke-color: red;
+  color: white;
+}
+/* Footer Styles */
 
 /* Project Page Styles */
 .project-page-grid {
@@ -446,7 +567,7 @@ ul.bars {
 }
 
 #project-page-bidders {
-  padding: 35px;
+  padding: 0 35px 35px;
 }
 
 #project-page-bidders > ul {
@@ -502,7 +623,7 @@ ul.bars {
   border: 1px solid white;
 }
 
-.account-panel > h4 {
+.account-panel > h3 {
   margin-bottom: 3px;
   -webkit-text-stroke-width: 0.0001px;
   -webkit-text-stroke-color: red;
@@ -566,9 +687,9 @@ form {
   box-shadow: 1px 1px 1px #999;
 }
 
-#contact-form > div > .text,
-#login-form > div > .text,
-#new-project-form > div > .text {
+#contact-form > div > label > .text,
+#login-form > div > label > .text,
+#new-project-form > div > label > .text {
   margin-left: 0px;
 }
 
@@ -591,8 +712,16 @@ form {
   padding-bottom: 30px;
 }
 
-#login-form {
+#login-form > div > small {
+  font-style: italic;
+  font-size: 10px;
+  color: grey;
 }
+
+#login-form > .form-tip{
+  margin-top: 12px;
+}
+
 .text {
   border: 0.5px solid #333;
   width: 70%;
@@ -603,12 +732,12 @@ form {
   border-top: 0;
   border-right: 0;
   border-left: 0;
-  margin-left: 30px;
+  /* margin-left: 30px; */
 }
 
 label {
-  display: none;
-  padding-left: 30px;
+  /* display: none; */
+  /* padding-left: 30px; */
 }
 
 form > button.btn {
@@ -717,7 +846,6 @@ form > textarea {
 
 #comments-form > .form-body > button.btn {
   margin-left: 0;
-  padding-left: 20px;
   border: 1px solid white;
   box-shadow: 1px 1px 1px #999;
   border-radius: 7px;
@@ -800,9 +928,9 @@ form > textarea {
 }
 
 .project-comment > p {
-  font-size: 20px;
-  text-shadow: 1px 1px 1px #666;
+  font-size: 16px;
   padding: 0 5px;
+  line-height: 1.75;
 }
 
 .project-comment > small {
@@ -825,7 +953,7 @@ form > textarea {
 
 /* Collab Styles */
 #collab_section {
-  margin-bottom: 90px;
+  margin-bottom: 30px;
 }
 /* End Collab Styles */
 
@@ -837,7 +965,6 @@ form > textarea {
   border: none;
   border-radius: 3px;
   font-weight: 400;
-  letter-spacing: 10px;
 }
 
 .nav-btn {
@@ -989,9 +1116,20 @@ form > textarea {
 }
 
 @media (min-width: 992px) {
-  .main-single-project-square > header > h2 {
+  /* .LoginPage > #footer {
+    position: unset;
+    width: auto;
+  } */
+
+  .main-single-project-square > header > h2,
+  .main-single-project-square > article > h3 {
     font-size: 16px;
   }
+
+  .overlay > article {
+    margin-top: 90px;
+  }
+
   .overlay > article > h1 {
     color: white;
     margin: auto;
@@ -1002,7 +1140,6 @@ form > textarea {
   }
   .overlay > article > p {
     font-size: 24px;
-    margin-bottom: 50px;
   }
 
   .spec_filter {

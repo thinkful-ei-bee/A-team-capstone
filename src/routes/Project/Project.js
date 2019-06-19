@@ -10,6 +10,7 @@ import CollaborationApiService from '../../services/collaboration-api-service';
 import TokenService from '../../services/token-service';
 import ProjectsCommentsForm from '../../Components/ProjectsCommentsForm/ProjectsCommentsForm';
 import CommentsApiService from '../../services/comments-api-service';
+import Footer from '../../Components/Footer/Footer';
 
 class Project extends Component {
 
@@ -111,14 +112,18 @@ class Project extends Component {
     // check if user is a collaborator
     else {
       CollaborationApiService.getCohorts()
-          .then(cohorts=>{
-            if (cohorts && 
-              cohorts.find(cohort=>cohort.project_id === this.state.project.id)){
-                this.setState({
-                  authorized:true,
-                })
-            }
-          })
+        .then(cohorts => {
+          if (cohorts &&
+            cohorts.find(cohort => cohort.project_id === this.state.project.id)) {
+            this.setState({
+              authorized: true,
+            })
+          } else {
+            this.setState({
+              authorized: false,
+            })
+          }
+        })
     }
   }
 
@@ -185,7 +190,7 @@ class Project extends Component {
     Object.keys(this.state.accepted).forEach(collaborator_id => {
       CollaborationApiService.postCollaborator(parseInt(collaborator_id), project_id, 'collaborator')
         .then(res => {
-          
+
         })
     })
 
@@ -194,7 +199,7 @@ class Project extends Component {
     declinedBids.forEach(bid => {
       BidsApiService.updateBid(bid)
         .then(res => {
-          
+
         })
     });
 
@@ -234,7 +239,7 @@ class Project extends Component {
   componentDidMount() {
     // get Profile Info
     if (TokenService.hasAuthToken()) {
-    
+
       ProfileApiService.getProfile()
         .then(profile => {
           this.setState({
@@ -264,22 +269,22 @@ class Project extends Component {
     let display = [];
     if (this.state.project.openForBids && this.state.bidders.length > 0) {
       display.push(
-      <React.Fragment key="bidderList">
-        <div class="mbl-separator" style={{ paddingRight: "0" }}>
-          <h2>PENDING BIDDERS:</h2>
-          <hr />
-        </div>
-        <form id="bidder-form" onSubmit={this.handleSubmit} style={{ listStyle: "none" }}>
-          <BidderList
-            onDeclineClick={(e) => this.onDeclinedClick(e.target.value)}
-            onAcceptClick={(e) => this.onAcceptedClick(e.target.value)}
-            bidders={this.state.bidders}
-          />
-          <input id="closebids" name="closebids" type="checkbox" checked={this.state.closeBidding} onChange={this.checkClosedBox} />
-          <label id="closebidslabel" htmlFor="closebids">Close bidding</label>
-          <button className="bidder-btn" type="submit">SUBMIT</button>
-        </form>
-      </React.Fragment>);
+        <React.Fragment key="bidderList">
+          <div class="mbl-separator" style={{ paddingRight: "0" }}>
+            <h2>PENDING BIDDERS:</h2>
+            <hr />
+          </div>
+          <form id="bidder-form" onSubmit={this.handleSubmit} style={{ listStyle: "none" }}>
+            <BidderList
+              onDeclineClick={(e) => this.onDeclinedClick(e.target.value)}
+              onAcceptClick={(e) => this.onAcceptedClick(e.target.value)}
+              bidders={this.state.bidders}
+            />
+            <input id="closebids" name="closebids" type="checkbox" checked={this.state.closeBidding} onChange={this.checkClosedBox} />
+            <label id="closebidslabel" htmlFor="closebids">Close bidding</label>
+            <button className="bidder-btn" type="submit">SUBMIT</button>
+          </form>
+        </React.Fragment>);
     }
 
     const collaboratorUsers = []
@@ -291,17 +296,17 @@ class Project extends Component {
     if (collaboratorUsers.length > 0) {
       display.push(<React.Fragment key="collaborationList">
         <section id="collab_section">
-              <div className="mbl-separator" style={{ padding: "0", marginRight: "10px", marginBottom: "35px" }}>
-              <h2>COLLABORATORS:</h2>
-              <hr />
-           </div>
-           <ul>
-             {collaboratorUsers}
-           </ul>
+          <div className="mbl-separator" style={{ padding: "0", marginRight: "10px", marginBottom: "35px" }}>
+            <h2>COLLABORATORS:</h2>
+            <hr />
+          </div>
+          <ul>
+            {collaboratorUsers}
+          </ul>
         </section>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
         <hr />
-        <ProjectComments project_id = {this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
+        <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
       </React.Fragment>)
     }
 
@@ -314,10 +319,10 @@ class Project extends Component {
     // status whether project is still pending, closed and have become a collaborator or not
     // if collaborator, have access to message system
     return <>
-        <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
-        <hr />
-        <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
-      </>
+      <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
+      <hr />
+      <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
+    </>
   }
 
   renderNonCollaborator() {
@@ -339,21 +344,24 @@ class Project extends Component {
     }
 
     return (
-      <section className="main-grid">
-        <SideBar />
-        <main style={{ paddingTop: "30px" }}>
-          <div className="mbl-separator">
-            <h2>PROJECT SPECS:</h2>
-            <hr />
-          </div>
-          <section className="project-page-grid">
-            {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project}></SingleProject> : ''}
+      <React.Fragment>
+        <section className="main-grid">
+          <SideBar />
+          <section style={{ paddingTop: "15px" }}>
+            <div className="mbl-separator">
+              <h2>PROJECT SPECS:</h2>
+              <hr />
+            </div>
+            <section className="project-page-grid">
+              {this.state.project ? <SingleProject key={this.state.project.id} project={this.state.project} updateBids={() => {}}></SingleProject> : ''}
+            </section>
+            <section id="project-page-bidders">
+              {display}
+            </section>
           </section>
-          <section id="project-page-bidders">
-            {display}
-          </section>
-        </main>
-      </section>
+        </section>
+        <Footer></Footer>
+      </React.Fragment>
     )
   }
 }

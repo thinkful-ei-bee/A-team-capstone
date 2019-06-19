@@ -35,13 +35,13 @@ class NavMenu extends React.Component {
                 <li>
                     <Link
                         to='/register'>
-                        Register
+                        REGISTER
                     </Link>
                 </li>
                 <li>
                     <Link
                         to='/login'>
-                        Log in
+                        LOGIN
                     </Link>
                 </li>
             </ul>
