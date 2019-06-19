@@ -1116,10 +1116,10 @@ form > textarea {
 }
 
 @media (min-width: 992px) {
-  .LoginPage > #footer {
+  /* .LoginPage > #footer {
     position: unset;
     width: auto;
-  }
+  } */
 
   .main-single-project-square > header > h2,
   .main-single-project-square > article > h3 {
