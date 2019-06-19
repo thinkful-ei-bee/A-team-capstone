@@ -9,16 +9,26 @@ body {
 #footer > article > #logo-footer > h1 {
   padding: 0;
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
+  color: white;
 }
 
-#footer > article > #logo-footer > h1 > span, #footer > article > span {
+#footer > article > #logo-footer > h1 > span,
+#footer > article > span {
   color: red;
 }
 
-#footer > article > #logo > h1 > span > .thumbsUp {
+#logo-footer {
+  text-decoration: unset;
+}
+
+#footer > article > #logo-footer > h1 > span > .thumbsUp {
   font-size: 10px;
   margin-right: 1px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 3px;
 }
 
 .LoginPage > #footer {
@@ -49,10 +59,12 @@ body {
   border: 2px solid white;
   padding: 2px;
   border-radius: 5px;
+  margin-right: 0;
 }
 
 .nav-grid-item > #logo > h1 {
-  margin-top: 15px;
+  margin-top: 13px;
+  font-size: 30px;
 }
 
 .nav-grid-item > #logo > span {
@@ -1099,7 +1111,8 @@ form > textarea {
     width: auto;
   }
 
-  .main-single-project-square > header > h2, .main-single-project-square > article > h3 {
+  .main-single-project-square > header > h2,
+  .main-single-project-square > article > h3 {
     font-size: 16px;
   }
 
