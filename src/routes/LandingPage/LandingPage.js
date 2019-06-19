@@ -48,6 +48,7 @@ export default class LandingPage extends React.Component {
     }
 
     render() {
+        let { error } = this.state;
         const mitten = <FontAwesomeIcon icon={faMitten} className="thumbsUp" style={{ fontSize: "30px" }} />
         return (
             <div>
@@ -78,7 +79,7 @@ export default class LandingPage extends React.Component {
                             <p>SIGN-UP</p>
                         </div>
                         <div role='alert'>
-                            {/* {error && <p className='red'>{error}</p>} */}
+                            {error && <p className='red'>{error}</p>}
                         </div>
                         <div className='username'>
                             <label htmlFor='regeistration-user-name'>
