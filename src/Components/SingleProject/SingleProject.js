@@ -106,7 +106,7 @@ class SingleProject extends React.Component {
                     }
                     ><i>COLLABORATOR</i></small>
                     : null}
-                {(this.state.userBidOnThis && this.state.bidStatus === null )
+                {(this.state.userBidOnThis && (this.state.bidStatus === null || this.state.bidStatus === ''))
                     ? <small style={{
                         background: "rgb(19, 90, 15)", color: "white", padding: "4px 7px 3px 5px", borderRadius: "3px", fontSize: "12px", position: "absolute",
                         bottom: "16px", right: "15px", border: "1px solid white"
