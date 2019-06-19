@@ -27,11 +27,6 @@ class SingleProject extends React.Component {
             })
     }
 
-    renderLink = (project) => {
-        const link = `/projects/${project.id}`;
-        return <Link to={link} className="project-page-link">Project Page</Link>;
-    }
-
     renderBidButton = () => {
         const mitten = <FontAwesomeIcon icon={faMitten} className=" thumbsUp" />
         return <>
@@ -70,7 +65,7 @@ class SingleProject extends React.Component {
     render() {
 
         const project = this.props.project;
-        
+        const link = `/projects/${project.id}`;
         let openClass = "main-single-project-square open";
         let title = project.project_name;
 
@@ -96,7 +91,7 @@ class SingleProject extends React.Component {
         return (
             <article className={openClass} onClick={this.props.onClick}>
                 <header>
-                    <h2>{title}</h2>
+                    <h2><Link to={link} className="project-page-link">{title}</Link></h2>
                 </header>
                 {(project.owner_id === userId || (this.state.userBidOnThis && this.state.bidStatus === 'accepted'))
                     ? <small style={{
@@ -141,7 +136,6 @@ class SingleProject extends React.Component {
                         <h3>Developers Needed:</h3> <p>{project.openPositions}</p>
                         <hr className="single-project-content-separator"></hr>
                         <h3>Deadline:</h3> <p>{moment(project.deadline).format('MM-DD-YYYY')}</p>
-                        {this.props.renderLink ? this.renderLink(project) : null}
                     </article>}
                 {renderButton
                     ? this.renderBidButton()
