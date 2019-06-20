@@ -25,6 +25,7 @@ class Project extends Component {
     collaborators: [],
     closeBidding: false,
     updateComments: false,
+    comments:[],
   }
 
   setProject() {
@@ -44,6 +45,7 @@ class Project extends Component {
       this.setState({
         owner: true
       }, this.checkIfOpen)
+      this.getComments();
     } else {
       this.setState({
         owner: false
@@ -108,6 +110,7 @@ class Project extends Component {
       this.setState({
         authorized: true,
       })
+      this.getComments();
     }
     // check if user is a collaborator
     else {
@@ -118,6 +121,7 @@ class Project extends Component {
             this.setState({
               authorized: true,
             })
+            this.getComments();
           } else {
             this.setState({
               authorized: false,
@@ -125,6 +129,24 @@ class Project extends Component {
           }
         })
     }
+  }
+
+  getComments = ()=>{
+    CommentsApiService.getComments(this.state.project.id)
+      .then(comments => {
+
+        comments = comments.sort((comment1, comment2) => {
+          if (comment1.date_created > comment2.date_created) { 
+            return -1; 
+          } else {
+            return 1;
+          }
+        });
+
+        this.setState({
+          comments
+        })
+      })
   }
 
   onAcceptedClick = (bidderId) => {
@@ -306,7 +328,7 @@ class Project extends Component {
         </section>
         <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
         <hr />
-        <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
+        <ProjectComments getComments={this.getComments} comments={this.state.comments} project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
       </React.Fragment>)
     }
 
@@ -321,7 +343,7 @@ class Project extends Component {
     return <>
       <ProjectsCommentsForm project_id={this.state.project.id} handleCommentSubmit={this.handleCommentSubmit} />
       <hr />
-      <ProjectComments project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
+      <ProjectComments getComments={this.getComments} comments={this.state.comments} project_id={this.state.project.id} updateComments={this.state.updateComments} setUpdateComments={this.setUpdateComments} />
     </>
   }
 
