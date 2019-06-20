@@ -69,7 +69,6 @@ export default class LandingPage extends React.Component {
                 </section>
                 <section id="landing_content" className="landing-content-grid">
                     <div id="landing-content-left" className="landing-content-grid-item">
-                        {/* <header id="landing-content-header"> */}
                         <p className="landing-content-header">Sign Up today and get full access to exclusive features, like bidding, and creating projects to be bid on!</p>
                         <img id="cellphone" src="https://i.imgur.com/RYZDtjt.png" alt="app on mobile device"></img>
                     </div>
@@ -77,8 +76,8 @@ export default class LandingPage extends React.Component {
                         <div className="form-top">
                             <p>SIGN-UP</p>
                         </div>
-                        <div role='alert'>
-                            {/* {error && <p className='red'>{error}</p>} */}
+                        <div className='form-error' role='alert'>
+                            {error && <p className='red'>{error}</p>}
                         </div>
                         <div className='username'>
                             <label htmlFor='registration-user-name'>
