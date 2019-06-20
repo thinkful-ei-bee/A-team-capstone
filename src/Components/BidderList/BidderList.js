@@ -7,7 +7,7 @@ class BidderList extends React.Component {
       const bidders = [];
       this.props.bidders.forEach(bidder=>{
         bidders.push(
-        <Bidder 
+        <Bidder key={bidder.id}
           bidder={bidder}
           onDeclineClick={this.props.onDeclineClick} 
           onAcceptClick={this.props.onAcceptClick} 

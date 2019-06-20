@@ -68,6 +68,11 @@ class SingleProject extends React.Component {
         const link = `/projects/${project.id}`;
         let openClass = "main-single-project-square open";
         let title = project.project_name;
+        let deadline = moment(project.deadline).format('MM-DD-YYYY');
+    
+        if (deadline === 'Invalid date') {
+            deadline = 'Not set';
+        }
 
         if (!project.open) {
             openClass = "main-single-project-square closed";
@@ -135,7 +140,7 @@ class SingleProject extends React.Component {
                         <hr className="single-project-content-separator"></hr>
                         <h3>Developers Needed:</h3> <p>{project.openPositions}</p>
                         <hr className="single-project-content-separator"></hr>
-                        <h3>Deadline:</h3> <p>{moment(project.deadline).format('MM-DD-YYYY')}</p>
+                        <h3>Deadline:</h3> <p>{deadline}</p>
                     </article>}
                 {renderButton
                     ? this.renderBidButton()
