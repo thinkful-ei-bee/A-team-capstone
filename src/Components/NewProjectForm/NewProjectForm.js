@@ -130,7 +130,9 @@ export default class NewProjectForm extends React.Component {
                           id='new-project-deadline'
                           aria-label='new-project-deadline'
                           type='date'
-                          className="text">
+                          className="text"
+                          min="2019-06-20"
+                          max="2100-12-31">
                         </input>
                     </div>
                     <div className='open-positions'>
