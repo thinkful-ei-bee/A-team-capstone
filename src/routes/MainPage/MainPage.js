@@ -100,7 +100,7 @@ class MainPage extends React.Component {
         return (
             <React.Fragment>
                 <section className="main-grid">
-                    <SideBar updateBids={this.state.updateBids}></SideBar>
+                    <SideBar setUpdateBids={this.updateBids} updateBids={this.state.updateBids}></SideBar>
                     <section>
                         <Filters setSearch={this.setSearch}></Filters>
                         <div className="mbl-separator">

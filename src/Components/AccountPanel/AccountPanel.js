@@ -60,6 +60,7 @@ export default class AccountPanel extends React.Component {
     if(this.props.updateBids){
       this.getUsersBids();
       this.getUsersCohorts();
+      this.props.setUpdateBids();
     }
   }
 
