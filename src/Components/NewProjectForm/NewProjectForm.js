@@ -73,7 +73,8 @@ export default class NewProjectForm extends React.Component {
                             aria-label='new-project-name'
                             aria-required='true'
                             placeholder='Project Name (Required)'
-                            className="text">
+                            className="text"
+                            maxLength='32'>
                         </input>
                     </div>
                     <div className='project-description'>
@@ -87,7 +88,8 @@ export default class NewProjectForm extends React.Component {
                             aria-required='true'
                             type='text'
                             placeholder='Project Description (Required)'
-                            className="text">
+                            className="text"
+                            maxLength="200">
                         </textarea>
                     </div>
                     <div className='project-languages'>
@@ -100,7 +102,8 @@ export default class NewProjectForm extends React.Component {
                             aria-label='new-project-languages'
                             type='text'
                             placeholder='e.g. Ruby, Python'
-                            className="text">
+                            className="text"
+                            maxLength="40">
                         </input>
                     </div>
                     <div className='project-requirements'>
@@ -114,7 +117,8 @@ export default class NewProjectForm extends React.Component {
                           aria-required='true'
                           type='text'
                           placeholder='e.g. experience in full stack development'
-                          className="text">
+                          className="text"
+                          maxLength="200">
                         </input>
                     </div>
                     <div className='project-deadline'>
@@ -138,7 +142,9 @@ export default class NewProjectForm extends React.Component {
                           id='new-project-positions'
                           aria-label='new-project-positions'
                           type='number'
-                          className="text">
+                          className="text"
+                          max="100"
+                          min="1">
                         </input>
                     </div>
                     <button className="btn submit_btn" type='submit' onClick={this.save}>
