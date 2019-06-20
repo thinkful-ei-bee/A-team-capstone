@@ -16,10 +16,12 @@ A React / Express app to help developers connect and collaborate on their coding
 
 The live app is [here](https://bidhub.now.sh/).
 
+
 ## Screenshots
 ![Landing Page](screenshots/ScreenClip.png)
 
 ![Create Project](screenshots/ScreenClip2.png)
+
 
 ## Tech stack
 
@@ -29,15 +31,16 @@ The server is also in JavaScript (source at [https://github.com/thinkful-ei-bee/
 
 We used [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) to allow the client to update immediately upon reception of messages from other users.
 
+
 ## Code base
 
-The source folder has three sub-folders, "components," "services," and "user-context."
+The source folder has three sub-folders, "Components," "routes," and "services."
 
-UserContext creates a context with username and homepage id so that the app can keep track of the current user.
+The routes folder contains React components for the distinct pages of our app, namely Landing, Login, Main, Project, and Registration.
 
-The services folder contains files for communicating with the server, whether for login or for retreiving or posting information to or from the server.
+The components folder contains all other React sub-components needed for the various pages.
 
-The components folder contains files creating React components for the main app (App), each distinct page (EditPage, LandingPage, ListPage, NotFound, PersonalPage, RegistrationPage, SignIn), as well as several reusable components (NavBar, Emoji, List).
+The services folder contains the files needed for communicating with the backend.
 
 ## Installation for Development
 
