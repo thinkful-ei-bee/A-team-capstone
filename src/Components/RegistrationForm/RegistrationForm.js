@@ -23,7 +23,7 @@ class RegistrationForm extends React.Component {
 
     handleSubmit = ev => {
         ev.preventDefault()
-        const { email, username, password, image, user_description } = ev.target
+        const { email, username, password, user_description } = ev.target
 
         this.setState({ error: null })
         AuthApiService.postUser({
@@ -38,7 +38,6 @@ class RegistrationForm extends React.Component {
                 email.value = ''
                 username.value = ''
                 password.value = ''
-                image.value = ''
                 user_description.value = ''
                 if (this.state.error === null) {
                     this.props.onRegistrationSuccess()
