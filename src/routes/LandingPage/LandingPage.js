@@ -81,13 +81,14 @@ export default class LandingPage extends React.Component {
                             {error && <p className='red'>{error}</p>}
                         </div>
                         <div className='username'>
-                            <label htmlFor='regeistration-user-name'>
+                            <label htmlFor='registration-user-name'>
                                 <input
                                     autoComplete='username'
                                     name='username'
                                     type='text'
                                     required
                                     id='registration-user-name'
+                                    aria-label='registration-user-name'
                                     placeholder="Username(Required)"
                                     className="text"
                                     value={this.state.username}
@@ -100,7 +101,8 @@ export default class LandingPage extends React.Component {
                             <label htmlFor='registration-image'>
                                 <input
                                     name='image'
-                                    id=""
+                                    id="registration-image"
+                                    aria-label="registration-image"
                                     type='text'
                                     placeholder="User Profile Image"
                                     className="text"
@@ -112,11 +114,12 @@ export default class LandingPage extends React.Component {
 
                         </div>
                         <div className='email'>
-                            <label htmlFor='registration-user-email'>
+                            <label htmlFor='registration-email'>
                                 <input
                                     autoComplete='email'
                                     name='email'
                                     id='registration-email'
+                                    aria-label="registration-email"
                                     type='email'
                                     required
                                     placeholder="Email(Required)"
@@ -129,10 +132,11 @@ export default class LandingPage extends React.Component {
 
                         </div>
                         <div className='user_description'>
-                            <label htmlFor='registration-user-desc'>
+                            <label htmlFor='registration_user_desc'>
                                 <textarea
                                     name='user_description'
                                     id='registration_user_desc'
+                                    aria-label='registration_user_desc'
                                     type='text'
                                     required
                                     placeholder="Your Experience/Credentials"
@@ -149,6 +153,7 @@ export default class LandingPage extends React.Component {
                                     autoComplete='new-password'
                                     name='password'
                                     id='registration-password'
+                                    aria-label='registration-password'
                                     type='password'
                                     required
                                     placeholder="Password(Required)"
