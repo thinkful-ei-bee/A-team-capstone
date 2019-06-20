@@ -22,6 +22,9 @@ export default class NewProjectForm extends React.Component {
       save = (event) => {
         event.preventDefault();
         if (!this.state.name || !this.state.description) {
+            this.setState({
+              error: 'Please complete both name and description'
+            })
             return;
         }
 
@@ -34,7 +37,10 @@ export default class NewProjectForm extends React.Component {
           openPositions: this.state.openPositions,
         }).then(() => {
           this.props.history.push('/');       
-        });
+        })
+        .catch(res => {
+          this.setState({ error: res.error })
+      });
       }
     
       changeFields(event) {
