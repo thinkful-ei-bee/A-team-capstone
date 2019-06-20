@@ -270,7 +270,7 @@ class Project extends Component {
     if (this.state.project.openForBids && this.state.bidders.length > 0) {
       display.push(
         <React.Fragment key="bidderList">
-          <div class="mbl-separator" style={{ padding: "0" }}>
+          <div className="mbl-separator" style={{ padding: "0" }}>
             <h2>PENDING BIDDERS:</h2>
             <hr />
           </div>

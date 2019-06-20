@@ -3,11 +3,11 @@ import Bidder from '../Bidder/Bidder';
 
 class BidderList extends React.Component {
 
-  render() {
-    const bidders = [];
-    this.props.bidders.forEach(bidder => {
-      bidders.push(
-        <Bidder
+    render() {
+      const bidders = [];
+      this.props.bidders.forEach(bidder=>{
+        bidders.push(
+        <Bidder key={bidder.id}
           bidder={bidder}
           onDeclineClick={this.props.onDeclineClick}
           onAcceptClick={this.props.onAcceptClick}

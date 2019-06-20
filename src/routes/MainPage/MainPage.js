@@ -61,7 +61,7 @@ class MainPage extends React.Component {
     }
 
     componentDidUpdate() {
-        if (this.state.searching) {
+        if (this.state.searching && TokenService.hasAuthToken()) {
             this.setState({
                 searching: false
             })
@@ -79,7 +79,8 @@ class MainPage extends React.Component {
     }
 
     componentDidMount() {
-        ProjectApiService.getAllProjects()
+        if (TokenService.hasAuthToken()) {
+            ProjectApiService.getAllProjects()
             .then(projects => {
                 projects.forEach(project => { project.open = false });
                 const filteredProjects = projects.filter(project => this.searchChecksOut(project, this.state.searchTerm, this.state.language));
@@ -87,6 +88,7 @@ class MainPage extends React.Component {
                     projects: filteredProjects
                 });
             })
+        }    
     }
 
     render() {
@@ -98,7 +100,7 @@ class MainPage extends React.Component {
         return (
             <React.Fragment>
                 <section className="main-grid">
-                    <SideBar updateBids={this.state.updateBids}></SideBar>
+                    <SideBar setUpdateBids={this.updateBids} updateBids={this.state.updateBids}></SideBar>
                     <section>
                         <Filters setSearch={this.setSearch}></Filters>
                         <div className="mbl-separator">
