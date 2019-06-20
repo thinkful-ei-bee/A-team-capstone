@@ -61,7 +61,7 @@ class MainPage extends React.Component {
     }
 
     componentDidUpdate() {
-        if (this.state.searching) {
+        if (this.state.searching && TokenService.hasAuthToken()) {
             this.setState({
                 searching: false
             })
@@ -79,7 +79,8 @@ class MainPage extends React.Component {
     }
 
     componentDidMount() {
-        ProjectApiService.getAllProjects()
+        if (TokenService.hasAuthToken()) {
+            ProjectApiService.getAllProjects()
             .then(projects => {
                 projects.forEach(project => { project.open = false });
                 const filteredProjects = projects.filter(project => this.searchChecksOut(project, this.state.searchTerm, this.state.language));
@@ -87,6 +88,7 @@ class MainPage extends React.Component {
                     projects: filteredProjects
                 });
             })
+        }    
     }
 
     render() {

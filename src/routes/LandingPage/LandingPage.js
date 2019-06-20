@@ -83,6 +83,7 @@ export default class LandingPage extends React.Component {
                         <div className='username'>
                             <label htmlFor='regeistration-user-name'>
                                 <input
+                                    autoComplete='username'
                                     name='username'
                                     type='text'
                                     required
@@ -113,6 +114,7 @@ export default class LandingPage extends React.Component {
                         <div className='email'>
                             <label htmlFor='registration-user-email'>
                                 <input
+                                    autoComplete='email'
                                     name='email'
                                     id='registration-email'
                                     type='email'
@@ -144,6 +146,7 @@ export default class LandingPage extends React.Component {
                         <div className='password'>
                             <label htmlFor='registration-password'>
                                 <input
+                                    autoComplete='new-password'
                                     name='password'
                                     id='registration-password'
                                     type='password'
