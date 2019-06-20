@@ -2,7 +2,6 @@ import React from 'react';
 import TipBox from "../TipBox/TipBox";
 import AccountPanel from "../AccountPanel/AccountPanel";
 import NavMenu from "../NavMenu/NavMenu";
-import Logo from "../Logo/Logo";
 
 export default class MblNav extends React.Component {
     render() {

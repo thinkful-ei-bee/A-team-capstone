@@ -1170,6 +1170,14 @@ form > textarea {
     margin-top: 30px;
   }
 
+  .form-error{
+    text-align: center;
+  }
+
+  .form-error > p{
+    margin: 0;
+  }
+
   .text {
     width: 85%;
   }
