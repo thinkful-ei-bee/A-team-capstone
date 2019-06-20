@@ -30,7 +30,8 @@ class RegistrationForm extends React.Component {
             username: username.value,
             password: password.value,
             email: email.value,
-            image: image.value,
+            // image: image.value, temporary change
+            image:'',
             user_description: user_description.value
         })
             .then(user => {
