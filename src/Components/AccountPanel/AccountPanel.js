@@ -79,7 +79,7 @@ export default class AccountPanel extends React.Component {
   }
 
   renderNull(){
-    if (!this.props.updateAccount){
+    if (!this.props.updateAccount && this.props.setUpdateAccount){
       this.props.setUpdateAccount();
     }
     return null;
