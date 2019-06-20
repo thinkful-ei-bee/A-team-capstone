@@ -7,7 +7,7 @@ export default class SideBar extends React.Component {
     render() {
         return (
             <section className="sidebar">
-                <AccountPanel updateBids={this.props.updateBids}></AccountPanel>
+                <AccountPanel setUpdateBids={this.props.setUpdateBids} updateBids={this.props.updateBids}></AccountPanel>
                 <TipBox></TipBox>
             </section>
         )

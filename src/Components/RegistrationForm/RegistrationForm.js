@@ -23,21 +23,21 @@ class RegistrationForm extends React.Component {
 
     handleSubmit = ev => {
         ev.preventDefault()
-        const { email, username, password, image, user_description } = ev.target
+        const { email, username, password, user_description } = ev.target
 
         this.setState({ error: null })
         AuthApiService.postUser({
             username: username.value,
             password: password.value,
             email: email.value,
-            image: image.value,
+            // image: image.value, temporary change
+            image:'',
             user_description: user_description.value
         })
             .then(user => {
                 email.value = ''
                 username.value = ''
                 password.value = ''
-                image.value = ''
                 user_description.value = ''
                 if (this.state.error === null) {
                     this.props.onRegistrationSuccess()
@@ -69,11 +69,12 @@ class RegistrationForm extends React.Component {
                                     {error && <p className='red'>{error}</p>}
                                 </div>
                                 <div className='username'>
-                                    <label htmlFor='regeistration-user-name'>
+                                    <label htmlFor='registration-user-name'>
                                         <input
                                             name='username'
+                                            autoComplete='username'
                                             type='text'
-                                            aria-label='regeistration-user-name'
+                                            aria-label='registration-user-name'
                                             aria-required="true"
                                             id='registration-user-name'
                                             placeholder="Username(Required)"
@@ -84,6 +85,7 @@ class RegistrationForm extends React.Component {
                                         </input>
                                     </label>
                                 </div>
+                                {/* (user avatars not currently implemented)
                                 <div className='image'>
                                     <label htmlFor='registration-image'>
                                         <input
@@ -98,11 +100,12 @@ class RegistrationForm extends React.Component {
                                         </input>
                                     </label>
 
-                                </div>
+                                </div> */}
                                 <div className='email'>
                                     <label htmlFor='registration-user-email'>
                                         <input
                                             name='email'
+                                            autoComplete='email'
                                             id='registration-email'
                                             type='email'
                                             aria-label='registration-user-email'
@@ -136,6 +139,7 @@ class RegistrationForm extends React.Component {
                                     <label htmlFor='registration-password'>
                                         <input
                                             name='password'
+                                            autoComplete='new-password'
                                             id='registration-password'
                                             type='password'
                                             aria-label='registration-password'
