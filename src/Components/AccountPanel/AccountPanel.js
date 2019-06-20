@@ -62,6 +62,27 @@ export default class AccountPanel extends React.Component {
       this.getUsersCohorts();
       this.props.setUpdateBids();
     }
+    if (this.props.open && this.props.updateAccount){
+      if(TokenService.hasAuthToken()) {
+        ProfileApiService.getProfile()
+        .then(profile => {
+          this.setState({
+            profile,
+          });
+          this.getUsersProjects();
+          this.getUsersBids();
+          this.getUsersCohorts();
+        });
+        this.props.setUpdateAccount();
+      }
+    }
+  }
+
+  renderNull(){
+    if (!this.props.updateAccount){
+      this.props.setUpdateAccount();
+    }
+    return null;
   }
 
   render() {
@@ -96,7 +117,7 @@ export default class AccountPanel extends React.Component {
                 {bids}
               </ul>
           </article>
-          : null
+          : this.renderNull()
       )
   }
 }
