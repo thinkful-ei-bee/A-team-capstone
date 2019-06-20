@@ -23,6 +23,12 @@ class App extends React.Component {
     });
   }
   
+  closeHamburger = () => {
+    this.setState({
+      hamburgerOpen: false
+    })
+  }
+
   checkHeight = () =>{
     const htmlElem = document.getElementsByTagName('html')[0];
     // need to check if other browsers support html.clientHeight as well as window.outerHeight
@@ -42,7 +48,7 @@ class App extends React.Component {
       <div className={`App ${fullScreenClass}`}>
         <TopNav swapOpen={this.swapOpen} history={this.props.history}></TopNav>
         <MblNav open={this.state.hamburgerOpen}/>
-        <main>
+        <main onClick={this.closeHamburger}>
           <Switch>
           <Route exact path={"/landing"} component={LandingPage} />
           <Route exact path={"/comments"} component={ProjectCommentsForm} />
