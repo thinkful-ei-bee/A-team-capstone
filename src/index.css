@@ -718,7 +718,7 @@ form {
   color: grey;
 }
 
-#login-form > .form-tip{
+#login-form > .form-tip {
   margin-top: 12px;
 }
 
@@ -752,22 +752,44 @@ form > textarea {
 /* End Form Styles */
 
 /* Bidding Styles */
+.bid-grid-full {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.bid-grid-halves {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.bid-grid-thirds {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
 #bidder-form {
   border-radius: 7px;
-  max-width: 397px;
-  padding: 10px 30px 30px;
-  box-shadow: 2px 2px 2px #999;
-  background: linear-gradient(
+  max-width: 90%;
+  box-shadow: 0px 0px 0px #999;
+  /*background: linear-gradient(
     to bottom right,
     rgba(0, 0, 0, 0.9),
     rgba(0, 0, 0, 0.9),
     rgba(0, 0, 0, 0.9),
     rgba(253, 5, 5, 0.9)
   );
-  color: white;
-  margin-top: 35px;
-  margin-left: 30px;
+  color: white; */
+  margin-left: 0;
+  border: 0px solid white;
+}
+
+#bidder-form > button {
+  width: 15%;
+  display: block;
+  margin-left: 0;
   border: 1px solid white;
+  box-shadow: 1px 1px 1px #999;
+  border-radius:7px;
 }
 
 #bidder-form > div > h3 {
@@ -782,27 +804,41 @@ form > textarea {
   border: 1px solid white;
 }
 
-#bidder-input > .bidder-input-grid > div > label {
-  display: block;
+#bidder-form > #closebidslabel {
+  color: black;
+}
+
+.bidder-input > .bidder-input-grid > div > label {
+  /* display: block; */
   padding-left: 0;
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
 }
 
-#bidder-input > .bidder-input-grid > div {
+.bidder-input > .bidder-input-grid > div {
   padding: 15px 10px 15px 0;
-  text-align: left;
+  text-align: center;
+  width: 45%;
+  display: inline-block;
 }
 
-#bidder-input {
-  margin: 20px 0 25px;
-  padding: 20px 15px 10px 15px;
-  border-bottom: 2px solid red;
+.bidder-input {
+  margin: 20px 15px 25px 0;
+  padding: 5px 15px 5px 15px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(253, 5, 5, 0.9)
+  );
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  box-shadow: 1.5px 1.5px 1.5px #999;
+  max-width: 263px;
 }
 
-#bidder-input:last-child {
-  border-bottom: 0;
-}
 .bidder-btn {
   border: 1px solid white;
   border-radius: 5px;
@@ -817,8 +853,8 @@ form > textarea {
 }
 
 .bidder-input-grid {
-  display: grid;
-  grid-template-columns: 100%;
+  /* display: grid;
+  grid-template-columns: 50%; */
 }
 
 #closebidslabel {
@@ -1170,11 +1206,11 @@ form > textarea {
     margin-top: 30px;
   }
 
-  .form-error{
+  .form-error {
     text-align: center;
   }
 
-  .form-error > p{
+  .form-error > p {
     margin: 0;
   }
 

@@ -270,7 +270,7 @@ class Project extends Component {
     if (this.state.project.openForBids && this.state.bidders.length > 0) {
       display.push(
         <React.Fragment key="bidderList">
-          <div className="mbl-separator" style={{ paddingRight: "0" }}>
+          <div className="mbl-separator" style={{ padding: "0" }}>
             <h2>PENDING BIDDERS:</h2>
             <hr />
           </div>
@@ -281,8 +281,8 @@ class Project extends Component {
               bidders={this.state.bidders}
             />
             <input id="closebids" name="closebids" type="checkbox" checked={this.state.closeBidding} onChange={this.checkClosedBox} />
-            <label id="closebidslabel" htmlFor="closebids">Close bidding</label>
-            <button className="bidder-btn" type="submit">SUBMIT</button>
+            <label id="closebidslabel" htmlFor="closebids">CLOSE BIDDING</label>
+            <button className="btn" type="submit">CONFIRM</button>
           </form>
         </React.Fragment>);
     }
