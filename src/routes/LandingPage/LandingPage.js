@@ -48,6 +48,7 @@ export default class LandingPage extends React.Component {
     }
 
     render() {
+        let { error } = this.state;
         const mitten = <FontAwesomeIcon icon={faMitten} className="thumbsUp" style={{ fontSize: "30px" }} />
         return (
             <div>
