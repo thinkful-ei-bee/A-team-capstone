@@ -97,7 +97,8 @@ export default class LandingPage extends React.Component {
                                 </input>
                             </label>
                         </div>
-                        <div className='image'>
+                        {/* (user avatars not implemented in current version)
+                            <div className='image'>
                             <label htmlFor='registration-image'>
                                 <input
                                     name='image'
@@ -112,7 +113,7 @@ export default class LandingPage extends React.Component {
                                 </input>
                             </label>
 
-                        </div>
+                        </div> */}
                         <div className='email'>
                             <label htmlFor='registration-email'>
                                 <input

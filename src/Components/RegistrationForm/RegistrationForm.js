@@ -85,6 +85,7 @@ class RegistrationForm extends React.Component {
                                         </input>
                                     </label>
                                 </div>
+                                {/* (user avatars not currently implemented)
                                 <div className='image'>
                                     <label htmlFor='registration-image'>
                                         <input
@@ -99,7 +100,7 @@ class RegistrationForm extends React.Component {
                                         </input>
                                     </label>
 
-                                </div>
+                                </div> */}
                                 <div className='email'>
                                     <label htmlFor='registration-user-email'>
                                         <input
