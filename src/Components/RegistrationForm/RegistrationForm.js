@@ -69,11 +69,12 @@ class RegistrationForm extends React.Component {
                                     {error && <p className='red'>{error}</p>}
                                 </div>
                                 <div className='username'>
-                                    <label htmlFor='regeistration-user-name'>
+                                    <label htmlFor='registration-user-name'>
                                         <input
                                             name='username'
+                                            autoComplete='username'
                                             type='text'
-                                            aria-label='regeistration-user-name'
+                                            aria-label='registration-user-name'
                                             aria-required="true"
                                             id='registration-user-name'
                                             placeholder="Username(Required)"
@@ -103,6 +104,7 @@ class RegistrationForm extends React.Component {
                                     <label htmlFor='registration-user-email'>
                                         <input
                                             name='email'
+                                            autoComplete='email'
                                             id='registration-email'
                                             type='email'
                                             aria-label='registration-user-email'
@@ -136,6 +138,7 @@ class RegistrationForm extends React.Component {
                                     <label htmlFor='registration-password'>
                                         <input
                                             name='password'
+                                            autoComplete='new-password'
                                             id='registration-password'
                                             type='password'
                                             aria-label='registration-password'
