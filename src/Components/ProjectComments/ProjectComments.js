@@ -6,26 +6,7 @@ import TokenService from '../../services/token-service';
 
 export default class ProjectComments extends React.Component {
     state={
-      comments: [],
       connection: {}
-    }
-
-    getComments(){
-      CommentsApiService.getComments(this.props.project_id)
-        .then(comments => {
-
-          comments = comments.sort((comment1, comment2) => {
-            if (comment1.date_created > comment2.date_created) { 
-              return -1; 
-            } else {
-              return 1;
-            }
-          });
-
-          this.setState({
-            comments
-          })
-        })
     }
 
     createConnection(id) {
@@ -33,7 +14,7 @@ export default class ProjectComments extends React.Component {
         
         ws.onmessage = function(e) {
           if (Number(e.data) === id) {
-            this.getComments();
+            this.props.getComments();
           }
         }
 
@@ -45,15 +26,7 @@ export default class ProjectComments extends React.Component {
     }
 
     componentDidMount(){
-      this.getComments();
       this.createConnection(this.props.project_id);
-    }
-
-    componentDidUpdate(){
-      if (this.props.updateComments){
-        this.getComments();
-        this.props.setUpdateComments();
-      }
     }
 
     componentWillUnmount() {
@@ -63,17 +36,12 @@ export default class ProjectComments extends React.Component {
     }
 
     componentWillReceiveProps() {
-      // if (this.state.connection.close) {
-      //   this.state.connection.close();
-      // }
-
-      this.getComments();
       this.createConnection(this.props.project_id);
     }
 
     render() {
       const commentsList = [];
-      this.state.comments.forEach(comment=>{
+      this.props.comments.forEach(comment=>{
         const time = comment.date_created;
         const formattedTime = time.slice(0, 10) + ' ' + time.slice(11, 19) + ' +0000';
         commentsList.push(
