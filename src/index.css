@@ -82,7 +82,8 @@ ul.bars {
   width: 35px;
   height: 5px;
   background-color: white;
-  margin: 6px 0;
+  margin: 4px 0 7px;
+  border-radius: 10px;
 }
 
 /* Nav Styles */
@@ -128,7 +129,7 @@ ul.bars {
   color: red;
   text-shadow: 1.5px 1.5px 1.5px #000;
 }
-#mbl-nav > ul.nav-menu{
+#mbl-nav > ul.nav-menu {
   text-align: center;
 }
 #mbl-nav > hr {
@@ -480,7 +481,7 @@ ul.bars {
   position: relative;
 }
 
-.main-single-project-square > header > h2{
+.main-single-project-square > header > h2 {
   margin-top: 0;
 }
 
@@ -750,7 +751,7 @@ form {
 #login-form > button.btn,
 #new-project-form > button.btn {
   margin-left: 0;
-  margin-top:15px;
+  margin-top: 15px;
 }
 
 #contact-form,
@@ -1087,17 +1088,17 @@ form > textarea {
 }
 
 @media (min-width: 678px) {
-  .main-single-project-square > header > h2 > a.project-page-link {
-    margin-top: 10px;
+  .main-single-project-square > header > h2 > {
+    margin-top: 15px;
   }
   .main-single-project-square {
-    margin: 15px 8px 15px 0
+    margin: 15px 8px 15px 0;
   }
   #contact-form,
-#login-form,
-#new-project-form {
-  margin-top: 45px;
-}
+  #login-form,
+  #new-project-form {
+    margin-top: 45px;
+  }
 
   #filter_search {
     width: 105%;
@@ -1205,7 +1206,7 @@ form > textarea {
     display: block;
   }
 
-  .top-nav > .nav-grid > .nav-grid-item-2 > .nav-nav > ul.nav-menu{
+  .top-nav > .nav-grid > .nav-grid-item-2 > .nav-nav > ul.nav-menu {
     text-align: right;
   }
 
