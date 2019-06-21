@@ -74,7 +74,7 @@ export default class LoginForm extends Component {
                     {/* spacer */}
                     <div className="section-grid-item"></div>
                     <div className="section-grid-item">
-                        <h2>Login</h2>
+                        
                         {/* <p>Username:"demo1234"</p>
                         <p>Pass:"Demo1234!"</p> */}
                         <form id="login-form"

@@ -60,7 +60,6 @@ class RegistrationForm extends React.Component {
                     <section className="section">
                         {/* <div className="section-grid-item"></div> */}
                         <div className="section-grid-item">
-                            <h2>Sign Up To Use Our App</h2>
                             <form id="contact-form" onSubmit={this.handleSubmit}>
                                 <div className="form-top">
                                     <p>REGISTER</p>
