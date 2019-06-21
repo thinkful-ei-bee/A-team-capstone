@@ -4,14 +4,21 @@ export default class Footer extends React.Component {
 
     render() {
         return (
-            <section id="footer" className=" stats-grid">
+            <section id="footer" className=" footer-grid">
                 {/* <header class="item1"><h2>APP STATS</h2></header > */}
-                <article className="item2 stats-grid-item">
+                <article className="f-grid-item-1">
                 © 2019 <span>Bid</span>Hub, All Rights Reserved.
                 </article>
-                <article className="item4 stats-grid-item-last">
+                <article className="f-grid-item-2">
                 <Logo id ='-footer'></Logo>
                 </article>
+                <article className="f-grid-item-3">
+                <Logo id ='-footer'></Logo>
+                </article>
+                <article className="f-grid-item-4">
+                © 2019 <span>Bid</span>Hub, All Rights Reserved.
+                </article>
+                
             </section>
         )
     }
