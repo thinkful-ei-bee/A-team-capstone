@@ -14,18 +14,14 @@ class BidderList extends React.Component {
         />)
     })
     let bidderGridClass;
-    if(bidders.length == 2)
-    console.log(bidders.length + 'aye')
+    if(bidders.length === 2)
   
       if (bidders.length % 3 === 1 || bidders.length === 1) {
         bidderGridClass = "bid-grid-full"
-        console.log(bidderGridClass)
       } else if (bidders.length % 3 === 2 || bidders.length === 2) {
         bidderGridClass = "bid-grid-halves"
-        console.log(bidderGridClass)
       } else {
         bidderGridClass = "bid-grid-thirds"
-        console.log(bidderGridClass)
       }
     return (
       <>

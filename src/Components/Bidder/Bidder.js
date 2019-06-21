@@ -6,7 +6,7 @@ class Bidder extends React.Component {
 
     return (
       <React.Fragment>
-        <div class="bidder-input" key={this.props.bidder.user_id}>
+        <div className="bidder-input" key={this.props.bidder.user_id}>
           <h3><i>{this.props.bidder.username}</i></h3>
           <div className="bidder-input-grid">
             <div>

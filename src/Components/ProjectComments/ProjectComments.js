@@ -1,5 +1,4 @@
 import React from 'react';
-import CommentsApiService from '../../services/comments-api-service';
 import moment from 'moment';
 import config from '../../config';
 import TokenService from '../../services/token-service';
