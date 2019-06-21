@@ -480,8 +480,11 @@ ul.bars {
   position: relative;
 }
 
+.main-single-project-square > header > h2{
+  margin-top: 0;
+}
+
 .main-single-project-square > header > h2 > a.project-page-link {
-  margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 5px;
   color: white;
@@ -747,6 +750,7 @@ form {
 #login-form > button.btn,
 #new-project-form > button.btn {
   margin-left: 0;
+  margin-top:15px;
 }
 
 #contact-form,
@@ -1083,6 +1087,9 @@ form > textarea {
 }
 
 @media (min-width: 678px) {
+  .main-single-project-square > header > h2 > a.project-page-link {
+    margin-top: 10px;
+  }
   .main-single-project-square {
     margin: 15px 8px 15px 0
   }
@@ -1285,7 +1292,7 @@ form > textarea {
     width: 100%;
     max-width: 88%;
     margin-left: 30px;
-    margin-top: 30px;
+    margin-top: 15px;
   }
 
   .form-error {
